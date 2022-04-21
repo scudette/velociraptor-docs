@@ -1,16 +1,12 @@
 ---
-menutitle: "2021 Contest"
-title: "2021 Velociraptor Contributor Competition"
+menutitle: "2022 Contribution Contest"
+title: "2022 Velociraptor Contributor Competition"
 description: |
     Were you planning to try Velociraptor in the past? You can now win some awesome prizes by learning and applying Velociraptor to your own network.
 
-weight: 10
+weight: 20
 no_edit: true
 ---
-
-## The Contest is now closed!
-
-Check out the [submissions]({{< ref "/blog/2021/2021-10-08-contributor-contest/_index.md" >}}) and watch the winning presentation at the [SANS Threat Hunting Summit](https://www.sans.org/cyber-security-training-events/threat-hunting-and-incident-response-summit-2021/#agenda)
 
 ## Goals
 
@@ -36,11 +32,13 @@ Some specific ideas:
 
 ## Deadline
 
-Deadline for submission is Midnight 20th September 2021 anywhere on earth. The email address for submission is: **contest@velociraptor.app**
+Deadline for submission is Midnight 20th September 2021 anywhere on
+earth. The email address for submission is:
+**contest@velociraptor.app**
 
 ## Winner Announcements
 
-Winners will be announced at the [SANS Threat Hunting Summit Thurs Oct 7 - Fri, Oct 8, 2021](https://www.sans.org/cyber-security-training-events/threat-hunting-and-incident-response-summit-2021)
+Winners will be announced at the [2022 Velociraptor Conference]({{% ref "/announcements/2022-velocon/" %}})
 
 ## Prizes
 
@@ -94,9 +92,12 @@ submission writeup should be sufficiently detailed for the judging
 panel to properly assess the novelty and usefulness of the submission.
 
 All submission code will be released under the same license as
-Velociraptor (i.e. [AGPL](https://github.com/Velocidex/velociraptor/blob/master/LICENSE)) and may be included in future
-releases. Contributors should also sign the Velociraptor CLA prior to
-submitting a contribution (Please click [here to sign](https://cla-assistant.io/Velocidex/velociraptor) and indicate your Github username in the submission).
+Velociraptor
+(i.e. [AGPL](https://github.com/Velocidex/velociraptor/blob/master/LICENSE))
+and may be included in future releases. Contributors should also sign
+the Velociraptor CLA prior to submitting a contribution (Please click
+[here to sign](https://cla-assistant.io/Velocidex/velociraptor) and
+indicate your Github username in the submission).
 
 ## Selection criteria
 
