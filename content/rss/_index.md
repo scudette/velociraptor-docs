@@ -42,3 +42,8 @@ Playbooks
 Security Advisories
 
 [{{< baseurl >}}announcements/advisories/index.xml]({{< baseurl >}}announcements/advisories/index.xml)
+
+<i class="fas fa-code"></i>
+GitHub Release Tags - Get notified for new releases
+
+[https://github.com/Velocidex/velociraptor/tags.atom](https://github.com/Velocidex/velociraptor/tags.atom)

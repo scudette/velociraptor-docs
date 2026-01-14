@@ -1,4 +1,4 @@
-baseURL: https://docs.velociraptor.app/
+baseURL: https://www.velociraptor.app/
 languageCode: en-us
 title: "Velociraptor - Digging deeper!"
 
@@ -69,4 +69,3 @@ outputs:
   home: ["HTML"]
   section: ["HTML"]
   taxonomy: ["HTML"]
-
