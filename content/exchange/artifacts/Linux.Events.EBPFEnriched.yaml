@@ -1,0 +1,373 @@
+name: Linux.Events.EBPFEnriched
+author: Zane Gittins
+description: |
+ This artifact forwards EBPF events generated on the endpoint and enriches events with:
+ 
+    * Process details (CommandLine, ParentImage, etc.)
+    * Docker container details (ContainerName, ContainerImage, Usernames, etc.)
+ 
+ Requires Linux.Events.TrackProcesses (process tracker), and docker v29+ for hashing of executables and username enrichment in docker containers.
+
+type: CLIENT_EVENT
+
+parameters:
+  - name: Events
+    description: Events to forward
+    type: csv
+    default: |
+      Event,Desc,Enabled
+      bpf_attach,A bpf program is attached,N
+      chdir,Process changes directory,N
+      fchownat,File ownership is changed,Y
+      file_modification,A process changes the ctime of a file,N
+      kill,Kill another process,N
+      magic_write,Intercepts file writes to capture the header magic,Y
+      mkdir,Process makes new directory,N
+      module_free,A module is unloaded from the kernel,Y
+      mount,A filesystem is mounted,Y
+      openat,A process is opening a file (noisy),N
+      openat2,A process is opening a file (noisy),N
+      sched_process_exec,A process starts,Y
+      sched_process_exit,A process ends,N
+      security_file_open,Files are opened,N
+      security_inode_mknod,A new node is created with mknod (e.g. fifo or device file),Y
+      security_inode_rename,File is being renamed,N
+      security_inode_symlink,Create a symlink,Y
+      security_kernel_post_read_file,Fires when the kernel reads a file (e.g. module),Y
+      security_socket_accept,A process accepted a connection,Y
+      security_socket_bind,A process bind to a local port,Y
+      security_socket_connect,A process is making a connection,Y
+      setxattr,Setting and extended attribute to a file,Y
+      umount2,A filesystem is being unmounted,Y
+      unlink,A file is deleted,N
+      net_packet_dns,DNS network traffic,Y
+      net_packet_http_request,http requests,N
+      ptrace,abused for process injection,Y
+      process_vm_writev,abused for process injection,Y
+  - name: Exclusions
+    description: Granular event exclusion rules for EventData fields.
+    type: csv
+    default: |
+        Event,Reason,FieldName,ExclusionRegex
+        magic_write,Noisy,pathname,.(txt|cmrk2|cmrk4|pid|json|procs|bin|dblwr)$
+        magic_write,Noisy,pathname,^/sys/fs/cgroup/
+        security_socket_connect,Noisy,remote_addr.sa_family,AF_UNIX
+        net_packet_dns,SLD Queries,proto_dns.questions.name,^[^.]*$
+  - name: DockerEnrich
+    description: |
+      If enabled, we attempt to enrich events from docker containers.
+    type: bool
+    default: True
+  - name: DockerAPIEndpoint
+    description: |
+      Docker API endpoint to retrieve container details.
+    type: string
+    default: "/var/run/docker.sock:unix/containers/json"
+  - name: HashOnExecution
+    description: |
+      Calculate hashes on process execution (sched_process_exec).
+    type: bool
+    default: True
+  - name: BufferSize
+    description: |
+      Size of buffer used to delay events for enrichment. Larger buffer size increases enrichment chance, but also memory usage.
+    default: 5000
+    type: int64
+  - name: EnrichmentDelay
+    description: | 
+      Number of seconds to delay enriching events to increase chance they are in the process tracker.
+    type: int64
+    default: 5
+
+export: |
+  // Get hostname from info, as ebpf also has container names.
+  LET ComputerName <= dict(H={ SELECT Hostname FROM info() }).H[0].Hostname
+  
+  // Get paths to /etc/passwd from client and docker containers using overlayfs. Used to enrich events with username.
+  LET AllPasswdPaths = SELECT
+      OSPath
+    FROM glob(
+      globs=["/var/lib/docker/rootfs/overlayfs/*/etc/passwd", "/etc/passwd"])
+  
+  // Get 12 character container id or computer name. We truncate ComputerName at 15 chars for matching on System.HostName (UtsName(16 chars) - null byte)
+  LET GetName(Path) = if(
+      condition=(Path =~ "docker"),
+      then=parse_string_with_regex(
+        regex="\\/(?<ContainerID>[a-z0-9]{12})",
+        string=Path).ContainerID,
+      else=ComputerName[:15])
+  
+  // Enrich usernames from /etc/passwd
+  LET UsernameLookup <= memoize(key="CombinedID",
+                                query={
+      SELECT *
+      FROM foreach(row=AllPasswdPaths,
+                   query={
+      SELECT User AS Username,
+             atoi(string=Uid) AS UserID,
+             GetName(Path=OSPath) + Uid AS CombinedID
+      FROM split_records(
+        filenames=OSPath,
+        regex=":",
+        record_regex="\r?\n",
+        columns=["User", "X", "Uid", "Gid", "Description", "Homedir", "Shell"])
+    })
+    },
+                                period=120)
+  
+  // Get hash of a file on host or in docker container via overlayfs
+  LET get_hash_cache(OSPath, HostName, IsContainer) =
+      if(condition=(HostName
+            AND IsContainer),
+         then=hash(path=("/var/lib/docker/rootfs/overlayfs/" +
+                       HostName + OSPath),
+                   hashselect=["SHA256"]).SHA256,
+         else=hash(path=OSPath, hashselect=["SHA256"]).SHA256)
+  
+  // Parse Exclusions
+  LET ExclusionRules <= SELECT *
+    FROM Exclusions
+  
+  // Function to check if an event should be excluded
+  LET ShouldExclude(EventName, EventData) = len(
+      list=array(_={
+      SELECT *
+      FROM foreach(row=ExclusionRules)
+      WHERE Event = EventName
+       AND get(item=EventData, member=FieldName) =~ ExclusionRegex
+      LIMIT 1
+    })) > 0
+  
+  // Communicate with docker API to get all running containers
+  LET data = SELECT parse_json_array(data=Content) AS Containers
+    FROM http_client(url=DockerAPIEndpoint)
+  
+  LET ContainerLookup <= memoize(key="ContainerID",
+                                 query={
+      SELECT format(format="%.12s", args=Id) AS ContainerID,
+             Id AS FullContainerID,
+             join(array=Names, sep=", ") AS ContainerName,
+             Image AS ContainerImage,
+             State AS ContainerState,
+             Status AS ContainerStatus,
+             timestamp(epoch=Created) AS ContainerCreated
+      FROM foreach(row=data, query={ SELECT * FROM foreach(row=Containers) })
+    },
+                                 period=30)
+  
+  // Get detailed process information for all events
+  LET GetProcInfo(EventData, Tracker, pTracker) = dict(
+      Image=Tracker.Data.Exe || EventData.cmdpath ||
+        System.ProcessName,
+      ImageName=System.ProcessName,
+      CommandLine=Tracker.Data.CommandLine || join(array=EventData.argv, sep=" "),
+      ParentImage=pTracker.Data.Exe,
+      ParentCommandLine=pTracker.Data.CommandLine,
+      CreateTime=timestamp(
+        epoch=EventData.ctime) || System.ThreadStartTime,
+      CallChain=join(
+        array=process_tracker_callchain(
+          id=System.HostProcessID).Data.Name,
+        sep="->"),
+      TrackerHit=if(
+        condition=Tracker != NULL,
+        then=true,
+        else=false))
+
+sources:
+  - precondition:
+        SELECT OS From info() where OS = 'linux' AND version(plugin="watch_ebpf") >= 0
+    query: |
+      // Comsume only process execution events.
+      LET SelectedEvents <= SELECT *
+        FROM Events
+        WHERE Enabled =~ "Y"
+         AND Event = "sched_process_exec"
+      
+      // Primary event loop, we exclude our own pid and evaluate exclusion rules.
+      LET Logs = SELECT timestamp(epoch=now()) AS Timestamp,
+                        *,
+                        System.HostProcessID != System.ProcessID AS IsContainer
+        FROM watch_ebpf(events=SelectedEvents.Event)
+        WHERE System.HostProcessID != getpid()
+         AND System.HostParentProcessID != getpid()
+              AND NOT ShouldExclude(EventName=System.EventName, EventData=EventData)
+      
+      SELECT
+          ComputerName,
+          System,
+          EventData,
+          GetProcInfo(EventData=EventData,
+                      Tracker=process_tracker_get(id=System.HostProcessID),
+                      pTracker=process_tracker_get(id=System.HostParentProcessID)) AS ProcInfo,
+          IsContainer,
+          get(
+            item=UsernameLookup,
+            field=(System.HostName + str(
+                str=System.UserID))).Username AS Username,
+          if(
+            condition=(IsContainer
+               AND DockerEnrich),
+            then=get(
+              item=ContainerLookup,
+              field=System.HostName)) AS ContainerEnrich,
+          if(
+            condition=(System.EventName = "sched_process_exec"
+               AND HashOnExecution),
+            then=cache(
+              period=300,
+              func=get_hash_cache(
+                OSPath=EventData.pathname,
+                HostName=get(
+                  item=ContainerLookup,
+                  field=System.HostName).FullContainerID,
+                IsContainer=IsContainer),
+              // Cache on dev (device id) + inode, this strategy saves cpu on containers using same overlayfs
+              key=str(
+                str=EventData.dev) + "-" + str(
+                str=EventData.inode))) AS Hash
+      FROM delay(
+        query={
+          SELECT
+          *
+          FROM Logs
+        },
+        delay=EnrichmentDelay,
+        buffer_size=BufferSize)
+  - precondition:
+        SELECT OS From info() where OS = 'linux' AND version(plugin="watch_ebpf") >= 0
+    query: |
+      // Comsume only process injection events, which can be very bursty.
+      LET SelectedEvents <= SELECT *
+        FROM Events
+        WHERE Enabled =~ "Y"
+         AND Event =~ "^(ptrace|process_vm_writev)"
+      
+      // Primary event loop, we exclude our own pid and evaluate exclusion rules.
+      LET Logs = SELECT timestamp(epoch=now()) AS Timestamp,
+                        *,
+                        System.HostProcessID != System.ProcessID AS IsContainer,
+                        System.HostProcessID AS ProcessID
+        FROM watch_ebpf(events=SelectedEvents.Event)
+        WHERE System.HostProcessID != getpid()
+         AND System.HostParentProcessID != getpid()
+              AND NOT ShouldExclude(EventName=System.EventName, EventData=EventData)
+      
+      SELECT
+          ComputerName,
+          System,
+          EventData,
+          GetProcInfo(EventData=EventData,
+                      Tracker=process_tracker_get(id=System.HostProcessID),
+                      pTracker=process_tracker_get(id=System.HostParentProcessID)) AS ProcInfo,
+          IsContainer,
+          get(
+            item=UsernameLookup,
+            field=(System.HostName + str(
+                str=System.UserID))).Username AS Username,
+          if(
+            condition=(IsContainer
+               AND DockerEnrich),
+            then=get(
+              item=ContainerLookup,
+              field=System.HostName)) AS ContainerEnrich
+      FROM dedup(
+        query={
+          SELECT
+          *
+          FROM Logs
+        },
+        key="ProcessID",
+        size=BufferSize)
+  - precondition:
+        SELECT OS From info() where OS = 'linux' AND version(plugin="watch_ebpf") >= 0
+    query: |
+      // Comsume only security_socket_connect, which can be very bursty.
+      LET SelectedEvents <= SELECT *
+        FROM Events
+        WHERE Enabled =~ "Y"
+         AND Event =~ "^(security_socket_connect)"
+      
+      // Primary event loop, we exclude our own pid and evaluate exclusion rules.
+      LET Logs = SELECT timestamp(epoch=now()) AS Timestamp,
+                        *,
+                        System.HostProcessID != System.ProcessID AS IsContainer,
+                        (str(str=System.HostProcessID) +
+                            EventData.remote_addr.sin_addr +
+                            EventData.remote_addr.sin_port +
+                            EventData.remote_addr.sa_family) AS DedupKey
+        FROM watch_ebpf(events=SelectedEvents.Event)
+        WHERE System.HostProcessID != getpid()
+         AND System.HostParentProcessID != getpid()
+              AND NOT ShouldExclude(EventName=System.EventName, EventData=EventData)
+      
+      SELECT
+          ComputerName,
+          System,
+          EventData,
+          GetProcInfo(EventData=EventData,
+                      Tracker=process_tracker_get(id=System.HostProcessID),
+                      pTracker=process_tracker_get(id=System.HostParentProcessID)) AS ProcInfo,
+          IsContainer,
+          get(
+            item=UsernameLookup,
+            field=(System.HostName + str(
+                str=System.UserID))).Username AS Username,
+          if(
+            condition=(IsContainer
+               AND DockerEnrich),
+            then=get(
+              item=ContainerLookup,
+              field=System.HostName)) AS ContainerEnrich
+      FROM dedup(
+        query={
+          SELECT
+          *
+          FROM Logs
+        },
+        key="DedupKey",
+        size=BufferSize)
+  - precondition:
+        SELECT OS From info() where OS = 'linux' AND version(plugin="watch_ebpf") >= 0
+    query: |
+      // Default catch all consumer for events that are not handled in other sources.
+      LET SelectedEvents <= SELECT *
+        FROM Events
+        WHERE Enabled =~ "Y"
+         AND NOT Event =~ "^(sched_process_exec|security_socket_connect|ptrace|process_vm_writev)"
+      
+      // Primary event loop, we exclude our own pid and evaluate exclusion rules.
+      LET Logs = SELECT timestamp(epoch=now()) AS Timestamp,
+                        *,
+                        System.HostProcessID != System.ProcessID AS IsContainer
+        FROM watch_ebpf(events=SelectedEvents.Event)
+        WHERE System.HostProcessID != getpid()
+         AND System.HostParentProcessID != getpid()
+              AND NOT ShouldExclude(EventName=System.EventName, EventData=EventData)
+      
+      SELECT
+          ComputerName,
+          System,
+          EventData,
+          GetProcInfo(EventData=EventData,
+                      Tracker=process_tracker_get(id=System.HostProcessID),
+                      pTracker=process_tracker_get(id=System.HostParentProcessID)) AS ProcInfo,
+          IsContainer,
+          get(
+            item=UsernameLookup,
+            field=(System.HostName + str(
+                str=System.UserID))).Username AS Username,
+          if(
+            condition=(IsContainer
+               AND DockerEnrich),
+            then=get(
+              item=ContainerLookup,
+              field=System.HostName)) AS ContainerEnrich
+      FROM delay(
+        query={
+          SELECT
+          *
+          FROM Logs
+        },
+        delay=(EnrichmentDelay + 5),
+        buffer_size=BufferSize)
