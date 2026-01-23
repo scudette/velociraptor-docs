@@ -18,8 +18,8 @@ jobs:
         id: velociraptor
         with:
           repository: velocidex/velociraptor
-          tag: v0.74
-          fileName: "velociraptor-v0.74.3-linux-amd64-musl"
+          tag: v0.75
+          fileName: "velociraptor-v0.75.6-linux-amd64-musl"
           out-file-path: tests
 
       - name: Verify Exchange Artifacts
