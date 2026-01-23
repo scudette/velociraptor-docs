@@ -2,17 +2,18 @@ name: Windows.Detection.Honeyfiles
 author: Zane Gittins & Matt Green (@mgreen27).
 description: |
     This artifact deploys honeyfiles according to the Honeyfiles CSV parameter. It then monitors access to these files using etw.  The process tracker must be enabled, we use this to enrich etw events. Honeyfiles created by this artifact are removed at exit.
-
-    * TargetPath - Location to create honeyfile.
-    * Enabled - Only generate the honeyfile if this is set to 'Y'
-    * MagicBytes - The starting magic bytes of the honeyfile.
-    * MinSize,MaxSize - The size of the honeyfile will be a random value between MinSize and MaxSize.
-
+    
 type: CLIENT_EVENT
 
 parameters:
   - name: Honeyfiles
-    description: The honeyfiles to generate and monitor.
+    description: | 
+      The honeyfiles to generate and monitor.
+      
+      * TargetPath: Location to create honeyfile.
+      * Enabled: Only generate the honeyfile if this is set to 'Y'
+      * MagicBytes: The starting magic bytes of the honeyfile.
+      * MinSize,MaxSize: The size of the honeyfile will be a random value between MinSize and MaxSize.
     type: csv
     default: |
         TargetPath,Enabled,MagicBytes,MinSize,MaxSize
@@ -26,213 +27,195 @@ parameters:
         "%USERPROFILE%\.ssh\my_id_rsa",Y,2D2D2D2D2D424547494E205253412050524956415445204B45592D2D2D2D2D,1024,4096
         "%USERPROFILE%\.gcloud\credentials.db",Y,53514c69746520666f726d6174203300,512,2048
         "%USERPROFILE%\.azure\azureProfile.json",Y,7B0D0A,512,2048
-  - name: ProcessExceptionsRegex
-    description: Except these processes from detections when they access honeyfiles.
-    type: string
-    default: "SearchProtocolHost.exe|Explorer.exe"
+  - name: Exclusions
+    description: | 
+      Process/thread regex pairs to exclude legitimate system activity and reduce false positives.
+      Events matching both patterns are suppressed.
+    type: csv
+    default: |
+        ProcessRegex,ThreadRegex
+        ^[A-Z]:\\Windows\\explorer\.exe$,^[A-Z]:\\Windows\\System32\\ntdll\.dll$
+        ^[A-Z]:\\Windows\\explorer\.exe$,^\\Device\\.*\\Windows\\System32\\ntdll\.dll$
+        ^[A-Z]:\\Windows\\explorer\.exe$,^[A-Z]:\\Windows\\System32\\shcore\.dll$
+        ^[A-Z]:\\Windows\\explorer\.exe$,^\\Device\\.*\\Windows\\System32\\shcore\.dll$
+        .,^[A-Z]:\\Windows\\System32\\SearchProtocolHost\.exe$
+        .,^\\Device\\.*\\Windows\\System32\\SearchProtocolHost\.exe$
+        ^[A-Z]:\\Windows\\System32\\svchost\.exe$,^\\Device\\.*\\Windows\\System32\\defragsvc\.dll$
+        ^[A-Z]:\\Windows\\System32\\svchost\.exe$,^[A-Z]:\\Windows\\System32\\defragsvc\.dll$
+        ^[A-Z]:\\Program Files\\CrowdStrike\\CSFalconService\.exe$,.
   - name: HoneyUserRegex
     description: User name regex that will be used to host honeyfiles.
     type: string
     default: "."
 export: |
-   LET RandomChars(size) = SELECT
-       format(format="%02x", args=rand(range=256)) AS HexByte
-     FROM range(end=size)
-   
-   LET check_exist(path) = SELECT
-       OSPath,
-       Size,
-       IsDir,
-       if(condition=read_file(filename=OSPath)[-7:] =~ 'VRHoney',
-          then=True,
-          else=False) AS IsHoneyFile
-     FROM stat(filename=path)
-   
-   LET enumerate_path = SELECT
-       regex_replace(source=TargetPath,
-                     re='''\%USERPROFILE\%''',
-                     replace=Directory) AS TargetPath,
-       *,
-       check_exist(path=regex_replace(source=TargetPath,
-                                      re='''\%USERPROFILE\%''',
-                                      replace=Directory))[0] AS Exists,
-       MaxSize - rand(range=(MaxSize - MinSize)) - len(
-         list=unhex(string=MagicBytes)) - 7 AS _PaddingSize
-     FROM Honeyfiles
-   
-   LET target_users = SELECT Name,
-                             Directory,
-                             UUID
-     FROM Artifact.Windows.Sys.Users()
-     WHERE NOT UUID =~ '''^(S-1-5-18|S-1-5-19|S-1-5-20)$'''
-      AND Name =~ HoneyUserRegex
-   
-   LET show_honeyfiles = SELECT TargetPath,
-                                Enabled,
-                                MagicBytes,
-                                MinSize,
-                                MaxSize,
-                                _PaddingSize,
-                                Exists.Size AS Size,
-                                Exists.IsHoneyFile AS IsHoneyFile
-     FROM foreach(row=target_users, query=enumerate_path)
-   
-   LET copy_honeyfiles = SELECT
-       *, if(condition=Enabled =~ "^(Y|YES)$"
-              AND (NOT Size OR IsHoneyFile),
-             then=log(message="Creating file %v", dedup=-1, args=TargetPath)
-              && copy(dest=TargetPath,
-                      create_directories='y',
-                      accessor='data',
-                      filename=unhex(
-                        string=MagicBytes + join(
-                          array=RandomChars(size=_PaddingSize).HexByte) +
-                          format(format='%x', args='VRHoney'))),
-             else="File does not exist") AS CreateHoneyFile
-     FROM show_honeyfiles
-   
-   LET remove_honeyfiles = SELECT
-       *, _PaddingSize,
-       if(condition=IsHoneyFile,
-          then=log(message="Removing %v", args=TargetPath, dedup=-1)
-           && rm(filename=TargetPath),
-          else="File does not exist") AS RemoveHoneyFile
-     FROM show_honeyfiles
-   
-   LET add_honeyfiles = SELECT
-       TargetPath,
-       Enabled,
-       MagicBytes,
-       MinSize,
-       MaxSize,
-       check_exist(path=TargetPath)[0].Size AS Size,
-       check_exist(path=TargetPath)[0].IsHoneyFile AS IsHoneyFile
-     FROM copy_honeyfiles
-   
-   LET ThreadInfo(tPid, tTid) = SELECT filename,
-                                       memory_basic_info.RegionSize
-     FROM threads(pid=tPid)
-     WHERE tid = tTid
-     LIMIT 1
+  LET ComputerName <= dict(H={ SELECT Hostname FROM info() }).H[0].Hostname
+  
+  LET RandomChars(size) = SELECT
+      format(format="%02x", args=rand(range=256)) AS HexByte
+    FROM range(end=size)
+  
+  LET check_exist(path) = SELECT
+      OSPath,
+      Size,
+      IsDir,
+      if(condition=read_file(filename=OSPath)[-7:] =~ 'VRHoney',
+         then=True,
+         else=False) AS IsHoneyFile
+    FROM stat(filename=path)
+  
+  LET enumerate_path = SELECT
+      regex_replace(source=TargetPath,
+                    re='''\%USERPROFILE\%''',
+                    replace=Directory) AS TargetPath,
+      *,
+      check_exist(path=regex_replace(source=TargetPath,
+                                     re='''\%USERPROFILE\%''',
+                                     replace=Directory))[0] AS Exists,
+      MaxSize - rand(range=(MaxSize - MinSize)) - len(
+        list=unhex(string=MagicBytes)) - 7 AS _PaddingSize
+    FROM Honeyfiles
+  
+  LET target_users = SELECT Name,
+                            Directory,
+                            UUID
+    FROM Artifact.Windows.Sys.Users()
+    WHERE NOT UUID =~ '''^(S-1-5-18|S-1-5-19|S-1-5-20)$'''
+     AND Name =~ HoneyUserRegex
+  
+  LET show_honeyfiles = SELECT TargetPath,
+                               Enabled,
+                               MagicBytes,
+                               MinSize,
+                               MaxSize,
+                               _PaddingSize,
+                               Exists.Size AS Size,
+                               Exists.IsHoneyFile AS IsHoneyFile
+    FROM foreach(row=target_users, query=enumerate_path)
+  
+  LET copy_honeyfiles = SELECT
+      *, if(condition=Enabled =~ "^(Y|YES)$"
+             AND (NOT Size OR IsHoneyFile),
+            then=log(message="Creating file %v", dedup=-1, args=TargetPath)
+             && copy(dest=TargetPath,
+                     create_directories='y',
+                     accessor='data',
+                     filename=unhex(
+                       string=MagicBytes + join(
+                         array=RandomChars(size=_PaddingSize).HexByte) +
+                         format(format='%x', args='VRHoney'))),
+            else="File does not exist") AS CreateHoneyFile
+    FROM show_honeyfiles
+  
+  LET remove_honeyfiles = SELECT
+      *, _PaddingSize,
+      if(condition=IsHoneyFile,
+         then=log(message="Removing %v", args=TargetPath, dedup=-1)
+          && rm(filename=TargetPath),
+         else="File does not exist") AS RemoveHoneyFile
+    FROM show_honeyfiles
+  
+  LET add_honeyfiles = SELECT
+      TargetPath,
+      Enabled,
+      MagicBytes,
+      MinSize,
+      MaxSize,
+      check_exist(path=TargetPath)[0].Size AS Size,
+      check_exist(path=TargetPath)[0].IsHoneyFile AS IsHoneyFile
+    FROM copy_honeyfiles
+  
+  LET ThreadInfo(tPid, tTid) = SELECT filename,
+                                      memory_basic_info.RegionSize AS RegionSize
+    FROM threads(pid=tPid)
+    WHERE tid = tTid
+    LIMIT 1
+  
+  LET get_auth_cache(Image) = authenticode(filename=Image)
+  
+  LET get_hash_cache(Image) = hash(path=Image, hashselect=["SHA256"]).SHA256
+  
+  LET WatchFiles <= to_dict(item={
+      SELECT TargetPath AS _key,
+             IsHoneyFile AS _value
+      FROM add_honeyfiles
+      WHERE IsHoneyFile
+    })
+  
+  LET Keyword <= 5264
+  
+  LET CurrentPid <= getpid()
+  
+  LET ExclusionRules <= SELECT *
+    FROM Exclusions
+  
+  // Function to check if an event should be excluded
+  LET ShouldExclude(Process, Thread) = len(
+      list=array(_={
+      SELECT *
+      FROM foreach(row=ExclusionRules)
+      WHERE Process =~ ProcessRegex
+       AND Thread =~ ThreadRegex
+      LIMIT 1
+    })) > 0
 
 sources:
   - precondition:
       SELECT OS From info() where OS = 'windows' AND version(plugin="dedup") >= 0
 
     query: |
-       LET _ <= atexit(query={ SELECT * FROM remove_honeyfiles })
-       
-       LET WatchFiles <= to_dict(item={
-           SELECT TargetPath AS _key,
-                  IsHoneyFile AS _value
-           FROM add_honeyfiles
-           WHERE IsHoneyFile
-         })
-       
-       LET Keyword <= 5264
-       
-       LET CurrentPid <= getpid()
-       
-       LET TargetEvents = SELECT *
-         FROM watch_etw(guid='{edd08927-9cc4-4e65-b970-c2560fb5c289}',
-                        description="Microsoft-Windows-Kernel-File",
-                        any=Keyword)
-         WHERE System.ID = 12
-          AND System.ProcessID != CurrentPid
-       
-       LET AuditEvents = SELECT
-           timestamp(string=System.TimeStamp) AS Timestamp,
-           get(item=WatchFiles, field=EventData.FileName) AS IsHoneyFile,
-           *
-         FROM TargetEvents
-         WHERE IsHoneyFile != NULL
-       
-       LET Events = SELECT
-           Timestamp,
-           System.ProcessID AS Pid,
-           EventData.FileName AS TargetPath,
-           atoi(string=EventData.IssuingThreadId) AS Tid,
-           process_tracker_get(id=System.ProcessID).Data AS ProcInfo,
-           join(array=process_tracker_callchain(id=System.ProcessID).Data.Name,
-                sep="->") AS CallChain,
-           (System.ProcessID + EventData.FileName) AS DedupKey
-         FROM AuditEvents
-         WHERE NOT ProcInfo.Exe =~ ProcessExceptionsRegex
-       
-       SELECT Timestamp,
-              Pid,
-              TargetPath,
-              ProcInfo,
-              CallChain,
-              Tid,
-              ThreadInfo(tPid=Pid, tTid=Tid)[0] AS ThreadDetails
-       FROM dedup(query={
-           SELECT *
-           FROM delay(query=Events, delay=5)
-         },
-                  key="DedupKey",
-                  timeout=2)
-
-  - precondition:
-      SELECT OS From info() where OS = 'windows' AND version(plugin="dedup") = NULL
+      LET _ <= atexit(query={ SELECT * FROM remove_honeyfiles })
       
-    query: |
-       LET _ <= atexit(query={ SELECT * FROM remove_honeyfiles })
-       
-       LET KernelVolumes <= SELECT *, regex_replace(
-                                     source=Name,
-                                     replace='',
-                                     re="^\\\\GLOBAL\\?\\?\\\\") AS UserDrive,
-                                   regex_replace(source=SymlinkTarget,
-                                                 replace='',
-                                                 re="^\\\\Device\\\\") AS KernelDrive
-         FROM winobj()
-         WHERE SymlinkTarget =~ "Volume"
-          AND Name =~ "[a-z]:$"
-       
-       LET WatchFiles <= to_dict(item={
-           SELECT KernelPath AS _key,
-                  IsHoneyFile AS _value
-           FROM foreach(row=KernelVolumes,
-                        query={
-           SELECT *, regex_replace(source=TargetPath,
-                                   replace=SymlinkTarget,
-                                   re="[A-Z]+\:") AS KernelPath
-           FROM add_honeyfiles
-           WHERE TargetPath =~ UserDrive
-         })
-         })
-       
-       LET Keyword <= 5264
-       
-       LET CurrentPid <= getpid()
-       
-       LET TargetEvents = SELECT *
-         FROM watch_etw(guid='{edd08927-9cc4-4e65-b970-c2560fb5c289}',
-                        description="Microsoft-Windows-Kernel-File",
-                        any=Keyword)
-         WHERE System.ID = 12
-          AND System.ProcessID != CurrentPid
-       
-       LET AuditEvents = SELECT
-           timestamp(string=System.TimeStamp) AS Timestamp,
-           get(item=WatchFiles, field=EventData.FileName) AS IsHoneyFile,
-           *
-         FROM TargetEvents
-         WHERE IsHoneyFile != NULL
-       
-       LET Events = SELECT
-           Timestamp,
-           IsHoneyFile,
-           System.ProcessID AS Pid,
-           EventData.FileName AS TargetPath,
-           atoi(string=EventData.IssuingThreadId) AS Tid,
-           ThreadInfo(tPid=Pid, tTid=Tid)[0] AS ThreadDetails,
-           process_tracker_get(id=System.ProcessID).Data AS ProcInfo,
-           join(array=process_tracker_callchain(id=System.ProcessID).Data.Name,
-                sep="->") AS CallChain
-         FROM AuditEvents
-         WHERE NOT ProcInfo.Exe =~ ProcessExceptionsRegex
-       
-       SELECT *
-       FROM delay(query=Events, delay=5)
+      LET TargetEvents = SELECT *
+        FROM watch_etw(guid='{edd08927-9cc4-4e65-b970-c2560fb5c289}',
+                       description="Microsoft-Windows-Kernel-File",
+                       any=Keyword)
+        WHERE System.ID = 12
+         AND System.ProcessID != CurrentPid
+      
+      LET AuditEvents = SELECT
+          timestamp(string=System.TimeStamp) AS Timestamp,
+          get(item=WatchFiles, field=EventData.FileName) AS IsHoneyFile,
+          *
+        FROM TargetEvents
+        WHERE IsHoneyFile != NULL
+      
+      LET Events = SELECT
+          Timestamp,
+          System.ProcessID AS Pid,
+          EventData.FileName AS TargetPath,
+          atoi(string=EventData.IssuingThreadId) AS Tid,
+          (str(str=System.ProcessID) + EventData.FileName) AS DedupKey
+        FROM AuditEvents
+      
+      LET DedupEvents = SELECT *, process_tracker_get(id=Pid).Data AS ProcInfo,
+                               ThreadInfo(tPid=Pid, tTid=Tid)[0] AS ThreadDetails,
+                               join(
+                                 array=process_tracker_callchain(id=Pid).Data.Name,
+                                 sep="->") AS CallChain
+        FROM dedup(query=Events, key="DedupKey")
+      
+      SELECT Timestamp,
+             ComputerName,
+             Pid,
+             Tid,
+             TargetPath,
+             ProcInfo.Exe AS Image,
+             ProcInfo.CommandLine AS Commandline,
+             ProcInfo.Username AS User,
+             ThreadDetails.filename AS ThreadFilename,
+             ThreadDetails.RegionSize AS ThreadRegionSize,
+             CallChain,
+             cache(period=3600,
+                   func=get_auth_cache(Image=ProcInfo.Exe),
+                   key=str(str=ProcInfo.Exe),
+                   name="auth") AS Authenticode,
+             cache(period=3600,
+                   func=get_hash_cache(Image=ProcInfo.Exe),
+                   key=str(str=ProcInfo.Exe),
+                   name="hash") AS Hash
+      FROM DedupEvents
+      WHERE NOT ShouldExclude(
+        Process=if(condition=ProcInfo.Exe, then=ProcInfo.Exe, else=""),
+        Thread=if(condition=ThreadDetails.filename,
+                  then=ThreadDetails.filename,
+                  else=""))
