@@ -9,7 +9,7 @@ description: |
    file for further analysis with excel, timeline explorer, elastic
    stack, jq, etc.
 
-author: Eric Capuano - @eric_capuano, Whitney Champion - @shortxstack, Zach Mathis - @yamatosecurity, Fukusuke Takahashi - @fukusuket
+author: Eric Capuano - @eric_capuano, Whitney Champion - @shortxstack, Zach Mathis - @yamatosecurity, Fukusuke Takahashi - @fukusuket, Julian Hill - @julianghill
 
 tools:
  - name: Hayabusa-3.7.0
@@ -85,6 +85,9 @@ parameters:
    description: "Scan only common Event IDs for quicker scans"
    type: bool
    default: N
+ - name: OutputFilenameTemplate
+   description: "Upload filename template. Supports env vars via expand() and {ext} for csv/jsonl (ex: %COMPUTERNAME%_hayabusa_results.{ext})."
+   default: hayabusa_results.{ext}
  - name: TimeOffset
    description: "Scan recent events based on an offset (ex: 1y, 3M, 30d, 24h, 30m)"
  - name: TimelineStart
@@ -165,8 +168,15 @@ sources:
         FROM execve(argv=cmdline, cwd=TmpDir, sep="\n", length=9999999)
         WHERE log(message=Stdout)
 
+        -- Determine the Upload Filename
+        LET FinalName <= SELECT regex_replace(
+            source=expand(path=OutputFilenameTemplate),
+            re="\\{ext\\}",
+            replace=OutputFormat) AS Name
+        FROM scope()
+
         -- Upload the raw file.
-        SELECT upload(file=ResultFile) AS Uploads FROM scope()
+        SELECT upload(file=ResultFile, name=FinalName[0].Name) AS Uploads FROM scope()
 
  - name: Results
    query: |
