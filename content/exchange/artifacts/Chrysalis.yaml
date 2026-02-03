@@ -1,0 +1,112 @@
+name: Windows.Detection.LotusBlossom.Chrysalis
+author: Matt Green - @mgreen27
+description: |
+   Detects IOCs related to the recent publicly disclosed Notepad++ supply chain 
+   attack. 
+
+   - Find Impacted notepad++ versions
+   - Find suspicious files in public reports
+   - Find Warbird clipc.dll shellcode loader strings
+   
+   NOTE: this artifact is in development - More to come
+
+reference:
+   - https://www.rapid7.com/blog/post/tr-chrysalis-backdoor-dive-into-lotus-blossoms-toolkit/
+   - https://securelist.com/notepad-supply-chain-attack/118708/
+   
+type: CLIENT
+
+parameters:
+   - name: TargetGlobs
+     description: Specify multiple globs to search for.
+     type: csv
+     default: |
+        Glob,Notes
+        C:\\Users\\*\\AppData\\Roaming\\Bluetooth\\BluetoothService.exe,Chrysalis loader executable
+        C:\\Users\\*\\AppData\\Roaming\\Bluetooth\\log.dll,Malicious sideloaded DLL
+        C:\\Users\\*\\AppData\\Roaming\\Bluetooth\\Bluetooth,Encrypted shellcode blob (no extension)
+        C:\\Users\\*\\AppData\\Roaming\\ProShow\\ProShow.exe,Stage 1 payload
+        C:\\Users\\*\\AppData\\Roaming\\ProShow\\defscr,Associated data file
+        C:\\Users\\*\\AppData\\Roaming\\ProShow\\if.dnt,Associated data file
+        C:\\Users\\*\\AppData\\Roaming\\ProShow\\proshow.crs,Associated data file
+        C:\\Users\\*\\AppData\\Roaming\\ProShow\\proshow.phd,Associated data file
+        C:\\Users\\*\\AppData\\Roaming\\ProShow\\proshow_e.bmp,Associated bitmap
+        C:\\Users\\*\\AppData\\Roaming\\ProShow\\1.txt,Recon output (whoami/tasklist)
+        C:\\Users\\*\\AppData\\Roaming\\Adobe\\Scripts\\script.exe,Stage 2 loader
+        C:\\Users\\*\\AppData\\Roaming\\Adobe\\Scripts\\alien.dll,Malicious DLL
+        C:\\Users\\*\\AppData\\Roaming\\Adobe\\Scripts\\lua5.1.dll,Bundled Lua runtime
+        C:\\Users\\*\\AppData\\Roaming\\Adobe\\Scripts\\alien.ini,Configuration file
+        C:\\Users\\*\\AppData\\Roaming\\Adobe\\Scripts\\a.txt,System reconnaissance output
+        C:\\Users\\*\\AppData\\Local\\Temp\\update.exe,Malicious updater (multiple variants)
+        C:\\Users\\*\\AppData\\Local\\Temp\\AutoUpdater.exe,Alternate malicious updater name
+        C:\\Users\\*\\AppData\\Local\\Temp\\u.bat,Cleanup / self-delete script
+        C:\\Users\\*\\AppData\\Local\\Temp\\*.nsi,NSIS installer artifacts
+        C:\\ProgramData\\USOShared\\svchost.exe-nostdlib,Masqueraded loader binary
+        C:\\ProgramData\\USOShared\\libtcc.dll,Tiny C Compiler runtime
+        C:\\ProgramData\\USOShared\\conf.c,C source containing embedded shellcode
+        C:\\ProgramData\\USOShared\\*.exe,Userland executables in non-standard location
+        C:\\ProgramData\\USOShared\\*.dll,Userland DLLs in non-standard location
+        C:\\ProgramData\\USOShared\\*.c,Source code present on victim system
+   - name: WarbirdYara
+     type: yara
+     default: |
+        rule APT_LotusBlossom_Chrysalis_Loader_Warbird {
+            meta:
+                author = "Matt Green - @mgreen27"
+                description = "Detects payload bytes in first 0x490 bytes in clipc.dll Warbird technique as described by Rapid7"
+                malware_family = "Chrysalis"
+                reference = "https://www.rapid7.com/blog/post/tr-chrysalis-backdoor-dive-into-lotus-blossoms-toolkit/"
+                scope = "Microsoft signed DLL - clipc.dll VAD section"
+                date = "2026-02-03"
+            strings:
+                $hex1 = { EF BE AD DE }
+                $hex2 = { FE AF FE CA }
+        
+            condition:
+                $hex1 in (0..1167) or
+                $hex2 in (0..1167)
+        }
+        
+sources:
+  - query: |
+        SELECT *
+          FROM Artifact.Windows.Sys.Programs()
+          WHERE DisplayName =~ '''notepad\+\+'''
+            AND DisplayVersion =~ "8\.8\.[2-9]"
+
+  - name: Suspicious files
+    query: |
+        SELECT OSPath,
+               get(item=Data, field="mft") as Inode,
+               Mode.String AS Mode, Size,
+               Mtime AS MTime,
+               Atime AS ATime,
+               Btime AS BTime,
+               Ctime AS CTime, 
+               magic(path=OSPath) as Magic,
+               hash(path=OSPath,hashselect='SHA1').SHA1 as SHA1,
+               authenticode(filename=OSPath) AS CetInfo,
+               parse_pe(file=OSPath) as PEInfo
+        FROM glob(globs=TargetGlobs.Glob,
+                  accessor='ntfs')
+                  
+  - name: Warbird clipd.dll
+    query: |
+        SELECT ProcessCreateTime,
+            Pid,Name,MappingName,
+            AddressRange,Type,
+            ProtectionMsg, 
+            SectionSize,
+            YaraHit.Rule as Rule,
+            YaraHit.Offset as HitOffset,
+            YaraHit.Name as HitName,
+            HitContext,
+            ProcessChain
+          FROM Artifact.Windows.System.VAD(
+            MappingNameRegex='''clipc\.dll$''',
+            ProtectionRegex='xr-',
+            SuspiciousContent=WarbirdYara)
+
+column_types:
+  - name: HitContext
+    type: preview_upload
