@@ -1,14 +1,16 @@
 name: Windows.Detection.LotusBlossom.Chrysalis
 author: Matt Green - @mgreen27
 description: |
-   Detects IOCs related to the recent publicly disclosed Notepad++ supply chain 
-   attack. 
+   Assists scoping IOCs related to the recent publicly disclosed Notepad++ 
+   supply chain attack. 
 
-   - Find Impacted notepad++ versions
+   - Find impacted notepad++ versions
    - Find suspicious files in public reports
+   - Find public reported network urls in running processes
    - Find Warbird clipc.dll shellcode loader strings
    
-   NOTE: this artifact is in development - More to come
+   Untoggle unwanted collections 
+   
 
 reference:
    - https://www.rapid7.com/blog/post/tr-chrysalis-backdoor-dive-into-lotus-blossoms-toolkit/
@@ -17,6 +19,19 @@ reference:
 type: CLIENT
 
 parameters:
+   - name: FileIoc
+     description: Glob for suspicious files in public reports (lightweight)
+     type: bool
+     default: Y
+   - name: NetworkMemory
+     description: Run yara detection for Network IOCs in process memory
+     type: bool
+     default: Y
+   - name: Warbird
+     description: Run targeted yara detection for Warbird clipc.dll artifacts 
+     type: bool
+     default: Y
+     
    - name: TargetGlobs
      description: Specify multiple globs to search for.
      type: csv
@@ -47,6 +62,69 @@ parameters:
         C:\\ProgramData\\USOShared\\*.exe,Userland executables in non-standard location
         C:\\ProgramData\\USOShared\\*.dll,Userland DLLs in non-standard location
         C:\\ProgramData\\USOShared\\*.c,Source code present on victim system
+        
+   - name: NetworkYara
+     type: yara
+     default: | 
+        rule APT_LotusBlossom_Chrysalis_Network_IOCs {
+            meta:
+                author = "Matt Green - @mgreen27"
+                description = "Network/URI indicators for Notepad++ supply-chain activity (Kaspersky + Rapid7)"
+                date = "2026-02-04"
+                reference_rapid7 = "https://www.rapid7.com/blog/post/tr-chrysalis-backdoor-dive-into-lotus-blossoms-toolkit/"
+                reference_kaspersky = "https://securelist.com/notepad-supply-chain-attack/118708/"
+        
+            strings:
+                /* Domains */
+                $dom1 = "api.skycloudcenter.com" ascii wide
+                $dom2 = "api.wiresguard.com"     ascii wide
+                $dom3 = "self-dns.it.com"        ascii wide
+                $dom4 = "cdncheck.it.com"        ascii wide
+                $dom5 = "safe-dns.it.com"        ascii wide
+            
+                /* IPs */
+                $ip1 = "95.179.213.0"      ascii wide
+                $ip2 = "59.110.7.32"       ascii wide
+                $ip3 = "124.222.137.114"   ascii wide
+                $ip4 = "45.76.155.202"     ascii wide
+                $ip5 = "45.32.144.255"     ascii wide
+                $ip6 = "45.77.31.210"      ascii wide
+            
+                /* Ports */
+                $port1 = ":8880" ascii wide
+                $port2 = ":9999" ascii wide
+            
+                /* Metasploit / Cobalt Strike staging */
+                $path1 = "/users/admin" ascii wide
+                $path2 = "/users/system" ascii wide
+                $path3 = "/help/Get-Start" ascii wide
+            
+                /* Cobalt Strike / Chrysalis beacon APIs */
+                $path4  = "/update/v1"                ascii wide
+                $path5  = "/api/update/v1"            ascii wide
+                $path6 = "/api/FileUpload/submit"    ascii wide
+                $path7 = "/api/getInfo/v1"            ascii wide
+                $path8 = "/api/getBasicInfo/v1"       ascii wide
+                $path9 = "/api/Metadata/submit"      ascii wide
+                $path10 = "/api/Info/submit"           ascii wide
+                $path11 = "/api/updateStatus/v1"       ascii wide
+                $path12 = "/resolve"    ascii wide
+                $path13 = "/dns-query"  ascii wide
+                $path14 = "/a/chat/s/" ascii wide
+                $path15 = "/uffhxpSy" ascii wide
+                $path26 = "/3yZR31VK" ascii wide
+                $path17= "/list" ascii wide
+            
+            condition:
+                (
+                  (1 of ($dom*)) and (1 of ($path*))
+                )
+                or
+                (
+                  (1 of ($ip*)) and (1 of ($path*, $port*))
+                )
+        }
+        
    - name: WarbirdYara
      type: yara
      default: |
@@ -76,36 +154,57 @@ sources:
 
   - name: Suspicious files
     query: |
-        SELECT OSPath,
-               get(item=Data, field="mft") as Inode,
-               Mode.String AS Mode, Size,
-               Mtime AS MTime,
-               Atime AS ATime,
-               Btime AS BTime,
-               Ctime AS CTime, 
-               magic(path=OSPath) as Magic,
-               hash(path=OSPath,hashselect='SHA1').SHA1 as SHA1,
-               authenticode(filename=OSPath) AS CetInfo,
-               parse_pe(file=OSPath) as PEInfo
-        FROM glob(globs=TargetGlobs.Glob,
+        SELECT * FROM if(
+            condition=FileIoc,
+            then={
+                SELECT OSPath,
+                       get(item=Data, field="mft") as Inode,
+                       Mode.String AS Mode, Size,
+                       Mtime AS MTime,
+                       Atime AS ATime,
+                       Btime AS BTime,
+                       Ctime AS CTime, 
+                       magic(path=OSPath) as Magic,
+                       hash(path=OSPath,hashselect='SHA1').SHA1 as SHA1,
+                       authenticode(filename=OSPath) AS CetInfo,
+                       parse_pe(file=OSPath) as PEInfo
+                FROM glob(globs=TargetGlobs.Glob,
                   accessor='ntfs')
-                  
-  - name: Warbird clipd.dll
+            })
+
+  - name: Chrysalis network indicators
     query: |
-        SELECT ProcessCreateTime,
-            Pid,Name,MappingName,
-            AddressRange,Type,
-            ProtectionMsg, 
-            SectionSize,
-            YaraHit.Rule as Rule,
-            YaraHit.Offset as HitOffset,
-            YaraHit.Name as HitName,
-            HitContext,
-            ProcessChain
-          FROM Artifact.Windows.System.VAD(
-            MappingNameRegex='''clipc\.dll$''',
-            ProtectionRegex='xr-',
-            SuspiciousContent=WarbirdYara)
+        SELECT * FROM if(
+            condition=NetworkMemory,
+            then={
+                SELECT *
+                  FROM Artifact.Windows.Detection.Yara.Process(
+                        YaraRule=NetworkYara,
+                        NumberOfHits=1,
+                        ContextBytes=250
+                    )
+            })
+            
+  - name: Warbird clipc.dll
+    query: |
+        SELECT * FROM if(
+            condition=Warbird,
+            then={
+                SELECT ProcessCreateTime,
+                    Pid,Name,MappingName,
+                    AddressRange,Type,
+                    ProtectionMsg, 
+                    SectionSize,
+                    YaraHit.Rule as Rule,
+                    YaraHit.Offset as HitOffset,
+                    YaraHit.Name as HitName,
+                    HitContext,
+                    ProcessChain
+                  FROM Artifact.Windows.System.VAD(
+                    MappingNameRegex='''clipc\.dll$''',
+                    ProtectionRegex='xr-',
+                    SuspiciousContent=WarbirdYara)
+            })
 
 column_types:
   - name: HitContext
