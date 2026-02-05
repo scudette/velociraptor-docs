@@ -40,16 +40,6 @@ navs:
 
 {{% navs %}}
 
-{{% notice warning "Google search is not working" %}}
-
-As of December 2025 [Google search is refusing to index this
-site](https://github.com/Velocidex/velociraptor-docs/issues/1174) for
-unknown reasons. Please use
-[Bing](https://www.bing.com/search?q=site:velociraptor.app) to search
-for Velociraptor documentation.
-
-{{% /notice %}}
-
 {{% notice warning "CVE-2025-14728 published on 2025-12-29" %}}
 
 Velociraptor versions before 0.75.6 contain a directory traversal
