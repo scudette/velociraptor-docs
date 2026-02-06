@@ -1,59 +1,49 @@
 name: Windows.EventLogs.SysmonProcessEnriched.yaml
-author: "Zane Gittins"
+author: Zane Gittins
 description: |
-   Gather sysmon process creation events from the sysmon operational event log. Enrich with authenticode signature of image and call chain.
-   Caches authenticode signature by the hash of the image for an hour to reduce number of times it fetches the authenticode signature.
-   Prerequisites: Sysmon, and the process tracker artifact.
+   Collects sysmon process creation events and enriches with authenticode signature, tlsh hash, and call chain. Requires Sysmon and the process tracker.
+reference:
+ - https://signalsleuth.io/2025/08/31/sysmon_enrichment.html
 
-# Can be CLIENT, CLIENT_EVENT, SERVER, SERVER_EVENT
 type: CLIENT_EVENT
 
 parameters:
-  - name: ClearCacheSeconds
+  - name: CachePeriod
     default: 3600
-    description: Clear cache at this interval of seconds.
+    description: Cache the authenticode signature and tlsh hash of a image for this duration of seconds.
     type: int64
   - name: TLSHImageRegex
     default: "AppData|Downloads|Desktop|Public|Temp"
     description: If an image matches this regex, calculate the TLSH hash.
+    type: regex
 
 sources:
   - precondition:
       SELECT OS From info() where OS = 'windows'
 
     query: |
-       LET get_auth_cache(Image) = SELECT authenticode(filename=Image) AS Authenticode
-         FROM scope()
-       LET get_tlsh_cache(Image) = SELECT tlsh_hash(path=Image) AS TLSH
-         FROM scope()
-         WHERE Image =~ TLSHImageRegex
-       SELECT *
-       FROM delay(
-         query={
-           SELECT *,
-                  cache(
-                    period=ClearCacheSeconds,
-                    func=get_auth_cache(
-                      Image=EventData.Image),
-                    key=str(
-                      str=EventData.Hashes),
-                    name="auth")[0].Authenticode AS Authenticode,
-                  cache(
-                    period=ClearCacheSeconds,
-                    func=get_tlsh_cache(
-                      Image=EventData.Image),
-                    key=str(
-                      str=EventData.Hashes),
-                    name="tlsh")[0].TLSH AS TLSH,
-                  join(
-                    array=process_tracker_callchain(
-                      id=EventData.ProcessId).Data.Name,
-                    sep="->") AS CallChain
-           FROM watch_evtx(
-             filename="C:\\Windows\\system32\\winevt\\Logs\\Microsoft-Windows-Sysmon%4Operational.evtx")
-           WHERE System.EventID.Value = 1
-         },
-         delay=1)
-
+      LET get_auth_cache(Image) = authenticode(filename=Image)
+      
+      LET get_tlsh_cache(Image) = tlsh_hash(path=Image)
+      
+      SELECT *, cache(period=CachePeriod,
+                      func=get_auth_cache(Image=EventData.Image),
+                      key=str(str=EventData.Hashes),
+                      name="auth") AS Authenticode,
+             if(condition=(EventData.Image =~ TLSHImageRegex),
+                then=cache(period=CachePeriod,
+                           func=get_tlsh_cache(Image=EventData.Image),
+                           key=str(str=EventData.Hashes),
+                           name="tlsh")) AS TLSH,
+             join(array=process_tracker_callchain(id=EventData.ProcessId).Data.Name,
+                  sep="->") AS CallChain
+      FROM delay(
+        query={
+          SELECT *
+          FROM watch_evtx(
+            filename="C:\\Windows\\system32\\winevt\\Logs\\Microsoft-Windows-Sysmon%4Operational.evtx")
+          WHERE System.EventID.Value = 1
+        },
+        delay=1)
 resources:
   max_rows: 1000
