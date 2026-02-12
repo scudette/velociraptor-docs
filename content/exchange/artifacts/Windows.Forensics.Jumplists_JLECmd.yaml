@@ -6,14 +6,14 @@ description: |
     * Created using @carlos_cajigas LECmd VQL as a quide.
     * JLECmd is a CLI tool for analyzing Custom Destinations jump list data. Learn more - https://github.com/EricZimmerman/JLECmd
 
-author: Orhan Emre @orhan_emre
+author: Orhan Emre @orhan_emre. Modified by Zach K. https://www.linkedin.com/in/zach-kal on 2026-02-11 to address 404-url and update JLE ver to 1.5.1.
 
 type: CLIENT
 
 tools:
   - name: JLECmd
-    url: https://download.mikestammer.com/net6/JLECmd.zip
-    version: 1.5.0
+    url: https://download.ericzimmermanstools.com/JLECmd.zip
+    version: 1.5.1
 
 
 parameters:
