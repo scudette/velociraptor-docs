@@ -18,14 +18,15 @@ search for Velociraptor documentation.
 {{% /notice %}}
 
 * <a href="https://www.bing.com/search?q=site:velociraptor.app"
-   target="_blank">
+     target="_blank">
     Search With `Microsoft Bing`
   </a>
-* <a href="https://duckduckgo.com/?q=site:velociraptor.app" target="_blank">
+* <a href="https://duckduckgo.com/?q=site:velociraptor.app"
+     target="_blank">
     Search with `DuckDuckGo`
   </a>
 * <a href="https://www.google.com/search?q=site:velociraptor.app"
-   target="_blank">
+     target="_blank">
     Search With `Google` (currently not working very well)
   </a>
 

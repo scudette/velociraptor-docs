@@ -1,10 +1,10 @@
 # How to set up OIDC authentication using ADFS
 
-This guide walks you through the configuration of Microsoft ADFS as an OIDC 
+This guide walks you through the configuration of Microsoft ADFS as an OIDC
 authentication provider for Velociraptor.
 
 {{% notice warning "Environment" %}}
-This procedure has been tested with Windows Server 2022 and ADFS 4.0  
+This procedure has been tested with Windows Server 2022 and ADFS 4.0
 Velociraptor has been deployed using self signed certificate
 
 ADFS OpenID Configuration can be read with https://auth.domain.local/adfs/.well-known/openid-configuration
@@ -12,7 +12,7 @@ SSL certificate on ADFS is provided by Let's Encrypt.
 Velociraptor Server is on velociraptor.local
 {{% /notice %}}
 
-![setup_adfs](./setup_adfs/network_overview.png)
+![setup_adfs](network_overview.png)
 
 The high-level steps of this setup process are:
 
@@ -30,44 +30,44 @@ Velociraptor quickstart > https://docs.velociraptor.app/docs/deployment/quicksta
 
 
 ## 2. Create a new Application Group in ADFS
-**1. Open ADFS Management**  
-Open Server Manager > Tool > AD FS Management  
-![](./setup_adfs/adfs1.png)
+**1. Open ADFS Management**
+Open Server Manager > Tool > AD FS Management
+![](adfs1.png)
 
-**2. Create a New Application Group**  
-Select Application Groups and create a new one  
-![](./setup_adfs/adfs2.png)
+**2. Create a New Application Group**
+Select Application Groups and create a new one
+![](adfs2.png)
 
-**3. Welcome**  
-Enter a name and select Server Application accessing a web API  
-![](./setup_adfs/adfs3.png)
+**3. Welcome**
+Enter a name and select Server Application accessing a web API
+![](adfs3.png)
 
-**4. Server application** 
-Enter your Redirect URI : https://velociraptor.local:8889/auth/oidc/callback and add it  
-Save your client identifier, we will use it on velociraptor config file  
-![](./setup_adfs/adfs4.png)
+**4. Server application**
+Enter your Redirect URI : https://velociraptor.local:8889/auth/oidc/callback and add it
+Save your client identifier, we will use it on velociraptor config file
+![](adfs4.png)
 
-**5. Configure Application Credentials** 
-Generate a shared secret and save it  
-![](./setup_adfs/adfs5.png)
+**5. Configure Application Credentials**
+Generate a shared secret and save it
+![](adfs5.png)
 
-**6. Configure WEB API**  
-Enter your application identifier and add it  
-![](./setup_adfs/adfs6.png)
+**6. Configure WEB API**
+Enter your application identifier and add it
+![](adfs6.png)
 
-**7. Access Control Policy**  
-On next window, Choose Access Control Policy and filter as needed  
-![](./setup_adfs/adfs7.png)
+**7. Access Control Policy**
+On next window, Choose Access Control Policy and filter as needed
+![](adfs7.png)
 
-**8. Configure Application Permissions**  
-Select email, openid, profile  
-![](./setup_adfs/adfs8.png)
+**8. Configure Application Permissions**
+Select email, openid, profile
+![](adfs8.png)
 
-**9. Summary**  
-Validate your summary and click Next, then complete.  
-![](./setup_adfs/adfs9.png)
+**9. Summary**
+Validate your summary and click Next, then complete.
+![](adfs9.png)
 
-## 3. Add the authenticator settings to your Velociraptor config  
+## 3. Add the authenticator settings to your Velociraptor config
 In the `GUI` section of your Velociraptor config you should have the following
 authenticator settings by default:
 
@@ -93,7 +93,7 @@ The `oauth_client_secret` is the value we obtained at the end of step 5. The
 `oauth_client_id` is the name we used for the OIDC Client ID in that same
 section in step 4.
 
-## 4. Start Velociraptor  
+## 4. Start Velociraptor
 
 The server should now start cleanly and continue running. In the log messages
 you should see `GUI will use the oidc authenticator`. That means everything is
@@ -117,12 +117,12 @@ This will display the log messages in the terminal.
 {{% /notice %}}
 
 
-## 5. Add Users  
+## 5. Add Users
 
 Even if you have added groups/users through Access Control Policy in step 7, you have
-to create users in Velociraptor. Users can be created using VQL in Velociraptor 
-notebooks but since we have now switched authentication providers we no longer 
-have access to the GUI. Of course we could have added the users before we 
+to create users in Velociraptor. Users can be created using VQL in Velociraptor
+notebooks but since we have now switched authentication providers we no longer
+have access to the GUI. Of course we could have added the users before we
 switched but let's pretend we didn't and instead do it from the command line.
 
 We will make `bob@domain.local` a server admin and grant `fred@domain.local` the "reader"
@@ -143,14 +143,14 @@ Because of our OIDC authenticator config, when adding each user we will receive
 an acknowledgement message saying
 `"Authentication will occur via oidc - therefore no password needs to be set."`
 
-## 6. Test authentication process  
+## 6. Test authentication process
 
 Test the authentication process by going to `https://velociraptor.local:8889/`
 
 You will be presented with the choice to log in with Keycloak (multiple
 authentication providers are supported but we only have one configured).
 
-![](./setup_adfs/adfs10.png)
+![](adfs10.png)
 
 Enter initial credentials using DOMAIN\bob or bob@domain.local
 

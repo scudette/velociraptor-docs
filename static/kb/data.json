@@ -1,5 +1,18 @@
 [
     {
+        "title": "How to set up OIDC authentication using ADFS",
+        "link": "/knowledge_base/tips/setup_adfs",
+        "tags": [
+            "configuration",
+            "sso",
+            "deployment"
+        ],
+        "author": "plop28",
+        "author_avatar": "https://avatars.githubusercontent.com/u/50863879?v=4",
+        "author_link": "https://github.com/plop28",
+        "date": "2026-01-26"
+    },
+    {
         "title": "How to create an \"online collector\" binary",
         "link": "/knowledge_base/tips/online_collector",
         "tags": [
@@ -9,8 +22,8 @@
             "collector"
         ],
         "author": "predictiple",
-        "author_link": "https://github.com/predictiple",
         "author_avatar": "https://avatars.githubusercontent.com/u/9843422?v=4",
+        "author_link": "https://github.com/predictiple",
         "date": "2025-11-14"
     },
     {
@@ -22,8 +35,8 @@
             "triage"
         ],
         "author": "predictiple",
-        "author_link": "https://github.com/predictiple",
         "author_avatar": "https://avatars.githubusercontent.com/u/9843422?v=4",
+        "author_link": "https://github.com/predictiple",
         "date": "2025-11-14"
     },
     {
@@ -35,8 +48,8 @@
             "triage"
         ],
         "author": "predictiple",
-        "author_link": "https://github.com/predictiple",
         "author_avatar": "https://avatars.githubusercontent.com/u/9843422?v=4",
+        "author_link": "https://github.com/predictiple",
         "date": "2025-11-14"
     },
     {
@@ -48,8 +61,8 @@
             "triage"
         ],
         "author": "predictiple",
-        "author_link": "https://github.com/predictiple",
         "author_avatar": "https://avatars.githubusercontent.com/u/9843422?v=4",
+        "author_link": "https://github.com/predictiple",
         "date": "2025-11-14"
     },
     {
