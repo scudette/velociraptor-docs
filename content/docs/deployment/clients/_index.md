@@ -970,25 +970,91 @@ velociraptor.exe --config ... client -v --mutant ArandomString
 ## Client upgrades
 
 The client's identity is derived from the client's cryptographic certificate
-which is stored in the `writeback` location on the endpoint (For example by
-default `C:\Program Files\Velociraptor\velociraptor.writeback.yaml`).
+which is stored in the **writeback file**, as defined by the key
+`Client.writeback_<platform>` in the client config.
 
-We generally try to preserve this file between updates in order to ensure
-clients do not change their client id. The default provided WiX script ensures
-the file remains (even if the package is uninstalled completely) in order to
-ensure a consistent client id for the host.
+For example, by default on Windows this will be
+`C:\Program Files\Velociraptor\velociraptor.writeback.yaml` and
+`/etc/velociraptor.writeback.yaml` on Linux or macOS.
 
-Generally it is sufficient to repackage the latest client binary in a new MSI,
-after downloading it from the
-[GitHub Release Page](https://github.com/Velocidex/velociraptor/releases).
-Installing the new MSI is simply a matter of using standard software management
-tools.
+We generally try to allow this file to persist on disk, even after uninstalls,
+in order to ensure that clients do not change their client ID. The
+[default provided WiX script](https://github.com/Velocidex/velociraptor/tree/master/docs/wix)
+ensures the file remains in order to maintain a consistent client id for the
+host.
 
-{{% notice tip "Remotely upgrading clients" %}}
+{{% notice note "Client-Server Backward Compatibility" %}}
 
-It is possible to remotely upgrade the client by pushing a new MSI to the
-endpoint and installing it. This is handled by the `Admin.Client.Upgrade`
-artifact. To use it, simply collect the artifact from the endpoint and click the
+The Velociraptor server is intended to be
+[backwardly-compatible with older clients]({{< ref "/docs/overview/support/#client-and-server-versioning" >}})
+across the previous few releases, which allows you to upgrade the server and
+then upgrade the clients. This backward-compatibility is mainly in terms of
+client-server communication - that is, older clients should be able to continue
+communicating with a newer server version. However, older clients will not be
+able to run artifacts that use newer features and functionality, so ideally you
+should try to upgrade your clients to the same version as the server as soon as
+possible after
+[upgrading the server]({{< ref "/docs/deployment/server/upgrades/" >}}).
+
+Note that you should always upgrade the server first. When creating new
+installer packages, as described below, the server will attempt to download any
+additional Velociraptor binaries from GitHub. The server uses a built-in
+artifact named `Server.Internal.ToolDependencies` that contains links to the
+binaries _that match the server version_. So, by default, the server artifacts
+that automate the creation of new client installers will always create ones that
+match the server version.
+
+{{% /notice %}}
+
+### Creating new installation packages
+
+If you've previously installed your clients using the client operating system's
+package manager then the first step in upgrading is to create a new installer
+package, just as you did for your initial deployment.
+
+For Windows and Linux the appropriate installer packages can be easily created
+using the `Server.Utils.CreateMSI` and `Server.Utils.CreateLinuxPackages` server
+artifacts.
+
+![Launching the repackaging artifacts from the Welcome screen](admin_client_repackage1.png)
+
+These artifacts will attempt to download any additional Velociraptor binaries
+from GitHub, as needed. These binaries will correspond to the server's version.
+You can manually override the binary by clicking on the tool name and
+uploading the binary that you want to use, but usually this is not necessary.
+
+![Selecting the repackaging artifacts](admin_client_repackage2.png)
+
+When your launch the collection you will see it pause briefly while downloading
+any binaries that are needed. These binaries are stored in the server's
+[tools inventory]({{< ref "/docs/artifacts/tools/" >}}) and will not be
+downloaded again if these artifact are run subsequently.
+
+The installer packages can then be downloaded from the collections **Uploaded
+Files** tab.
+
+![Repackaged Windows installers](uploaded_files.png)
+
+### Remotely upgrading clients
+
+The newly created client installer packages can be deployed using your favourite
+enterprise software management tool, or by using the built-in
+`Admin.Client.Upgrade.<Platform>` artifacts which use the existing client to
+run the installer.
+
+While it is possible to use the Velociraptor client to upgrade itself, many
+organizations have strict processes and procedures around software management
+and using a standard software management tool might be mandated by the
+organization. You should take this into consideration, especially if you're
+managing Velociraptor in someone else's network environment.
+
+Regardless of the process you choose, you should always perform a limited
+initial rollout to verify that everything works smoothly and as expected.
+
+To use the `Admin.Client.Upgrade.<Platform>` artifacts, you can create a hunt
+which runs the artifact on the targeted endpoints.
+
+and click the
 tool setup screen.
 
 ![Configuring remote upgrade artifact](remote_upgrade_msi.svg)
@@ -1002,8 +1068,6 @@ Note that when installing the MSI using Velociraptor, the Velociraptor process
 will be killed part way through collecting the artifact, so it would appear to
 never complete it (in the GUI the flow looks hung). This is OK and part of the
 upgrade process.
-
-{{% /notice %}}
 
 To verify that clients are upgraded we recommend running the
 `Generic.Client.Info` hunt periodically. This hunt will refresh the server's

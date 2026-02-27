@@ -12,7 +12,7 @@ Upgrading the server component is usually a simple matter of creating a new
 server installation package using the latest version and your existing
 configuration file, and then applying it to your server.
 
-{{% notice note "Backing up your configuration file" %}}
+{{% notice tip "Backing up your configuration file" %}}
 
 The configuration file contains cryptographic keys that allow clients
 and server to communicate. Each time the configuration is regenerated
@@ -37,6 +37,22 @@ During the installation package preparation the upgraded config file is embedded
 into the server package so you will receive an upgraded configuration file
 installed to the `/etc/` directory. You can see the version that wrote the
 configuration file in the `version` section of the configuration file.
+
+{{% notice note "Client-Server Backward Compatibility" %}}
+
+The Velociraptor server is intended to be
+[backwardly-compatible with older clients]({{< ref "/docs/overview/support/#client-and-server-versioning" >}})
+across the previous few releases, which allows you to upgrade the server and
+then upgrade the clients. This backward-compatibility is mainly in terms of
+client-server communication - that is, older clients should be able to continue
+communicating with a newer server version. However, older clients will not be
+able to run artifacts that use newer features and functionality, so ideally you
+should try to upgrade your clients to the same version as the server as soon as
+possible after upgrading the server.
+
+Note that you should always upgrade the server first.
+
+{{% /notice %}}
 
 ## Upgrading a server (in-place upgrade)
 

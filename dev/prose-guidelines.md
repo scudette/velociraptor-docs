@@ -135,6 +135,12 @@ Don't use a colon after the word Example, but use one if it's a lead-in phrase
 such as "For example...:"
 
 
+### Markdown Links
 
+Avoid line breaks in links.
 
+### UI Elements
+
+Bold all UI elements (buttons, tabs, menu names) to help users scan the page
+quickly.
 

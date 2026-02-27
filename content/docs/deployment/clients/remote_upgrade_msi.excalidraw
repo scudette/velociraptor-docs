@@ -23,11 +23,16 @@
       "index": "b9N",
       "roundness": null,
       "seed": 1748178931,
-      "version": 134,
-      "versionNonce": 1168708765,
+      "version": 150,
+      "versionNonce": 686984142,
       "isDeleted": false,
-      "boundElements": null,
-      "updated": 1732999159895,
+      "boundElements": [
+        {
+          "id": "sl_fF5WfiQSSClMxqiDI-",
+          "type": "arrow"
+        }
+      ],
+      "updated": 1769607944047,
       "link": null,
       "locked": false,
       "status": "saved",
@@ -39,62 +44,12 @@
       "crop": null
     },
     {
-      "id": "sl_fF5WfiQSSClMxqiDI-",
-      "type": "arrow",
-      "x": 562,
-      "y": 577,
-      "width": 101,
-      "height": 24,
-      "angle": 0,
-      "strokeColor": "#228be6",
-      "backgroundColor": "transparent",
-      "fillStyle": "solid",
-      "strokeWidth": 4,
-      "strokeStyle": "solid",
-      "roughness": 1,
-      "opacity": 100,
-      "groupIds": [],
-      "frameId": null,
-      "index": "b9O",
-      "roundness": {
-        "type": 2
-      },
-      "seed": 1531404627,
-      "version": 138,
-      "versionNonce": 1185913885,
-      "isDeleted": false,
-      "boundElements": null,
-      "updated": 1732999174908,
-      "link": null,
-      "locked": false,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          42,
-          -4
-        ],
-        [
-          101,
-          -24
-        ]
-      ],
-      "lastCommittedPoint": null,
-      "startBinding": null,
-      "endBinding": null,
-      "startArrowhead": null,
-      "endArrowhead": "arrow",
-      "elbowed": false
-    },
-    {
       "id": "2dtV1pG46jtvH42FgqsrW",
       "type": "text",
-      "x": 442,
-      "y": 546,
-      "width": 125,
-      "height": 75,
+      "x": 377.125,
+      "y": 525.5,
+      "width": 204.87499999999997,
+      "height": 100,
       "angle": 0,
       "strokeColor": "#228be6",
       "backgroundColor": "transparent",
@@ -108,29 +63,99 @@
       "index": "b9Q",
       "roundness": null,
       "seed": 1026031699,
-      "version": 210,
-      "versionNonce": 788763507,
+      "version": 392,
+      "versionNonce": 1015341902,
       "isDeleted": false,
-      "boundElements": null,
-      "updated": 1732999265788,
+      "boundElements": [
+        {
+          "id": "sl_fF5WfiQSSClMxqiDI-",
+          "type": "arrow"
+        }
+      ],
+      "updated": 1769607930742,
       "link": null,
       "locked": false,
-      "text": "click to\nconfigure\nMSI",
+      "text": "Click to access the\ntool configuration\nand upload your\nrepacked MSI",
       "fontSize": 20,
       "fontFamily": 5,
       "textAlign": "center",
       "verticalAlign": "top",
       "containerId": null,
-      "originalText": "click to\nconfigure\nMSI",
+      "originalText": "Click to access the tool configuration and upload your repacked MSI",
       "autoResize": false,
       "lineHeight": 1.25
+    },
+    {
+      "id": "sl_fF5WfiQSSClMxqiDI-",
+      "type": "arrow",
+      "x": 581.3333333333333,
+      "y": 577.5,
+      "width": 98,
+      "height": 22,
+      "angle": 0,
+      "strokeColor": "#228be6",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 4,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "b9R",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 1531404627,
+      "version": 231,
+      "versionNonce": 1800778510,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1769607949571,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          49.66666666666674,
+          -4.5
+        ],
+        [
+          98,
+          -22
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "startBinding": {
+        "elementId": "2dtV1pG46jtvH42FgqsrW",
+        "mode": "inside",
+        "fixedPoint": [
+          0.9967459833231643,
+          0.52
+        ]
+      },
+      "endBinding": {
+        "elementId": "Mb1bTRt6G6BeOXwzXwH2I",
+        "mode": "inside",
+        "fixedPoint": [
+          0.39270386266094415,
+          0.547925608011445
+        ]
+      },
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "elbowed": false
     }
   ],
   "appState": {
     "gridSize": 20,
     "gridStep": 5,
     "gridModeEnabled": false,
-    "viewBackgroundColor": "#ffffff"
+    "viewBackgroundColor": "#ffffff",
+    "lockedMultiSelections": {}
   },
   "files": {
     "94d714fb8a9301686ae0a5e74e8587f1e1b22ac7": {

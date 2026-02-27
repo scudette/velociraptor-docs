@@ -195,7 +195,7 @@ flexibility in managing hunt membership.
 A common example is when a collection needs to be redone for some
 reason. Normally the hunt manager ensures only a single collection
 from the hunt is scheduled on the same client. However sometimes the
-collection fails, or simply needs to be recollected for fresher
+collection fails, or simply needs to be re-collected for fresher
 data to be added to the hunt.
 
 Using the `Windows.Triage.Targets` collection created by the above example, we

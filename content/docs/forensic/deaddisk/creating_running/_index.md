@@ -236,7 +236,23 @@ the `--remap` flag.
    {{< /tabs >}}
 
    The `client.config.yaml` is the normal client config that you can download
-   from your server's Dashboard screen.
+   from your server's
+   [Dashboard screen]({{< ref "/docs/gui/#the-server-dashboard" >}}).
+
+   {{% notice note %}}
+
+   Since the client will generate a writeback file on disk that contains it's
+   unique client ID. This writeback file will persist and cause the client to
+   retain the same client ID between runs. If you intend to process further
+   images on the same host then you will either need to delete the writeback
+   file before starting a new client, or else add the path to a new writeback
+   file for these subsequent clients. For the latter option, this can be done by
+   adding the path to a new writeback file to the above command line using the
+   appropriate `--config.client-writeback-<platform>` flag - for example,
+   `--config.client-writeback-linux=/path/to/writeback.yaml` for Linux or
+   `--config.client-writeback-windows="C:/path/to/writeback.yaml"` for Windows.
+
+   {{% /notice %}}
 
 2. If you search clients for the hostname you should see that the client is now
    connected to the server:

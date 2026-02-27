@@ -1,6 +1,7 @@
 ---
 title: "NTFS Analysis"
 date: 2021-06-26T20:10:17Z
+last_reviewed: 2026-01-03
 summary: |
    NTFS is the standard Windows filesystem.
    Velociraptor contains powerful NTFS analysis capabilities.
@@ -25,9 +26,9 @@ The MFT is also a file within the filesystem with the special filename of
 `$MFT`. While this special file is normally hidden by the API,
 Velociraptor's NTFS parser makes it available to view, read or upload.
 
-The `$MFT` file contains a sequence of `MFT Entries`, each of a fixed
+The `$MFT` file contains a sequence of **MFT Entries**, each of a fixed
 size (usually 512 bytes). These entries contain metadata about files,
-called `File Attributes`. The different attributes contain different
+called **File Attributes**. The different attributes contain different
 kinds of information about each file:
 
 * Filename (Long name/Short name)
@@ -38,7 +39,7 @@ kinds of information about each file:
 ![The MFT and NTFS](image22.png)
 
 Data attributes may be compressed or sparse and contain a list of
-`runs` that comprise the content of the file. The data content is
+**runs** that comprise the content of the file. The data content is
 stored elsewhere on the disk, but the location is stored within the
 MFT entry.
 
@@ -55,8 +56,8 @@ It is very easy to create a file with a completely different short
 filename to its long filename. This can be problematic if you are
 looking for references to the long filename from e.g. registry keys.
 
-In the below example, I set the shortname of the `velociraptor.exe`
-binary to `runme.exe`. I can then create a service that launches
+In the below example, We set the shortname of the `velociraptor.exe`
+binary to `runme.exe`. We can then create a service that launches
 `runme.exe` instead. Tools that only show the long filename of the
 directory will fail to show the file and analysis may conclude that
 the service target is missing from the filesystem.
@@ -78,13 +79,14 @@ usage: velociraptor [<flags>] <command> [<args> ...]
 
 {{% /notice %}}
 
-## The ntfs accessor
+## The NTFS accessor
 
 Velociraptor has a complete NTFS parser able to access files and
 directories by parsing the raw NTFS filesystem from the raw device. To
 make it easy to utilize this parser with VQL, Velociraptor implements
-the `ntfs` accessor (For a description of accessors, see
-[here]({{< ref "/docs/forensic/filesystem/#filesystem-accessors" >}}) ).
+the `ntfs` accessor (see
+[here]({{< ref "/docs/forensic/filesystem/#filesystem-accessors" >}})
+for a description of filesystem accessors).
 
 The `ntfs` accessor makes it possible to see and access the normally
 hidden NTFS files such as `$MFT`. It also makes it possible to see
@@ -98,7 +100,7 @@ Data field. For regular files it includes the inode string, as well as
 the short filename.
 
 When providing a path to the `ntfs` accessor, the first part of the
-path is interpreted as the `drive letter` or the `device part`.
+path is interpreted as the **drive letter** or the **device part**.
 
 For example providing a path starting with `C:` or `D:`, will be
 converted internally to Windows device notation, for example `\\.\C:`
@@ -110,7 +112,7 @@ the device name, e.g. `\\.\C:`.
 
 {{% notice tip "NTFS parsing and full disk encryption" %}}
 
-Since Velociraptor operated on the logical device it if not affected
+Since Velociraptor operates on the logical device it if not affected
 by full disk encryption such as Bitlocker. Velociraptor will be able
 to parse the raw NTFS filesystem regardless of the disk encryption
 status.
@@ -125,9 +127,8 @@ weight snapshot of the current filesystem without needing to copy any
 data (future writes will simply be diverted to the current active
 snapshot).
 
-On server class Windows systems, you can create a VSS copy on your own
-machine using `vssadmin create shadow`, but on other Windows versions
-you will need to do this via WMI:
+On server class Windows systems, you can create a VSS using `vssadmin create
+shadow`, but on other Windows versions you will need to do this via WMI:
 
 ![Creating shadow copy](image33.png)
 
@@ -153,12 +154,12 @@ event logs:
 Simply use the VSS device name as a prefix to all paths and the ntfs
 accessor will parse it instead.
 
-You can use it to analyze older versions of the drive!
+You can use this to analyze older versions of the drive!
 
 ## Parsing the MFT
 
-Since the `ntfs` accessor allows accessing the $MFT file as a
-regular file, you can download the entire $MFT file from the endpoint
+Since the `ntfs` accessor allows accessing the `$MFT` file as a
+regular file, you can download the entire `$MFT` file from the endpoint
 using the ntfs accessor, then process it offline. For example using
 the `Windows.Search.FileFinder` artifact with the `ntfs` accessor - or
 simply using the VQL:
@@ -170,18 +171,18 @@ FROM scope()
 
 However, in practice this is inefficient and does not scale. Typically
 we want to parse the MFT in order to answer some questions about the
-system, such as which files were modified within a timerange.
+system, such as which files were modified within a time range.
 
-Velociraptor provides access to the $MFT parser using the
+Velociraptor provides access to the $MFT using the
 `parse_mft()` plugin, so the MFT can be parsed directly on the
-endpoint using Velociraptor. The plugin emits a high level summary of
+endpoint using Velociraptor. The plugin emits a high-level summary of
 each MFT entry, including its timestamps (for the
-$STANDARD_INFORMATION and $FILENAME streams) and MFT ID.
+`$STANDARD_INFORMATION` and `$FILENAME` streams) and MFT ID.
 
 This plugin is most useful when you need to pass over all the files in
 the disk - it is more efficient than a recursive glob and might
 recover deleted files. For example to recover all the files with a
-.exe extension from the drive:
+`.exe` extension from the drive:
 
 ```sql
 SELECT * FROM parse_mft(filename="C:/$MFT", accessor="ntfs")
@@ -193,7 +194,7 @@ WHERE FileName =~ ".exe$"
 An MFT Entry can have multiple attributes and streams. While
 `parse_mft()` plugin emits a high level summary for each entry,
 sometimes we need more information on each MFT entry. This information
-is provided by the `parse_ntfs()` VQL function which accepts and MFT
+is provided by the `parse_ntfs()` VQL function which accepts an MFT
 ID:
 
 ![Parse ntfs](image39.png)
@@ -214,9 +215,9 @@ representing a stream of data
 A single MFT entry can have up to 16 timestamps, based on different
 attributes:
 
-* The $STANDARD_INFORMATION attribute contains 4 timestamps (Modified, Accessed, Inode Changed, Born)
-* There are often 2 $FILENAME attributes for a short name and a long name, each will have 4 further timestamps.
-* The $I30 stream of the parent directory also contains 4 timestamps for the file.
+* The `$STANDARD_INFORMATION` attribute contains 4 timestamps (Modified, Accessed, Inode Changed, Born)
+* There are often 2 `$FILENAME` attributes for a short name and a long name, each will have 4 further timestamps.
+* The `$I30` stream of the parent directory also contains 4 timestamps for the file.
 
 Timestamps are critical to forensic investigations as they help to
 establish a timeline of activity on the system.
@@ -224,7 +225,7 @@ establish a timeline of activity on the system.
 ### Timestomping
 
 Attackers sometimes change the timestamps of files to make them less
-obvious. E.g make malware look like it was installed many years
+obvious, for example, to make malware look like it was installed many years
 ago. This makes timelines more difficult to establish and might cause
 you to miss important filesystem events.
 
@@ -241,38 +242,39 @@ Get-ChildItem $file | Select *, Fullname, *Time*
 ```
 
 ![Before](image44.png)
+
 ![After](image38.png)
 
 
 The above script uses the API to change the times of a file but this
-only changes the $STANDARD_INFORMATION stream. The real times are
-still present on the $FILENAME attributes. A common detection to this
-is to find files which have $STANDARD_INFORMATION times earlier then
-the $FILENAME times. When the file is created, $FILENAME times are set
+only changes the `$STANDARD_INFORMATION` stream. The real times are
+still present on the `$FILENAME` attributes. A common detection to this
+is to find files which have `$STANDARD_INFORMATION` times earlier then
+the `$FILENAME` times. When the file is created, `$FILENAME` times are set
 to the real times, then if the API is used to send the timestamps
-backwards the $STANDARD_INFORMATION timestamps will appear earlier
-than the $FILENAME times.
+backwards the `$STANDARD_INFORMATION` timestamps will appear earlier
+than the `$FILENAME` times.
 
 ![Timestomp detection](image42.png)
 
 
 {{% notice warning "Timestomping detection pitfalls" %}}
 
-Although it might appear to be a solid detection to timestomping,
+Although it might appear to be a solid detection of timestomping,
 generally timestomping detections are not very reliable in
 practice. It turns out that a lot of programs set file timestamps
 after creating them into the past by design - mostly archiving
 utilities like 7zip or cab will reset the file time to the times
 stored in the archive.
 
-Conversely it might appear that the $FILENAME times are the most
+Conversely it might appear that the `$FILENAME` times are the most
 reliable and should be mostly relied upon in an investigation since
 they are not directly modifiable by the Win32 APIs.
 
-Unfortunately this is not the case - the $FILENAME attributes can be
+Unfortunately this is not the case - the `$FILENAME` attributes can be
 easily modified by simply renaming the file (after timestomping) and
 rename it back. Windows will copy the timestamps from the
-$STANDARD_INFORMATION attribute to the $FILENAME when renaming the
+`$STANDARD_INFORMATION` attribute to the `$FILENAME` when renaming the
 file.
 
 {{% /notice %}}
@@ -307,20 +309,21 @@ of slack space to potentially hold residual data.
 Velociraptor can report on the $I30 streams and carve out headers from
 slack using the `parse_ntfs_i30()` function as discussed in
 [this article](https://www.fireeye.com/blog/threat-research/2012/10/incident-response-ntfs-indx-buffers-part-4-br-internal.html).
+
 An example query:
 
 ```sql
-SELECT * FROM foreach(
-   row={
-     SELECT FullPath, Data.mft AS MFT
-     FROM glob(globs=DirectoryGlobs, accessor="ntfs")
-     WHERE IsDir
-   },
-   query={
-     SELECT FullPath, Name, NameType, Size, AllocatedSize,
-            IsSlack, SlackOffset, Mtime, Atime, Ctime, Btime, MFTId
-     FROM parse_ntfs_i30(device=FullPath, inode=MFT)
-})
+SELECT *
+FROM foreach(row={
+    SELECT OSPath,
+           Data.mft AS MFT
+    FROM glob(globs="C:/*", accessor="ntfs")
+    WHERE IsDir
+  },
+             query={
+    SELECT *
+    FROM parse_ntfs_i30(device=OSPath, inode=MFT)
+  })
 ```
 
 ## The USN journal

@@ -14,7 +14,7 @@ collections on hosts and retrieve the results of those collections.
 {{% notice warning "API Security is complicated!" %}}
 
 Connecting an external program to Velociraptor via the API can enable
-a `SOAR` like workflow, automating the launching and reading or
+a SOAR-like workflow, automating the launching and reading or
 artifact data.
 
 This can increase the attack surface of the system, as compromise of
@@ -247,12 +247,13 @@ orgs.
 
 ## Python bindings
 
-The Velociraptor API uses gRPC which is an open source, high
-performance RPC protocol compatible with many languages. The
-Velociraptor team officially supports python through the
-`pyvelociraptor` project, but since gRPC is very portable, many other
-languages can be used including C++, Java etc. This document will
-discuss the python bindings specifically as an example.
+The Velociraptor API uses gRPC which is an open source, high performance RPC
+protocol compatible with many languages. The Velociraptor team officially
+supports python through the
+[pyvelociraptor project](https://github.com/Velocidex/pyvelociraptor),
+but since gRPC is very portable, many other languages can be used including C++,
+Java, etc. This document will discuss the python bindings specifically as an
+example.
 
 ### Install the python bindings
 
@@ -291,7 +292,9 @@ material then sends the query over the network to the API port,
 forwarding the resulting query logs and result set to print them on
 the console.
 
-The example is just a [sample python program](https://github.com/Velocidex/pyvelociraptor/blob/master/pyvelociraptor/client_example.py) which you can modify as required.
+The example is just a
+[sample python program](https://github.com/Velocidex/pyvelociraptor/blob/master/pyvelociraptor/client_example.py)
+which you can modify as required.
 
 ### Passing data to API calls
 
@@ -349,7 +352,6 @@ In the above example, the query is stored as a file (because it does
 not change from call to call). The content of the rules file is also
 expanded into the `YaraRule` env variable which can be accessed in the
 query.
-
 
 
 ## Schedule an artifact collection
@@ -450,6 +452,10 @@ to an external system or escalate alerts for example.
 The API connection will simply block until an event occurs allowing
 you to create a fully automated pipeline based off Velociraptor
 collections, hunts etc.
+
+The pyvelociraptor GitHub repo contains
+[several examples](https://github.com/Velocidex/pyvelociraptor/tree/master/pyvelociraptor)
+demonstrating how to perform common tasks.
 
 {{% /notice %}}
 
