@@ -21,19 +21,72 @@
     </section>
   {{end}}
 
-    <div class="highlightable">
-    <ul class="topics">
+    {{ if .IsHome }}
+      {{ with resources.Get "js/menu-tml.js" }}
+       {{ with resources.ExecuteAsTemplate "js/menu.js" $ . }}
+         {{ $a := .RelPermalink }}
+       {{ end }}
+      {{ end }}
+    {{ end }}
 
-{{- if eq .Site.Params.ordersectionsby "title"}}
-  {{- range .Site.Home.Sections.ByTitle}}
-  {{- template "section-tree-nav" dict "sect" . "currentnode" $currentNode "showvisitedlinks" $showvisitedlinks}}
-  {{- end}}
-{{- else}}
-  {{- range .Site.Home.Sections.ByWeight}}
-  {{- template "section-tree-nav" dict "sect" . "currentnode" $currentNode "showvisitedlinks" $showvisitedlinks}}
-  {{- end}}
-{{- end}}
-    </ul>
+    <script src="/js/menu.js" type="text/javascript">
+    </script>
+
+    <script>
+      findlink(window.menu, "{{.RelPermalink}}");
+      console.log("{{.RelPermalink}}");
+    </script>
+
+    <div class="highlightable">
+      <ul class="sidemenu sidebar"></ul>
+    <script>
+      function unescapeHtml(safe) {
+          return $('<div />').html(safe).text();
+      }
+
+      // Expand the node into the dom element.
+      function addToNode(dom, nodes) {
+          nodes.forEach(function(x, i) {
+              let cls = "dd-item";
+              if(x.active) {
+                  cls += " active";
+              }
+
+              let new_dom = $("<li>").attr("class", cls);
+              let children = x.children || [];
+
+              if(children.length > 0) {
+                  let cls = "fa fa-angle-right fa-sm category-icon";
+                  if(x.expanded) {
+                      cls = "fa fa-angle-down fa-sm category-icon";
+                  }
+
+                  let title = $("<div>").append(
+                      $("<i>").attr( "class", cls));
+                  title.append($("<a>").attr(
+                      "href", x.link).append(unescapeHtml(x.title)));
+                  new_dom.append(title);
+
+                  let new_ul = $("<ul>");
+                  addToNode(new_ul, children);
+                  new_dom.append(new_ul);
+
+              } else {
+                  let cls = "fa fa-chevron-right fa-sm category-icon";
+                  let title = $("<div>").append(
+                      $("<i>").attr("class", cls));
+                  title.append($("<a>").attr(
+                      "href", x.link).append(unescapeHtml(x.title)));
+                  new_dom.append(title);
+              };
+
+              dom.append(new_dom);
+          });
+      }
+
+      addToNode($("ul.sidemenu"), window.menu);
+    </script>
+
     <hr />
     {{ $disableShortcutsTitle := .Site.Params.DisableShortcutsTitle}}
     {{with .Site.Menus.shortcuts}}
@@ -100,80 +153,9 @@
   </div>
 </nav>
 
-<!-- templates -->
-{{- define "section-tree-nav" }}
-{{- $showvisitedlinks := .showvisitedlinks }}
-{{- $mycurrentNode := .currentnode }}
- {{- with .sect}}
-  {{- if and .IsSection (or (not (or .Params.no_menu .Params.hidden)) $.showhidden)}}
-    {{- $numberOfPages := (add (len .Pages) (len .Sections)) }}
-    {{- safeHTML .Params.head}}
-    <li data-nav-id="{{.Permalink}}" class="dd-item
-        {{- if .IsAncestor $mycurrentNode}} parent{{end}}
-        {{- if eq .Permalink $mycurrentNode.Permalink}} active{{end}}
-        {{- if .Params.alwaysopen}} alwaysopen{{end -}}
-        {{- if ne $numberOfPages 0 }} haschildren{{end}}
-        ">
-      <div>
-        {{- if and ( ne $numberOfPages 0 ) (not .Params.no_children)  }}
-          {{- if or (.IsAncestor $mycurrentNode) (.Params.alwaysopen) }}
-            <i class="fa fa-angle-down fa-sm category-icon"></i>
-          {{- else -}}
-            <i class="fa fa-angle-right fa-sm category-icon"></i>
-          {{- end}}
-        {{ else }}
-            <i class="fa fa-chevron-right fa-sm category-icon"></i>
-        {{- end}}
-        <a rel="nofollow" href="{{ .RelPermalink}}">{{safeHTML .Params.Pre}}{{or .Params.Menutitle .Title}}{{safeHTML .Params.Post}}</a>
-
-        {{- if $showvisitedlinks}}<i class="fa fa-circle-thin read-icon"></i>{{end}}
-      </div>
-      {{- if and ( ne $numberOfPages 0) (not .Params.no_children) }}
-        <ul>
-          {{- .Scratch.Set "pages" .Pages }}
-          {{- if .Sections}}
-          {{- .Scratch.Set "pages" (.Pages | union .Sections) }}
-          {{- end}}
-          {{- $pages := (.Scratch.Get "pages") }}
-          {{- $pages = .Pages }}
-
-        {{- if eq .Site.Params.ordersectionsby "title"}}
-          {{- range $pages.ByTitle }}
-            {{- if and (or .Params.hidden .Params.no_menu) (not $.showhidden) }}
-            {{- else}}
-            {{- template "section-tree-nav" dict "sect" . "currentnode" $mycurrentNode "showvisitedlinks" $showvisitedlinks }}
-            {{- end}}
-          {{- end}}
-        {{- else}}
-          {{- range $pages.ByWeight }}
-            {{- if and (or .Params.hidden .Params.no_menu) (not $.showhidden) }}
-            {{- else}}
-            {{- template "section-tree-nav" dict "sect" . "currentnode" $mycurrentNode "showvisitedlinks" $showvisitedlinks }}
-            {{- end}}
-          {{- end}}
-        {{- end}}
-        </ul>
-      {{- end}}
-    </li>
-  {{- else}}
-    {{- if not (or .Params.Hidden .Params.no_menu) }}
-      <li data-nav-id="{{.Permalink}}" class="dd-item
-     {{- if eq .Permalink $mycurrentNode.Permalink}} active{{end -}}
-      ">
-        <div>
-          <a rel="nofollow" href="{{ .RelPermalink}}">
-            {{safeHTML .Params.Pre}}{{.LinkTitle}}{{safeHTML .Params.Post}}
-          </a>
-          {{- if $showvisitedlinks}}<i class="fa fa-circle-thin read-icon"></i>{{end}}
-        </div>
-    </li>
-     {{- end}}
-  {{- end}}
- {{- end}}
-{{- end}}
-
 <script>
-  $("#sidebar i.fa-angle-right").each(function() {
+  $(".sidemenu i.fa-angle-right").each(function() {
       $( this ).parent().parent().find("ul").hide();
   });
+
 </script>
