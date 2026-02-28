@@ -911,25 +911,26 @@ to import the collection.
 
 ![Working with a collection container from an offline collector](offline-client-deaddisk.svg)
 
+Because the virtual client is impersonating the original host and (partially)
+emulating the original filesystem, it does not have to run on the same platform
+as the original host. You can run it on your Velociraptor server, which is
+probably running on Linux, or you can run the virtual client on a separate host
+which could be running Windows or Linux.
 
 #### Limitations
 
-The virtual client is more limited than a client running on a live endpoint,
-since the original OS is not present and only the copied files will be available
-to any VQL queries. Many standard artifacts will fail if they depend on data
-sources other than the filesystem, but at least they should fail gracefully and
-not produce incorrect data. Artifacts that rely purely on files in well-known
-locations should reliably produce meaningful results.
+- The virtual client is inherently more limited than a client running on a live
+  endpoint, since the original OS is not present and only the copied files will
+  be available to any VQL queries. Many standard artifacts will fail if they
+  depend on data sources other than the filesystem, but at least they should
+  fail gracefully and not produce incorrect data. Artifacts that rely purely on
+  files in well-known locations should reliably produce meaningful results.
 
-Also, because the virtual client is impersonating the original host and
-(partially) emulating the original filesystem, it does not have to run on the
-same platform as the original host. You can run it on your Velociraptor server,
-which is probably running on Linux, or you can run the virtual client on a
-separate host which could be running Windows or Linux.
+- External tools cannot be used on files stored in the server's datastore, since
+  the remapping only applies to VQL queries. Tools will be unaware of the
+  remapping and will be unable to find the files.
 
-External tools cannot be used on files stored in the server's datastore, since
-the remapping only applies to VQL queries. Tools will be unaware of the
-remapping and will be unable to find the files.
+- Connecting virtual clients to non-root orgs is currently not supported.
 
 {{% notice note "Working with exported collection containers" %}}
 
@@ -1008,6 +1009,22 @@ look and behave like a normal client.
    ```sh
    velociraptor client -c client.root.config.yaml --remap remapping.yaml
    ```
+
+   {{% notice note %}}
+
+   Since the client will generate a writeback file on disk that contains it's
+   unique client ID. This writeback file will persist and cause the client to
+   retain the same client ID between runs. If you intend to process further
+   collection containers from other hosts then you will either need to delete
+   the writeback file before starting a new client, or else add the path to a
+   new writeback file for these subsequent clients. For the latter option, this
+   can be done by adding the path to a new writeback file to the above command
+   line using the appropriate `--config.client-writeback-<platform>` flag - for
+   example, `--config.client-writeback-linux=/path/to/writeback.yaml` for Linux
+   or `--config.client-writeback-windows="C:/path/to/writeback.yaml"` for
+   Windows.
+
+   {{% /notice %}}
 
    ![Virtual client connecting to the server](virtual_client_cli.png)
 

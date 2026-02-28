@@ -95,3 +95,5 @@ deleting multiple clients, multiple artifacts in the artifacts viewer, multiple
 notebooks, and multiple collections from a client.
 
 ![Selecting multiple flows for deletion](multi-select.svg)
+
+![Deleting multiple flows](multi-delete.png)

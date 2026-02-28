@@ -1,0 +1,3 @@
+User-agent: *
+Sitemap: https://docs.velociraptor.app/sitemap.xml
+Allow: /

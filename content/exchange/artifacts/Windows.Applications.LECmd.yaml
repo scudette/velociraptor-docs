@@ -4,13 +4,14 @@ description: |
     Created using @eduardfir SBECmd VQL as a quide.  
     LECmd is a CLI tool for analyzing lnk data. Learn more - https://github.com/EricZimmerman/LECmd
 
-author: Carlos Cajigas @carlos_cajigas 
+author: Carlos Cajigas @carlos_cajigas. Modified by Zach K. https://www.linkedin.com/in/zach-kal on 2026-02-10 to address 404-url and csv parsing issues.
 
 type: CLIENT
 
 tools:
   - name: LECmd
-    url: https://download.mikestammer.com/net6/LECmd.zip
+    url: https://download.ericzimmermanstools.com/LECmd.zip
+    version: 1.5.1
     
 parameters:
   - name: sourceFile
@@ -52,15 +53,18 @@ sources:
         "-d", 
         "c:/", 
         "--csv", 
-        tmpdir + "lecmd", 
+        tmpdir, 
         "--csvf", 
         "results.csv"])
+      
+      -- find the actual CSV file created
+      LET csvfile <= SELECT OSPath FROM glob(globs="results*.csv", root=tmpdir) LIMIT 1
       
       -- parse csv
       SELECT SourceFile, LocalPath, Arguments, SourceCreated, 
         SourceModified, WorkingDirectory, RelativePath, 
         TargetCreated, TargetModified, DriveType, VolumeLabel
-      FROM parse_csv(filename=tmpdir + "lecmd" + "\\results.csv")
+      FROM parse_csv(filename=csvfile.OSPath[0])
       WHERE 
         (if(condition=dateAfter, then=SourceCreated > dateAfter,
             else=TRUE) AND 

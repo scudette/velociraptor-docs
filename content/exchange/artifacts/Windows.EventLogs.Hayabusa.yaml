@@ -9,13 +9,13 @@ description: |
    file for further analysis with excel, timeline explorer, elastic
    stack, jq, etc.
 
-author: Eric Capuano - @eric_capuano, Whitney Champion - @shortxstack, Zach Mathis - @yamatosecurity, Fukusuke Takahashi - @fukusuket
+author: Eric Capuano - @eric_capuano, Whitney Champion - @shortxstack, Zach Mathis - @yamatosecurity, Fukusuke Takahashi - @fukusuket, Julian Hill - @julianghill
 
 tools:
- - name: Hayabusa-3.7.0
-   url: https://github.com/Yamato-Security/hayabusa/releases/download/v3.7.0/hayabusa-3.7.0-win-x64-live-response.zip
-   expected_hash: d9530d7ddcc1ba2c7a0512b49140c8e4f5d918925248ce853a62926a8d718564
-   version: 3.7.0
+ - name: Hayabusa-3.8.1
+   url: https://github.com/Yamato-Security/hayabusa/releases/download/v3.8.1/hayabusa-3.8.1-win-x64-live-response.zip
+   expected_hash: 51ef2aff99bb3ed4e5ebe5b07053c62719263ca7a49223bb0e0bb8785eb479a0
+   version: 3.8.1
 
 precondition: SELECT OS From info() where OS = 'windows'
 
@@ -85,6 +85,9 @@ parameters:
    description: "Scan only common Event IDs for quicker scans"
    type: bool
    default: N
+ - name: OutputFilenameTemplate
+   description: "Upload filename template. Supports env vars via expand() and {ext} for csv/jsonl (ex: %COMPUTERNAME%_hayabusa_results.{ext})."
+   default: hayabusa_results.{ext}
  - name: TimeOffset
    description: "Scan recent events based on an offset (ex: 1y, 3M, 30d, 24h, 30m)"
  - name: TimelineStart
@@ -115,7 +118,7 @@ sources:
    query: |
         -- Fetch the binary
         LET Toolzip <= SELECT FullPath
-        FROM Artifact.Generic.Utils.FetchBinary(ToolName="Hayabusa-3.7.0", IsExecutable=FALSE)
+        FROM Artifact.Generic.Utils.FetchBinary(ToolName="Hayabusa-3.8.1", IsExecutable=FALSE)
 
         LET TmpDir <= tempdir()
 
@@ -123,7 +126,7 @@ sources:
         LET _ <= SELECT *
         FROM unzip(filename=Toolzip.FullPath, output_directory=TmpDir)
 
-        LET HayabusaExe <= TmpDir + '\\hayabusa-3.7.0-win-x64.exe'
+        LET HayabusaExe <= TmpDir + '\\hayabusa-3.8.1-win-x64.exe'
 
         -- Optionally update the rules
         LET _ <= if(condition=UpdateRules, then={
@@ -165,8 +168,15 @@ sources:
         FROM execve(argv=cmdline, cwd=TmpDir, sep="\n", length=9999999)
         WHERE log(message=Stdout)
 
+        -- Determine the Upload Filename
+        LET FinalName <= SELECT regex_replace(
+            source=expand(path=OutputFilenameTemplate),
+            re="\\{ext\\}",
+            replace=OutputFormat) AS Name
+        FROM scope()
+
         -- Upload the raw file.
-        SELECT upload(file=ResultFile) AS Uploads FROM scope()
+        SELECT upload(file=ResultFile, name=FinalName[0].Name) AS Uploads FROM scope()
 
  - name: Results
    query: |

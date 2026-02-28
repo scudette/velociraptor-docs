@@ -12,6 +12,8 @@ ActiveScript
 ActiveXObject
 adbe
 ADDomain
+adfs
+ADFS
 AddPrinterDriverEx
 admin's
 admins
@@ -600,6 +602,7 @@ OleParser
 olevba
 OneDrive
 onlinehashcrack
+openid
 opensource
 openssl
 ordereddict
@@ -707,6 +710,7 @@ pydata
 pyvelociraptor
 QoS
 QPS
+quickstart
 QWORD
 RabbitMQ
 ransomware
@@ -2007,3 +2011,16 @@ ListPlanting
 PoC
 se
 unmapping
+
+<url-free> content/docs/deployment/clients/_index.md
+--------------------------------------------------------------------------------
+else's
+rollout
+
+<url-free> content/docs/file_collection/_index.md
+--------------------------------------------------------------------------------
+AVML
+PathSpec
+UploadResponse
+reconnection
+Bing

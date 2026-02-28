@@ -10,24 +10,7 @@ description: |
    for versioning.  
    A SHA1 of each artifact is generated on import to enable versioning confirmation.
    
-   Last updated: 2023-09-09.   
-
-   Current artifacts include:  
-   
-   - Windows.Detection.Amcache
-   - Windows.Detection.Applications
-   - Windows.Detection.BinaryRename
-   - Windows.Detection.Evtx
-   - Windows.Detection.HijackLibsEnv
-   - Windows.Detection.HijackLibsMFT
-   - Windows.Detection.LolDrivers
-   - Windows.Detection.MFT
-   - Windows.Detection.NamedPipes
-   - Windows.Detection.Powershell.ISEAutoSave
-   - Windows.Detection.Powershell.PSReadline
-   - Windows.Detection.Webhistory
-   - Windows.Detection.ZoneIdentifier
-   - Server.StartHunts
+   Last updated: 2026-01-23.
 
 reference:
   - https://github.com/mgreen27/DetectRaptor
@@ -42,8 +25,8 @@ required_permissions:
 parameters:
    - name: ReleaseURL
      default: https://api.github.com/repos/mgreen27/DetectRaptor/releases
-   - name: Prefix
-     default: DetectRaptor.
+   - name: Tag
+     default: DetectRaptor
      description: Prefix to append to all imported artifacts.
    - name: UpdateAnyway
      type: bool
@@ -85,7 +68,7 @@ sources:
                         
       -- extract and set artifacts
       LET set_artifacts <= SELECT 
-            artifact_set(prefix=Prefix, definition=Definition) AS Definition,
+            artifact_set(tags=Tag, definition=Definition) AS Definition,
             SHA1,
             ZipTimestamp,ZipSHA1
         FROM foreach(row=get_content, 

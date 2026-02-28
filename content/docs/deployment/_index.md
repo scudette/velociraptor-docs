@@ -355,7 +355,11 @@ them the same as you would with data collected from network-connected clients.
 That is, an Instant Velociraptor deployment using only offline collectors
 amounts to a sneakernet Velociraptor deployment!
 
-<!-- ### Sneakernet Velociraptor server
+<!-- ### Remote filesystem access via SSH
+
+[]({{< ref "/docs/file_collection/ssh/" >}})
+
+### Sneakernet Velociraptor server
 
 ### Ephemeral clients -->
 

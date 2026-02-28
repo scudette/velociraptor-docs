@@ -77,7 +77,7 @@ Velociraptor can be used in many ways depending on your requirements.
 
   This deployment method allows you to rapidly iterate through the
   investigative process, collecting evidence, analysing and
-  recollecting rapidly.
+  re-collecting rapidly.
 
 * **Offline collector**: If the Velociraptor client can not be
   installed on the endpoint, Velociraptor allows the creation of

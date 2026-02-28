@@ -124,7 +124,7 @@
         {{ else }}
             <i class="fa fa-chevron-right fa-sm category-icon"></i>
         {{- end}}
-        <a rel="nofollow" psuedo_href="{{ .RelPermalink}}">{{safeHTML .Params.Pre}}{{or .Params.Menutitle .Title}}{{safeHTML .Params.Post}}</a>
+        <a rel="nofollow" href="{{ .RelPermalink}}">{{safeHTML .Params.Pre}}{{or .Params.Menutitle .Title}}{{safeHTML .Params.Post}}</a>
 
         {{- if $showvisitedlinks}}<i class="fa fa-circle-thin read-icon"></i>{{end}}
       </div>
@@ -175,9 +175,5 @@
 <script>
   $("#sidebar i.fa-angle-right").each(function() {
       $( this ).parent().parent().find("ul").hide();
-  });
-
-  $("#sidebar a[psuedo_href]").each(function() {
-      $(this).attr("href", $(this).attr("psuedo_href"));
   });
 </script>

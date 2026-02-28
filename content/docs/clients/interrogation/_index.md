@@ -26,7 +26,7 @@ database and specific fields are also indexed so that we can perform
 In old versions of Velociraptor this information was not kept up to date unless
 users explicitly created periodic hunts for `Generic.Client.Info`
 (see [Server.Monitoring.ScheduleHunt]({{< ref "/artifact_references/pages/server.monitoring.schedulehunt/" >}}) for an example).
-However this information is now recollected automatically on a recurring basis
+However this information is now re-collected automatically on a recurring basis
 in the background.
 
 Of course if you want to be sure you have the absolute latest info you can still
