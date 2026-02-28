@@ -1,5 +1,79 @@
 [
     {
+        "title": "Windows.Detection.LotusBlossom.Chrysalis",
+        "author": "mgreen27",
+        "description": "Assists scoping IOCs related to the recent publicly disclosed Notepad++ \nsupply chain attack. ",
+        "link": "/exchange/artifacts/pages/chrysalis",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2026-02-03"
+    },
+    {
+        "title": "Linux.Events.EBPFEnriched",
+        "author": "zaneGittins",
+        "description": "This artifact forwards EBPF events generated on the endpoint and enriches events with:",
+        "link": "/exchange/artifacts/pages/linux.events.ebpfenriched",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
+        "date": "2026-01-22"
+    },
+    {
+        "title": "Windows.Kerberos.GoldenTicketTriage",
+        "author": "dciftci",
+        "description": "It analyzes klist output to identify Kerberos tickets with unusually long lifetimes as well as tickets where the Kdc Called field is empty.",
+        "link": "/exchange/artifacts/pages/windows.kerberos.goldentickettriage",
+        "tags": [
+            "0",
+            "1",
+            "2"
+        ],
+        "author_link": "https://github.com/dciftci",
+        "author_avatar": "https://avatars.githubusercontent.com/u/23119194?v=4",
+        "date": "2026-01-12"
+    },
+    {
+        "title": "Linux.Detection.CVE202514847.MongoBleed",
+        "author": "ecapuano",
+        "description": "Hunts for evidence of CVE-2025-14847 (MongoBleed) exploitation on MongoDB servers.",
+        "link": "/exchange/artifacts/pages/linux.detection.cve202514847.mongobleed",
+        "tags": [],
+        "author_link": "https://github.com/ecapuano",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4219694?v=4",
+        "date": "2025-12-27"
+    },
+    {
+        "title": "Windows.System.AutoLoggerDiagtrackListener",
+        "author": "mgreen27",
+        "description": "AutoLogger-Diagtrack-Listener.etl is a potential source of evidence of \nexecution and other system diagnostic data.",
+        "link": "/exchange/artifacts/pages/autologgerdiagtracklistener",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2025-12-12"
+    },
+    {
+        "title": "Windows.System.IsClrProcess",
+        "author": "mgreen27",
+        "description": "Identify running processes that host the .NET Common Language Runtime (CLR) and\nhighlight suspicious processes where CLR visibility may be reduced, downgraded, \nor disabled.",
+        "link": "/exchange/artifacts/pages/isclrprocess",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2025-12-02"
+    },
+    {
+        "title": "Windows.Detection.ReflectedAssemblies",
+        "author": "mgreen27",
+        "description": "Collects current running .NET assemblies and replicates ProcessHacker's .NET \nAssemblies view.",
+        "link": "/exchange/artifacts/pages/reflectedassemblies",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2025-12-02"
+    },
+    {
         "title": "Windows.Memory.Mem2Disk",
         "author": "lautarolecumberry",
         "description": "This artifact compares executables in memory (RAM) with those\non hard disk. This way, RAM injections are detected. This rarely\nhappens legitimately and is mostly used by malware.\nThis check is executed without dumping the memory and works live\non the target system(s).\nSee also https://github.com/lautarolecumberry/DetectingFilelessMalware",
@@ -262,7 +336,7 @@
     {
         "title": "Windows.Detection.Honeyfiles",
         "author": "zaneGittins",
-        "description": "This artifact deploys honeyfiles according to the Honeyfiles CSV parameter. It then monitors access to these files using etw.  The process tracker must be enabled, we use this to enrich etw events. Honeyfiles created by this artifact are removed at exit.",
+        "description": "This artifact deploys honeyfiles according to the Honeyfiles CSV parameter. It then monitors access to these files using etw.  The process tracker must be enabled, we use this to enrich etw events. Honeyfiles created by this artifact are removed at exit.\n",
         "link": "/exchange/artifacts/pages/windows.detection.honeyfile",
         "tags": [],
         "author_link": "https://github.com/zaneGittins",
@@ -496,7 +570,7 @@
     {
         "title": "Windows.EventLogs.SysmonProcessEnriched.yaml",
         "author": "zaneGittins",
-        "description": "Gather sysmon process creation events from the sysmon operational event log. Enrich with authenticode signature of image and call chain.\nCaches authenticode signature by the hash of the image for an hour to reduce number of times it fetches the authenticode signature.\nPrerequisites: Sysmon, and the process tracker artifact.\n",
+        "description": "Collects sysmon process creation events and enriches with authenticode signature, tlsh hash, and call chain. Requires Sysmon and the process tracker.\n",
         "link": "/exchange/artifacts/pages/windows.eventlogs.sysmonprocessenriched",
         "tags": [],
         "author_link": "https://github.com/zaneGittins",
