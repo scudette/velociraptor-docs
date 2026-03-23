@@ -29,16 +29,6 @@ jobs:
           hugo-version: '0.139.4'
           # extended: true
 
-      - name: Prepare
-        run: |
-          python scripts/exchange_index.py
-          python scripts/exchange_verify.py
-          python scripts/blog_index.py
-          python scripts/knowledge_base.py
-
-      - name: BuildIndex
-        run: make index
-
       - name: Build
         run: hugo --minify
 
