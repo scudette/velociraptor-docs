@@ -254,6 +254,7 @@
         "name": "artifact_set",
         "description": "Sets an artifact into the global repository.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "definition",
@@ -270,6 +271,11 @@
                 "type": "string",
                 "description": "Optional tags to attach to the artifact.",
                 "repeated": true
+            },
+            {
+                "name": "repository",
+                "type": "string",
+                "description": "Add the artifact to this repository, if not set, we add the artifact to the global repository."
             }
         ],
         "category": "server",
@@ -288,6 +294,7 @@
         "name": "artifact_set_metadata",
         "description": "Sets metadata about the artifact.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "name",
@@ -482,6 +489,7 @@
         "name": "backup_restore",
         "description": "Restore state from a backup file.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "name",
@@ -610,6 +618,7 @@
         "name": "batch",
         "description": "Batches query rows into multiple arrays.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "batch_size",
@@ -882,6 +891,7 @@
         "name": "client_create",
         "description": "Create a new client in the data store.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "first_seen_at",
@@ -1007,6 +1017,7 @@
         "name": "client_set_metadata",
         "description": "Sets client metadata.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "client_id",
@@ -1092,6 +1103,7 @@
         "name": "collect",
         "description": "Collect artifacts into a local file.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "artifacts",
@@ -1196,6 +1208,7 @@
         "name": "collect_client",
         "description": "Launch an artifact collection against a client. If the client_id\nis \"server\" then the collection occurs on the server itself. In\nthat case the caller needs the SERVER_ADMIN permission.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "client_id",
@@ -1414,6 +1427,7 @@
         "name": "copy",
         "description": "Copy a file.",
         "type": "Function",
+        "version": 3,
         "args": [
             {
                 "name": "filename",
@@ -1435,7 +1449,12 @@
             {
                 "name": "permissions",
                 "type": "string",
-                "description": "Required permissions (e.g. 'x')."
+                "description": "Permissions for the destination file (e.g. `rw-rw-rwx` or `0755`)."
+            },
+            {
+                "name": "dir_permissions",
+                "type": "string",
+                "description": "Permissions for intermediate directories."
             },
             {
                 "name": "append",
@@ -1483,6 +1502,7 @@
         "name": "create_flow_download",
         "description": "Creates a download pack for the flow.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "client_id",
@@ -1548,6 +1568,7 @@
         "name": "create_hunt_download",
         "description": "Creates a download pack for a hunt.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "hunt_id",
@@ -1602,6 +1623,7 @@
         "name": "create_notebook_download",
         "description": "Creates a notebook export zip file.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "notebook_id",
@@ -1850,6 +1872,7 @@
         "name": "delete_flow",
         "description": "Delete all the files that make up a flow.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "flow_id",
@@ -2029,6 +2052,7 @@
         "name": "elastic_upload",
         "description": "Upload rows to elastic.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "query",
@@ -2291,6 +2315,7 @@
         "name": "eval",
         "description": "Evaluate a vql lambda function on the current scope.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "func",
@@ -2328,6 +2353,7 @@
         "name": "execve",
         "description": "This plugin launches an external command and captures its STDERR,\nSTDOUT and return code. The command's stdout is split using the `sep`\nparameter as required.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "argv",
@@ -2950,7 +2976,7 @@
         "name": "generate",
         "description": "Create a named generator that receives rows from the query.",
         "type": "Function",
-        "version": 2,
+        "version": 3,
         "args": [
             {
                 "name": "name",
@@ -3268,6 +3294,7 @@
         "name": "handles",
         "description": "Enumerate process handles.\n",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "pid",
@@ -3343,6 +3370,7 @@
         "name": "host",
         "description": "Perform a DNS resolution.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "name",
@@ -3482,6 +3510,7 @@
         "name": "humanize",
         "description": "Format items in human readable way.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "bytes",
@@ -3517,11 +3546,18 @@
         "name": "hunt",
         "description": "Create and launch a hunt.",
         "type": "Function",
+        "version": 3,
         "args": [
             {
                 "name": "description",
                 "type": "string",
                 "description": "Description of the hunt"
+            },
+            {
+                "name": "tags",
+                "type": "string",
+                "description": "A list of tags to add to the hunt",
+                "repeated": true
             },
             {
                 "name": "artifacts",
@@ -3615,6 +3651,7 @@
         "name": "hunt_add",
         "description": "Assign a client to a hunt.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "client_id",
@@ -3653,6 +3690,7 @@
         "name": "hunt_delete",
         "description": "Delete a hunt. ",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "hunt_id",
@@ -3690,6 +3728,7 @@
         "name": "hunt_flows",
         "description": "Retrieve the flows launched by a hunt.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "hunt_id",
@@ -3751,6 +3790,7 @@
         "name": "hunt_results",
         "description": "Retrieve the results of a hunt.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "artifact",
@@ -3796,6 +3836,7 @@
         "name": "hunt_update",
         "description": "Update a hunt.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "hunt_id",
@@ -3953,6 +3994,7 @@
         "name": "import_collection",
         "description": "Imports a collection zip file .",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "client_id",
@@ -3991,6 +4033,105 @@
             "linux_amd64_cgo",
             "windows_386_cgo",
             "windows_amd64_cgo"
+        ]
+    },
+    {
+        "name": "index",
+        "description": "Create a local index from a query.",
+        "type": "Plugin",
+        "version": 2,
+        "args": [
+            {
+                "name": "query",
+                "type": "StoredQuery",
+                "description": "A VQL Query to parse and execute.",
+                "required": true
+            },
+            {
+                "name": "mapping",
+                "type": "ordereddict.Dict",
+                "description": "A dict to describe field mapping."
+            },
+            {
+                "name": "default_analyzer",
+                "type": "string",
+                "description": "The default analyzer to use."
+            },
+            {
+                "name": "output",
+                "type": "string",
+                "description": "The file path to create the index on.",
+                "required": true
+            },
+            {
+                "name": "workers",
+                "type": "int64",
+                "description": "Index with this many workers (default 2)"
+            },
+            {
+                "name": "purge",
+                "type": "bool",
+                "description": "If set we delete the index to start fresh"
+            },
+            {
+                "name": "batch",
+                "type": "int64",
+                "description": "Default batch size for index (default 1000)"
+            },
+            {
+                "name": "silent",
+                "type": "bool",
+                "description": "Do not forward events (this is faster)"
+            }
+        ],
+        "metadata": {
+            "permissions": "FILESYSTEM_WRITE"
+        },
+        "platforms": [
+            "linux_amd64_cgo"
+        ]
+    },
+    {
+        "name": "index_search",
+        "description": "Search a previously created index.",
+        "type": "Plugin",
+        "version": 1,
+        "args": [
+            {
+                "name": "path",
+                "type": "string",
+                "description": "The file path to the index to open.",
+                "required": true
+            },
+            {
+                "name": "search",
+                "type": "string",
+                "description": "A Bleve search query. See https://blevesearch.com/docs/Query-String-Query/",
+                "required": true
+            },
+            {
+                "name": "fields",
+                "type": "string",
+                "description": "A list of fields to include from the index.",
+                "repeated": true
+            },
+            {
+                "name": "sort",
+                "type": "string",
+                "description": "The field to sort by (precede with - to sort in descending order).",
+                "repeated": true
+            },
+            {
+                "name": "start",
+                "type": "uint64",
+                "description": "Row number to start."
+            }
+        ],
+        "metadata": {
+            "permissions": "FILESYSTEM_READ"
+        },
+        "platforms": [
+            "linux_amd64_cgo"
         ]
     },
     {
@@ -4062,6 +4203,7 @@
         "name": "inventory_add",
         "description": "Add or reconfigure a tool into the inventory.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "tool",
@@ -4116,6 +4258,7 @@
         "name": "inventory_get",
         "description": "Get tool info from inventory service.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "tool",
@@ -4148,6 +4291,7 @@
         "name": "ip",
         "description": "Format an IP address.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "parse",
@@ -4486,6 +4630,7 @@
         "name": "link_to",
         "description": "Create a url linking to a particular part in the Velociraptor GUI.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "type",
@@ -4585,6 +4730,7 @@
         "name": "logging",
         "description": "Watch the logs emitted by the server.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "component",
@@ -4820,6 +4966,7 @@
         "name": "mail",
         "description": "Send Email to a remote server.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "to",
@@ -4911,6 +5058,7 @@
         "name": "mail",
         "description": "Send Email to a remote server.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "to",
@@ -5031,6 +5179,7 @@
         "name": "memoize",
         "description": "Memoize a query into memory.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "query",
@@ -5521,6 +5670,7 @@
         "name": "notebook_get",
         "description": "Get a notebook.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "notebook_id",
@@ -5599,6 +5749,7 @@
         "name": "notebook_update_cell",
         "description": "Update a notebook cell.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "notebook_id",
@@ -5789,6 +5940,7 @@
         "name": "org_delete",
         "description": "Deletes an Org from the server.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "org",
@@ -5835,7 +5987,7 @@
             {
                 "name": "paths",
                 "type": "OSPath",
-                "description": "A list of paths to try to resolve each path.",
+                "description": "A list of paths to try to resolve.",
                 "repeated": true,
                 "required": true
             },
@@ -6144,6 +6296,7 @@
         "name": "parse_evtx",
         "description": "Parses events from an EVTX file.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "filename",
@@ -6205,6 +6358,7 @@
         "name": "parse_journald",
         "description": "Parse a journald file.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "filename",
@@ -6278,6 +6432,7 @@
         "name": "parse_json_array",
         "description": "Parse a JSON string into an array.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "data",
@@ -6305,6 +6460,7 @@
         "name": "parse_json_array",
         "description": "Parses events from a line oriented json file.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "data",
@@ -6332,6 +6488,7 @@
         "name": "parse_jsonl",
         "description": "Parses a line oriented json file.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "filename",
@@ -6396,7 +6553,7 @@
         "name": "parse_mft",
         "description": "Scan the $MFT from an NTFS volume.",
         "type": "Plugin",
-        "version": 2,
+        "version": 3,
         "args": [
             {
                 "name": "filename",
@@ -6436,6 +6593,7 @@
         "name": "parse_ntfs",
         "description": "Parse specific inodes from an NTFS image file or the raw device.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "device",
@@ -6486,6 +6644,7 @@
         "name": "parse_ntfs_i30",
         "description": "Scan the $I30 stream from an NTFS MFT entry.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "device",
@@ -6536,6 +6695,7 @@
         "name": "parse_ntfs_ranges",
         "description": "Show the run ranges for an NTFS stream.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "device",
@@ -6586,6 +6746,7 @@
         "name": "parse_pe",
         "description": "Parse a PE file.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "file",
@@ -6846,6 +7007,7 @@
         "name": "parse_xml",
         "description": "Parse an XML document into a dict like object.\n",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "file",
@@ -6875,6 +7037,7 @@
         "name": "parse_yaml",
         "description": "Parse yaml into an object.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "filename",
@@ -7036,7 +7199,7 @@
         "name": "pathspec",
         "description": "Create a structured path spec to pass to certain accessors.",
         "type": "Function",
-        "version": 1,
+        "version": 2,
         "args": [
             {
                 "name": "DelegateAccessor",
@@ -7347,6 +7510,7 @@
         "name": "proc_yara",
         "description": "Scan processes using yara rules.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "rules",
@@ -7416,6 +7580,7 @@
         "name": "process_tracker",
         "description": "Install a global process tracker.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "sync_query",
@@ -7434,14 +7599,24 @@
             },
             {
                 "name": "max_size",
-                "type": "int64",
+                "type": "uint64",
                 "description": "Maximum size of process tracker LRU."
+            },
+            {
+                "name": "max_expiry",
+                "type": "uint64",
+                "description": "Expire process records older than this much."
             },
             {
                 "name": "enrichments",
                 "type": "string",
                 "description": "One or more VQL lambda functions that can enrich the data for the process.",
                 "repeated": true
+            },
+            {
+                "name": "cache",
+                "type": "string",
+                "description": "The path to the cache file - if not set we use a memory based cache."
             }
         ],
         "platforms": [
@@ -7468,6 +7643,7 @@
         "name": "process_tracker_callchain",
         "description": "Get a call chain from the global process tracker.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "id",
@@ -7493,6 +7669,7 @@
         "name": "process_tracker_children",
         "description": "Get all children of a process.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "id",
@@ -7518,6 +7695,7 @@
         "name": "process_tracker_get",
         "description": "Get a single process from the global tracker.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "id",
@@ -7557,6 +7735,7 @@
         "name": "process_tracker_tree",
         "description": "Get the full process tree under the process id.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "id",
@@ -7598,6 +7777,7 @@
         "name": "profile",
         "description": "Returns a profile dump from the running process.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "allocs",
@@ -7779,6 +7959,7 @@
         "name": "query",
         "description": "Evaluate a VQL query.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "query",
@@ -7831,6 +8012,11 @@
                 "name": "inherit",
                 "type": "bool",
                 "description": "If specified we inherit the scope instead of building a new one."
+            },
+            {
+                "name": "exit",
+                "type": "Lambda",
+                "description": "A callback to consider each row. When the callback returns TRUE the query is aborted"
             }
         ],
         "category": "server",
@@ -7988,6 +8174,7 @@
         "name": "read_crypto_file",
         "description": "Read a previously stored encrypted local storage file.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "filename",
@@ -8123,6 +8310,26 @@
         ]
     },
     {
+        "name": "reformat",
+        "description": "Reformat VQL",
+        "type": "Function",
+        "args": [
+            {
+                "name": "artifact",
+                "type": "string",
+                "description": "The artifact VQL to reformat.",
+                "required": true
+            }
+        ],
+        "platforms": [
+            "darwin_amd64_cgo",
+            "darwin_arm64_cgo",
+            "linux_amd64_cgo",
+            "windows_386_cgo",
+            "windows_amd64_cgo"
+        ]
+    },
+    {
         "name": "reg",
         "description": "An alias for the `registry` accessor, which accesses the registry using the\nOS APIs.",
         "type": "Accessor",
@@ -8219,6 +8426,7 @@
         "name": "regex_replace",
         "description": "Search and replace a string with a regexp. Note you can use $1 to replace the capture string.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "source",
@@ -8383,6 +8591,7 @@
         "name": "repack",
         "description": "Repack and upload a repacked binary or MSI to the server.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "target",
@@ -8830,6 +9039,7 @@
         "name": "secret_modify",
         "description": "Modify the secret",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "name",
@@ -8894,6 +9104,27 @@
         "category": "server",
         "platforms": [
             "linux_amd64_cgo",
+            "windows_amd64_cgo"
+        ]
+    },
+    {
+        "name": "semver",
+        "description": "Parse a semantic version string.",
+        "type": "Function",
+        "version": 1,
+        "args": [
+            {
+                "name": "version",
+                "type": "string",
+                "description": "A string to convert to a semantic version",
+                "required": true
+            }
+        ],
+        "platforms": [
+            "darwin_amd64_cgo",
+            "darwin_arm64_cgo",
+            "linux_amd64_cgo",
+            "windows_386_cgo",
             "windows_amd64_cgo"
         ]
     },
@@ -9281,6 +9512,7 @@
         "name": "source",
         "description": "Retrieve rows from an artifact's source.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "client_id",
@@ -9413,6 +9645,7 @@
         "name": "split_records",
         "description": "Parses files by splitting lines into records.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "filenames",
@@ -9474,6 +9707,7 @@
         "name": "splunk_upload",
         "description": "Upload rows to splunk.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "query",
@@ -9550,6 +9784,21 @@
                 "name": "secret",
                 "type": "string",
                 "description": "Alternatively use a secret from the secrets service. Secret must be of type 'Splunk'"
+            },
+            {
+                "name": "max_retries",
+                "type": "int64",
+                "description": "Maximum number of retries for failed uploads (default: 3)."
+            },
+            {
+                "name": "retry_wait",
+                "type": "int64",
+                "description": "Base wait time in seconds for exponential backoff between retries (default: 2). Actual wait times: 2s, 4s, 8s, 16s..."
+            },
+            {
+                "name": "idle_conn_timeout",
+                "type": "int64",
+                "description": "How long to keep idle HTTP connections open in seconds (default: 55). Lower values help with firewalls/load balancer/HECs that close connections."
             }
         ],
         "metadata": {
@@ -9831,6 +10080,7 @@
         "name": "strip",
         "description": "Strip prefix and/or suffix from a string",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "string",
@@ -9999,6 +10249,7 @@
         "name": "template",
         "description": "Expand a Go style template .",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "template",
@@ -10011,6 +10262,11 @@
                 "type": "ordereddict.Dict",
                 "description": "An object to be expanded into the template.",
                 "required": true
+            },
+            {
+                "name": "html",
+                "type": "bool",
+                "description": "Use when the output should be html escaped."
             }
         ],
         "platforms": [
@@ -10042,6 +10298,7 @@
         "name": "timeline",
         "description": "Read a timeline. You can create a timeline with the timeline_add() function",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "timeline",
@@ -10088,6 +10345,7 @@
         "name": "timeline_add",
         "description": "Add a new query to a timeline.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "timeline",
@@ -10145,6 +10403,7 @@
         "name": "timeline_delete",
         "description": "Delete a super timeline.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "timeline",
@@ -10382,6 +10641,7 @@
         "name": "unzip",
         "description": "Unzips a file into a directory.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "filename",
@@ -10447,7 +10707,7 @@
         "name": "upload",
         "description": "Upload a file to the upload service. For a Velociraptor client this\nwill upload the file into the flow and store it in the server's file store.",
         "type": "Function",
-        "version": 2,
+        "version": 3,
         "args": [
             {
                 "name": "file",
@@ -10633,8 +10893,7 @@
             {
                 "name": "credentials",
                 "type": "string",
-                "description": "The credentials to use",
-                "required": true
+                "description": "The credentials to use"
             }
         ],
         "metadata": {
@@ -10880,6 +11139,7 @@
         "name": "upload_webdav",
         "description": "Upload files to a WebDAV server.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "file",
@@ -10944,6 +11204,7 @@
         "name": "uploads",
         "description": "Retrieve information about a flow's uploads.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "client_id",
@@ -10982,6 +11243,7 @@
         "name": "url",
         "description": "Construct a URL or parse one.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "scheme",
@@ -11052,6 +11314,7 @@
         "name": "user_create",
         "description": "Creates a new user from the server, or updates their permissions or reset their password.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "user",
@@ -11091,6 +11354,7 @@
         "name": "user_delete",
         "description": "Deletes a user from the server.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "user",
@@ -11123,6 +11387,7 @@
         "name": "user_grant",
         "description": "Grants the user the specified roles.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "user",
@@ -11295,12 +11560,23 @@
         "name": "verify",
         "description": "verify an artifact",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "artifact",
                 "type": "string",
                 "description": "The artifact to verify. This can be an artifact source in yaml or json or the name of an artifact",
                 "required": true
+            },
+            {
+                "name": "repository",
+                "type": "string",
+                "description": "The repository to use for verification, if not set, we default to the global repository."
+            },
+            {
+                "name": "disable_override",
+                "type": "bool",
+                "description": "If set, we do not allow override of built-in artifacts (allowed by default)"
             }
         ],
         "platforms": [
@@ -11492,18 +11768,28 @@
         "name": "watch_ebpf",
         "description": "Watch for events from eBPF.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "events",
                 "type": "string",
                 "description": "A list of event names to acquire.",
-                "repeated": true,
-                "required": true
+                "repeated": true
             },
             {
                 "name": "include_env",
                 "type": "bool",
                 "description": "Include process environment variables."
+            },
+            {
+                "name": "policy",
+                "type": "string",
+                "description": "Use a tracee policy in YAML format to specify events instead."
+            },
+            {
+                "name": "regex_prefilter",
+                "type": "string",
+                "description": "A regex that must match the raw buffer before we process it."
             }
         ],
         "category": "linux",
@@ -11518,6 +11804,7 @@
         "name": "watch_etw",
         "description": "Watch for events from an ETW provider.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "name",
@@ -11593,6 +11880,7 @@
         "name": "watch_evtx",
         "description": "Watch an EVTX file and stream events from it.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "filename",
@@ -11727,6 +12015,7 @@
         "name": "watch_syslog",
         "description": "Watch a syslog file and stream events from it.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "filename",
@@ -11831,6 +12120,7 @@
         "name": "winpmem",
         "description": "Uses the `winpmem` driver to take a memory image.",
         "type": "Function",
+        "version": 2,
         "args": [
             {
                 "name": "service",
@@ -11999,9 +12289,51 @@
         ]
     },
     {
+        "name": "write_file",
+        "description": "Writes a string onto a file.",
+        "type": "Function",
+        "args": [
+            {
+                "name": "data",
+                "type": "string",
+                "description": "The data to write",
+                "required": true
+            },
+            {
+                "name": "dest",
+                "type": "string",
+                "description": "The destination file to write.",
+                "required": true
+            },
+            {
+                "name": "permissions",
+                "type": "string",
+                "description": "Required permissions (e.g. 'x')."
+            },
+            {
+                "name": "append",
+                "type": "bool",
+                "description": "If true we append to the target file otherwise truncate it"
+            },
+            {
+                "name": "create_directories",
+                "type": "bool",
+                "description": "If true we ensure the destination directories exist"
+            }
+        ],
+        "metadata": {
+            "permissions": "FILESYSTEM_WRITE,FILESYSTEM_READ"
+        },
+        "platforms": [
+            "linux_amd64_cgo",
+            "windows_amd64_cgo"
+        ]
+    },
+    {
         "name": "write_jsonl",
         "description": "Write a query into a JSONL file.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "filename",
@@ -12110,6 +12442,7 @@
         "name": "yara",
         "description": "Scan files using yara rules.",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "rules",
@@ -12216,6 +12549,7 @@
         "name": "yarax",
         "description": "Scan files using yara rules (Using the new yarax engine).",
         "type": "Plugin",
+        "version": 2,
         "args": [
             {
                 "name": "rules",
