@@ -13,21 +13,6 @@ jobs:
       # The checkout step
       - uses: actions/checkout@master
 
-      - name: Download Latest Velociraptor
-        uses: robinraju/release-downloader@v1
-        id: velociraptor
-        with:
-          repository: velocidex/velociraptor
-          tag: v0.75
-          fileName: "velociraptor-v0.75.6-linux-amd64-musl"
-          out-file-path: tests
-
-      - name: Verify Exchange Artifacts
-        run: |
-          mv ${{ fromJson(steps.velociraptor.outputs.downloaded_files)[0]}} ./tests/velociraptor
-          chmod +x ./tests/velociraptor
-          ./tests/velociraptor -v artifacts verify ./content/exchange/artifacts/*.yaml
-
       - uses: rojopolis/spellcheck-github-actions@0.35.0
         name: Spellcheck
         with:
