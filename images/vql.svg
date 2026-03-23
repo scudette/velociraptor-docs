@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Svg Vector Icons : http://www.onlinewebfonts.com/icon -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 1000 1000"
+   enable-background="new 0 0 1000 1000"
+   xml:space="preserve"
+   id="svg84"
+   sodipodi:docname="vql.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"><metadata
+   id="metadata90"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs88" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1600"
+   inkscape:window-height="853"
+   id="namedview86"
+   showgrid="false"
+   inkscape:zoom="0.666"
+   inkscape:cx="500"
+   inkscape:cy="500"
+   inkscape:window-x="0"
+   inkscape:window-y="25"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="g82" />
+<g
+   id="g82"><path
+     d="M804.7,990h-610c-73.7,0-133.6-58.9-133.6-131.2V141.2C61.2,68.9,121.1,10,194.7,10h520.5l223,243v605.9C938.3,931.1,878.4,990,804.7,990L804.7,990z M194.7,33.2c-60.9,0-110.4,48.5-110.4,108v717.6c0,59.6,49.5,108,110.4,108h610c60.9,0,110.4-48.5,110.4-108V262l-210-228.8H194.7L194.7,33.2z"
+     id="path70" /><path
+     d="M713.8,268.1h-23.2V17.7h23.2V268.1z"
+     id="path72" /><path
+     d="M920.1,268.1H702.2v-23.2h217.9V268.1z"
+     id="path74" /><path
+     d="M84.5,750.2H61.3V377h23.2V750.2z"
+     id="path78" /><path
+     d="M938.7,749h-23.2V375.8h23.2V749z"
+     id="path80" /><g
+     id="g101"
+     transform="translate(12.012012,225.22523)"><rect
+       y="145.46877"
+       x="7.3789887"
+       height="377.29999"
+       width="943.20001"
+       id="rect96" /><text
+       id="text94"
+       y="466.96692"
+       x="81.081078"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:400px;fill:#ffffff"
+         y="466.96692"
+         x="81.081078"
+         id="tspan92"
+         sodipodi:role="line">VQL</tspan></text>
+</g></g>
+</svg>

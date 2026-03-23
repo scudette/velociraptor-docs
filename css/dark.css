@@ -1,0 +1,87 @@
+body.dark {
+    --MAIN-TEXT-color:#ECEFF1;
+    --MAIN-TEXT-background-color: #121212;
+    --MAIN-TITLES-TEXT-color: rgb(255, 255, 255);
+    --MAIN-LINK-color:#68f516; /* Color of links */
+    --MAIN-LINK-HOVER-color:#16d03e; /* Color of hovered links */
+    --MAIN-ANCHOR-color: #1cf36e; /* color of anchors on titles */
+
+    --MENU-HEADER-BG-color:#121212; /* Background color of menu header */
+    --MENU-HEADER-BORDER-color:#14de57; /*Color of menu header border */
+
+    --MENU-SEARCH-BG-color:#121212; /* Search field background color (by default borders + icons) */
+    --MENU-SEARCH-BOX-color: rgb(255, 254, 254); /* Override search field border color */
+    --MENU-SEARCH-BOX-ICONS-color: #ffffff; /* Override search field icons color */
+
+    --MENU-SECTIONS-ACTIVE-BG-color:#121212; /* Background color of the active section and its childs */
+    --MENU-SECTIONS-BG-color:#121212; /* Background color of other sections */
+    --MENU-SECTIONS-LINK-color: rgb(253, 253, 253); /* Color of links in menu */
+    --MENU-SECTIONS-LINK-HOVER-color: #777;  /* Color of links in menu, when hovered */
+    --MENU-SECTION-ACTIVE-CATEGORY-color: #000; /* Color of active category text */
+    --MENU-SECTION-ACTIVE-CATEGORY-BG-color: #eaeaea; /* Color of background for the active category (only) */
+
+    --MENU-VISITED-color: #33a1ff; /* Color of 'page visited' icons in menu */
+    --MENU-SECTION-HR-color: #20272b; /* Color of <hr> separator in menu */
+
+    --CODE-SECTION-BG-color: #3b444b;
+    --CODE-color: var(--MAIN-TEXT-color);
+
+    --TABLE-HEADER-background-color: #323232;
+    --TABLE-HEADER-color: #ECEFF1;
+
+    --REFERENCE-value-color: #ffffff54;
+    --REFERENCE-border-color: #ffffff26;
+
+    --footer-color: #183f81;
+    --vql: lightcoral;
+    --MAIN-Author: red;
+    --MAIN-Date: #EFEBE9;
+    --mynotice: #EFEBE9;
+    --mynotices-first-child: #E0E0E0;
+    --mynotice-info-border: #FFCC8055;
+    --mynotice-info-background: #FFECB355;
+    --mynotice-warning-background: #DD2C0033;
+    --mynotice-warning-border:#C62828;
+    --mynotice-note-background: #B2EBF255;
+    --mynotice-note-border:#6AB0DE55;
+    --mynotice-tip-background: #a3daa555;
+    --mynotice-tip-border:#00E67655;
+    --h-num:#404040;
+    --topic-top: rgba(59, 59, 59, 0.08);
+    --topic-bottom: rgba(59, 59, 59, 0.08);
+    --shortcut-border-t:rgba(59, 59, 59, 0.08);
+    --shortcut-border-d:rgba(59, 59, 59, 0.08);
+    --footer-background: black;
+    --progress:#424242;
+}
+
+body.dark pre.chroma {
+    background-color: #424242;
+}
+
+body.dark #top-bar,
+body.dark .navbar-default {
+    background-color: #212121;
+    border-color: #212121;
+}
+
+body.dark a.nav {
+    color: var(--MAIN-TEXT-color) !important;
+}
+
+body.dark div.btn.darkmode {
+    display: none !important;
+}
+
+body.dark .carousel-choices .btn {
+    margin-top: 10px;
+    color: #212121;
+}
+
+body.dark .E {
+    background-color: var(--MAIN-TEXT-background-color);
+}
+
+body.dark p.egg {
+    display: block;
+}

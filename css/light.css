@@ -1,0 +1,73 @@
+:root{
+    --MAIN-TEXT-color:#323232; /* Color of text by default */
+    --MAIN-TEXT-background-color: #ECEFF1;
+    --MAIN-TITLES-TEXT-color: #000; /* Color of titles h2-h3-h4-h5 */
+    --MAIN-LINK-color:#1C90F3; /* Color of links */
+    --MAIN-LINK-HOVER-color:#167ad0; /* Color of hovered links */
+    --MAIN-ANCHOR-color: #1C90F3; /* color of anchors on titles */
+
+    --MENU-HEADER-BG-color:#fff; /* Background color of menu header */
+    --MENU-HEADER-BORDER-color:#14de57; /*Color of menu header border */
+
+    --MENU-SEARCH-BG-color:#fff; /* Search field background color (by default borders + icons) */
+    --MENU-SEARCH-BOX-color: #000; /* Override search field border color */
+    --MENU-SEARCH-BOX-ICONS-color: #111; /* Override search field icons color */
+
+    --MENU-SECTIONS-ACTIVE-BG-color:#fcfcfc; /* Background color of the active section and its childs */
+    --MENU-SECTIONS-BG-color:#eaeaea; /* Background color of other sections */
+    --MENU-SECTIONS-LINK-color: #000; /* Color of links in menu */
+    --MENU-SECTIONS-LINK-HOVER-color: #777;  /* Color of links in menu, when hovered */
+    --MENU-SECTION-ACTIVE-CATEGORY-color: #fcfcfc; /* Color of active category text */
+    --MENU-SECTION-ACTIVE-CATEGORY-BG-color: #aaaaaa; /* Color of background for the active category (only) */
+
+    --MENU-VISITED-color: #33a1ff; /* Color of 'page visited' icons in menu */
+    --MENU-SECTION-HR-color: #20272b; /* Color of <hr> separator in menu */
+
+    --CODE-SECTION-BG-color: white;
+    --CODE-color: var(--MAIN-TEXT-color);
+
+    --TABLE-HEADER-background-color: #ECEFF1;
+    --TABLE-HEADER-color: #323232;
+
+    --REFERENCE-value-color: #00000054;
+    --REFERENCE-border-color: #00000026;
+
+    --footer-color: #183f81;
+    --vql: lightcoral;
+    --MAIN-Author: red;
+    --MAIN-Date: #666;
+    --mynotice: #666;
+    --mynotices-first-child: #fff;
+    --mynotice-info-border: #F0B37E;
+    --mynotice-info-background: #FFF2DB;
+    --mynotice-warning-background: #FAE2E255;
+    --mynotice-warning-border:rgba(217, 83, 79, 0.8);
+    --mynotice-note-background: #B2EBF255;
+    --mynotice-note-border:#6AB0DE55;
+    --mynotice-tip-background: #E6F9E6;
+    --mynotice-tip-border:rgba(92, 184, 92, 0.8);
+    --h-num:#404040;
+    --topic-top: rgba(59, 59, 59, 0.08);
+    --topic-bottom: rgba(59, 59, 59, 0.08);
+    --shortcut-border-t:rgba(59, 59, 59, 0.08);
+    --shortcut-border-d:rgba(59, 59, 59, 0.08);
+    --footer-background: black;
+    --progress:#f5f5f5;
+
+    --BETA-color: #14de5740;
+}
+
+body.light div.btn.lightmode {
+    display: none !important;
+}
+
+.featherlight-content {
+    min-width: 60%;
+    max-height: 100%;
+}
+
+.hljs span::selection {
+    color: var(--MAIN-TEXT-background-color);
+    background: var(--MAIN-TEXT-color);
+}
+

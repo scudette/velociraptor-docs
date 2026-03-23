@@ -1,0 +1,5 @@
+User-agent: *
+Sitemap: https://docs.velocidex.com/sitemap.xml
+Allow: /
+Disallow: /js/
+Disallow: /css/

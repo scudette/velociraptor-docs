@@ -1,0 +1,3070 @@
+[
+    {
+        "title": "Windows.Detection.LotusBlossom.Chrysalis",
+        "author": "mgreen27",
+        "description": "Assists scoping IOCs related to the recent publicly disclosed Notepad++ \nsupply chain attack. ",
+        "link": "/exchange/artifacts/pages/chrysalis",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2026-02-03"
+    },
+    {
+        "title": "Linux.Events.EBPFEnriched",
+        "author": "zaneGittins",
+        "description": "This artifact forwards EBPF events generated on the endpoint and enriches events with:",
+        "link": "/exchange/artifacts/pages/linux.events.ebpfenriched",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
+        "date": "2026-01-22"
+    },
+    {
+        "title": "Windows.Kerberos.GoldenTicketTriage",
+        "author": "dciftci",
+        "description": "It analyzes klist output to identify Kerberos tickets with unusually long lifetimes as well as tickets where the Kdc Called field is empty.",
+        "link": "/exchange/artifacts/pages/windows.kerberos.goldentickettriage",
+        "tags": [
+            "0",
+            "1",
+            "2"
+        ],
+        "author_link": "https://github.com/dciftci",
+        "author_avatar": "https://avatars.githubusercontent.com/u/23119194?v=4",
+        "date": "2026-01-12"
+    },
+    {
+        "title": "Linux.Detection.CVE202514847.MongoBleed",
+        "author": "ecapuano",
+        "description": "Hunts for evidence of CVE-2025-14847 (MongoBleed) exploitation on MongoDB servers.",
+        "link": "/exchange/artifacts/pages/linux.detection.cve202514847.mongobleed",
+        "tags": [],
+        "author_link": "https://github.com/ecapuano",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4219694?v=4",
+        "date": "2025-12-27"
+    },
+    {
+        "title": "Windows.System.AutoLoggerDiagtrackListener",
+        "author": "mgreen27",
+        "description": "AutoLogger-Diagtrack-Listener.etl is a potential source of evidence of \nexecution and other system diagnostic data.",
+        "link": "/exchange/artifacts/pages/autologgerdiagtracklistener",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2025-12-12"
+    },
+    {
+        "title": "Windows.System.IsClrProcess",
+        "author": "mgreen27",
+        "description": "Identify running processes that host the .NET Common Language Runtime (CLR) and\nhighlight suspicious processes where CLR visibility may be reduced, downgraded, \nor disabled.",
+        "link": "/exchange/artifacts/pages/isclrprocess",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2025-12-02"
+    },
+    {
+        "title": "Windows.Detection.ReflectedAssemblies",
+        "author": "mgreen27",
+        "description": "Collects current running .NET assemblies and replicates ProcessHacker's .NET \nAssemblies view.",
+        "link": "/exchange/artifacts/pages/reflectedassemblies",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2025-12-02"
+    },
+    {
+        "title": "Windows.Memory.Mem2Disk",
+        "author": "lautarolecumberry",
+        "description": "This artifact compares executables in memory (RAM) with those\non hard disk. This way, RAM injections are detected. This rarely\nhappens legitimately and is mostly used by malware.\nThis check is executed without dumping the memory and works live\non the target system(s).\nSee also https://github.com/lautarolecumberry/DetectingFilelessMalware",
+        "link": "/exchange/artifacts/pages/windows.memory.mem2disk",
+        "tags": [],
+        "author_link": "https://github.com/lautarolecumberry",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22533437?v=4",
+        "date": "2025-11-14"
+    },
+    {
+        "title": "Windows.Detection.HyperV",
+        "author": "mgreen27",
+        "description": "Scope suspicious Hyper-V worker process and activity on Windows workstations. ",
+        "link": "/exchange/artifacts/pages/hyperv",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2025-11-07"
+    },
+    {
+        "title": "Windows.Vhdx.RemapConfigBuilder",
+        "author": "mirwitch",
+        "description": "Create remapping configuration YAML file(s) to virtually mount  \nVHDX profiles into virtual Velociraptor clients.",
+        "link": "/exchange/artifacts/pages/windows.vhdx.remapconfigbuilder",
+        "tags": [],
+        "author_link": "https://github.com/mirwitch",
+        "author_avatar": "https://avatars.githubusercontent.com/u/76847610?v=4",
+        "date": "2025-11-03"
+    },
+    {
+        "title": "Windows.Vhdx.Sys.Users",
+        "author": "mirwitch",
+        "description": "List User accounts by inspecting registry keys. This method is a\nreliable indicator for users who have physically logged into the\nsystem and thereby created local profiles.",
+        "link": "/exchange/artifacts/pages/windows.vhdx.sys.users",
+        "tags": [],
+        "author_link": "https://github.com/mirwitch",
+        "author_avatar": "https://avatars.githubusercontent.com/u/76847610?v=4",
+        "date": "2025-11-03"
+    },
+    {
+        "title": "Windows.Vhdx.VirtualClientRemover",
+        "author": "mirwitch",
+        "description": "Kill the Velociraptor agent used for the VHDX profiles virtual host.   ",
+        "link": "/exchange/artifacts/pages/windows.vhdx.virtualclientremover",
+        "tags": [],
+        "author_link": "https://github.com/mirwitch",
+        "author_avatar": "https://avatars.githubusercontent.com/u/76847610?v=4",
+        "date": "2025-11-03"
+    },
+    {
+        "title": "Windows.Vhdx.VirtualClientRunner",
+        "author": "mirwitch",
+        "description": "Run the Velociraptor agent using the remapping configuration created. This \nagent allow to virtually map the VHDX profiles into virtual Velociraptor agents.",
+        "link": "/exchange/artifacts/pages/windows.vhdx.virtualclientrunner",
+        "tags": [],
+        "author_link": "https://github.com/mirwitch",
+        "author_avatar": "https://avatars.githubusercontent.com/u/76847610?v=4",
+        "date": "2025-11-03"
+    },
+    {
+        "title": "Generic.File.LineScan.RegexHunter",
+        "author": "klehri-r7",
+        "description": "A versatile artifact that scans the contents of text files line by line and reports \nany line that matches a user-supplied regular expression.\nThis artifact is designed for flexible content inspection across any operating system\u2014\nLinux, Windows. It can be used to detect indicators of compromise, identify \nsuspicious commands in configuration files, or validate specific text patterns.",
+        "link": "/exchange/artifacts/pages/generic.file.linescan.regexhunter",
+        "tags": [],
+        "author_link": "https://github.com/klehri-r7",
+        "author_avatar": "https://avatars.githubusercontent.com/u/183785760?v=4",
+        "date": "2025-10-08"
+    },
+    {
+        "title": "Linux.Network.Netstat.Watcher",
+        "author": "ablescia",
+        "description": "Collects a one-time snapshot of current non-LISTEN remote connections and a continuous diff stream of added/removed/changed connections. Loopback destinations are excluded by default (127.0.0.1 and ::1) via a configurable regex.  The sampling interval (SampleIntervalSec) and the overall monitoring window (MonitorDurationSec) are fully parameterized. Each record includes process metadata via process_tracker_get\n",
+        "link": "/exchange/artifacts/pages/linux.network.netstat.watcher",
+        "tags": [],
+        "author_link": "https://github.com/ablescia",
+        "author_avatar": "https://avatars.githubusercontent.com/u/90195154?v=4",
+        "date": "2025-09-03"
+    },
+    {
+        "title": "Windows.Forensics.WindowsNotepadParser",
+        "author": "ogmini",
+        "description": "Runs the WindowsNotepadParser (https://github.com/ogmini/Notepad-State-Library) tool to collect and parse \nforensic artifacts related to Windows Notepad on Windows 11. ",
+        "link": "/exchange/artifacts/pages/windows.forensics.windowsnotepadparser",
+        "tags": [],
+        "author_link": "https://github.com/ogmini",
+        "author_avatar": "https://avatars.githubusercontent.com/u/112595633?v=4",
+        "date": "2025-08-01"
+    },
+    {
+        "title": "Generic.CommonLogFormat.AccessLogs",
+        "author": "ablescia",
+        "description": "Parses Apache access logs to extract detailed request information.\n",
+        "link": "/exchange/artifacts/pages/generic.commonlogformat.accesslogs",
+        "tags": [],
+        "author_link": "https://github.com/ablescia",
+        "author_avatar": "https://avatars.githubusercontent.com/u/90195154?v=4",
+        "date": "2025-07-30"
+    },
+    {
+        "title": "Linux.Persistence.LdPreload",
+        "author": "mgreen27",
+        "description": "Parses the GNU\u202fglibc **LD_PRELOAD** mechanism. Any path listed in \n`/etc/ld.so.preload` or assigned to `LD_PRELOAD` is force\u2011loaded into every \ndynamically linked executable. A single \nrogue entry therefore grants system\u2011wide code execution and persistence at\nprocess start\u2011up.",
+        "link": "/exchange/artifacts/pages/ldpreload",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2025-07-23"
+    },
+    {
+        "title": "Windows.Applications.MouseWithoutBorders",
+        "author": "0xSultan",
+        "description": "This artifact parses Microsoft Mouse Without Borders (MWB) runtime logs, module interface logs and the settings file.",
+        "link": "/exchange/artifacts/pages/windows.applications.mousewithoutborders",
+        "tags": [],
+        "author_link": "https://github.com/0xSultan",
+        "author_avatar": "https://avatars.githubusercontent.com/u/78733828?v=4",
+        "date": "2025-07-23"
+    },
+    {
+        "title": "Linux.Sys.Modinfo",
+        "author": "mgreen27",
+        "description": "Collects detailed metadata about Linux kernel modules using\u00a0modinfo. Useful for \nmalicious kernel module hunting.",
+        "link": "/exchange/artifacts/pages/modinfo",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2025-07-17"
+    },
+    {
+        "title": "Server.PostProcess.FluentBit",
+        "author": "predictiple",
+        "description": "Post-process collection results using [Fluent Bit](https://fluentbit.io/).",
+        "link": "/exchange/artifacts/pages/fluentbit",
+        "tags": [
+            "post",
+            "Elasticsearch",
+            "OpenSearch",
+            "Splunk",
+            "Graylog",
+            "BigQuery",
+            "Chronicle",
+            "CloudWatch",
+            "Amazon",
+            "S3",
+            "Azure",
+            "Datadog",
+            "Dynatrace",
+            "InfluxDB",
+            "Kafka",
+            "LogDNA",
+            "Loki",
+            "Oracle",
+            "PostgreSQL"
+        ],
+        "author_link": "https://github.com/predictiple",
+        "author_avatar": "https://avatars.githubusercontent.com/u/9843422?v=4",
+        "date": "2025-07-13"
+    },
+    {
+        "title": "Windows.Hunter.Yara.LOLDrivers",
+        "author": "klehri-r7",
+        "description": "This artifact scans system driver directories using two user-supplied YARA rules:",
+        "link": "/exchange/artifacts/pages/windows.hunter.yara.loldrivers",
+        "tags": [],
+        "author_link": "https://github.com/klehri-r7",
+        "author_avatar": "https://avatars.githubusercontent.com/u/183785760?v=4",
+        "date": "2025-06-18"
+    },
+    {
+        "title": "Linux.Sys.Getcap",
+        "author": "mgreen27",
+        "description": "Inspects extended file capabilities with getcap.  \nSince Linux 2.6.24, setcap can attach fine-grained privilege bits to \nexecutables, letting them perform the specific privileged actions they \nrequire instead of running as root.   \nIf a binary that\u2019s writable or executable by non-privileged users is granted \nexcessive capabilities, attackers can exploit it for privilege escalation.\n",
+        "link": "/exchange/artifacts/pages/getcap",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2025-06-11"
+    },
+    {
+        "title": "CyberTriage.Collector",
+        "author": "bcarrier",
+        "description": "Runs the Cyber Triage (http://cybertriage.com) Collector to copy forensic artifacts for automated analysis. The Dynamic collection will include EXEs, DLLs, and other files referenced by artifacts.\nThe output of the collection can be saved to a Velociraptor server, a Cyber Triage server, or cloud storage (S3 or Azure).\nConfiguration information is available at - https://docs.cybertriage.com/en/latest/chapters/integrations/velociraptor_collect.html\nIt requires the Velociraptor server to have copies of the Cyber Triage Deployer script and optional configuration files.\nHistory. 1.0 - Initial artifact creation\nContact support@cybertriage.com with any questions.\nCopyright (c) 2025 Sleuth Kit Labs LLC. All rights reserved.",
+        "link": "/exchange/artifacts/pages/cybertriagecollector",
+        "tags": [],
+        "author_link": "https://github.com/bcarrier",
+        "author_avatar": "https://avatars.githubusercontent.com/u/856501?v=4",
+        "date": "2025-06-10"
+    },
+    {
+        "title": "Server.Enrichment.AI.Gemini",
+        "author": "mgreen27",
+        "description": "Query Gemini AI for analysis of data.",
+        "link": "/exchange/artifacts/pages/gemini",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2025-05-01"
+    },
+    {
+        "title": "Server.Enrichment.AI.Anthropic",
+        "author": "mgreen27",
+        "description": "Query Anthropic AI for analysis of data.",
+        "link": "/exchange/artifacts/pages/anthropic",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2025-04-30"
+    },
+    {
+        "title": "Server.Enrichment.AI.Ollama",
+        "author": "mgreen27",
+        "description": "This artifact allows enrichment using Ollama AI. ",
+        "link": "/exchange/artifacts/pages/ollama",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2025-04-14"
+    },
+    {
+        "title": "Server.Enrichment.SecureAnnex",
+        "author": "shortstack",
+        "description": "Submit an extension to the Secure Annex API.",
+        "link": "/exchange/artifacts/pages/server.enrichment.secureannex",
+        "tags": [],
+        "author_link": "https://github.com/shortstack",
+        "author_avatar": "https://avatars.githubusercontent.com/u/1244979?v=4",
+        "date": "2025-03-30"
+    },
+    {
+        "title": "Windows.Detection.Keylogger",
+        "author": "zaneGittins",
+        "description": "This artifact is my attempt at implementing keylogger detection based on research presented by [Asuka Nakajima at NULLCON](https://speakerdeck.com/asuna_jp/nullcon-goa-2025-windows-keylogger-detection-targeting-past-and-present-keylogging-techniques) using the Microsoft-Windows-Win32k ETW provider.",
+        "link": "/exchange/artifacts/pages/windows.detection.keylogger",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
+        "date": "2025-03-25"
+    },
+    {
+        "title": "Windows.ETW.ScreenshotTaken",
+        "author": "zaneGittins",
+        "description": "This artifact detects screen captures by correlating events from the Microsoft-Windows-Win32k ETW provider which are triggered by common Windows API calls made when taking a screenshot. This can be useful for detecting remote access trojans, infostealers, and data exfiltration. Tested against Sliver, Meterpreter, and Empire. This will also trigger on legitimate tools such as ZoomIt, Greenshot, MsTeams, etc. which can be excluded on a case by case basis via the ProcessExceptionsRegex parameter.\n",
+        "link": "/exchange/artifacts/pages/windows.etw.screenshottaken",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
+        "date": "2025-03-25"
+    },
+    {
+        "title": "Linux.Detection.Honeyfiles",
+        "author": "zaneGittins",
+        "description": "This artifact deploys honeyfiles according to the Honeyfiles CSV parameter. It then monitors access to these files using eBPF.  The process tracker must be enabled, we use this to enrich events. You also must be using Velociraptor >= 0.74 to support eBPF. Honeyfiles created by this artifact are removed at exit.",
+        "link": "/exchange/artifacts/pages/linux.detection.honeyfiles",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
+        "date": "2025-03-18"
+    },
+    {
+        "title": "Windows.Detection.Honeyfiles",
+        "author": "zaneGittins",
+        "description": "This artifact deploys honeyfiles according to the Honeyfiles CSV parameter. It then monitors access to these files using etw.  The process tracker must be enabled, we use this to enrich etw events. Honeyfiles created by this artifact are removed at exit.\n",
+        "link": "/exchange/artifacts/pages/windows.detection.honeyfile",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
+        "date": "2025-03-18"
+    },
+    {
+        "title": "MacOS.Forensics.ASL",
+        "author": "ydkhatri",
+        "description": "This artifact parses the ASL (Apple System Log) v2 files located at \n/private/var/log/asl/*.asl\n",
+        "link": "/exchange/artifacts/pages/macos.forensics.asl",
+        "tags": [],
+        "author_link": "https://github.com/ydkhatri",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13247440?v=4",
+        "date": "2025-02-19"
+    },
+    {
+        "title": "Linux.Forensics.Targets",
+        "author": "kidrek",
+        "description": "This artifact collects all necessary artifacts files and directories from Linux operating system. \n",
+        "link": "/exchange/artifacts/pages/linux.forensics.targets",
+        "tags": [],
+        "author_link": "https://github.com/kidrek",
+        "author_avatar": "https://avatars.githubusercontent.com/u/202946?v=4",
+        "date": "2024-12-27"
+    },
+    {
+        "title": "Docker.Image.Export",
+        "author": "DoppioRistretto",
+        "description": "Uses the Docker UNIX socket to export a Docker image to a\ntempfile and upload to Velociraptor.",
+        "link": "/exchange/artifacts/pages/docker.image.export",
+        "tags": [
+            "docker"
+        ],
+        "author_link": "https://github.com/DoppioRistretto",
+        "author_avatar": "https://avatars.githubusercontent.com/u/28914750?v=4",
+        "date": "2024-12-09"
+    },
+    {
+        "title": "Windows.Forensics.NotificationsDatabase",
+        "author": "zaneGittins",
+        "description": "Parses the Win10/11 notifications database, which contains events for badges, tiles, and toasts shown to each user.\n",
+        "link": "/exchange/artifacts/pages/windows.forensics.notificationsdatabase",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
+        "date": "2024-12-06"
+    },
+    {
+        "title": "Windows.ESET.Logs",
+        "author": "j91321",
+        "description": "Parse logs from ESET antivirus products. This log contains information about detections made by the ESET modules such as Real-time filesystem proteciton, Firewall, HIPS, Device Control, HTTP filter, AMSI Scanner etc.\n",
+        "link": "/exchange/artifacts/pages/esetlogs",
+        "tags": [],
+        "author_link": "https://github.com/j91321",
+        "author_avatar": "https://avatars.githubusercontent.com/u/10012872?v=4",
+        "date": "2024-12-01"
+    },
+    {
+        "title": "Linux.Forensics.ProcFD",
+        "author": "chrisdfir",
+        "description": "This artifact collects metadata about open file descriptors from active processes on a Linux system. \nOutputs include regular files, sockets, device files, and deleted files used by each process.\n",
+        "link": "/exchange/artifacts/pages/linux.forensics.procfd",
+        "tags": [],
+        "author_link": "https://github.com/chrisdfir",
+        "author_avatar": "https://avatars.githubusercontent.com/u/18665523?v=4",
+        "date": "2024-10-14"
+    },
+    {
+        "title": "Windows.LastDomainUsers",
+        "author": "AnthoLaMalice",
+        "description": "Enumerate Domain Users by creation date. This artifact can be used to quickly detect new domain accounts that may have been created by attackers. This artifact must be run on Domain Joined systems with the PowerShell Active Directory module installed.",
+        "link": "/exchange/artifacts/pages/windows.lastdomainusers",
+        "tags": [],
+        "author_link": "https://github.com/AnthoLaMalice",
+        "author_avatar": "https://avatars.githubusercontent.com/u/78861013?v=4",
+        "date": "2024-10-09"
+    },
+    {
+        "title": "FreeBSD.Sys.Utx",
+        "author": "Herbert-Karl",
+        "description": "Parse the utx file of the system (similar to wtmp on Linux). This covers user sessions, boots, shutdowns and system time changes.\nBecause FreeBSD discards fields for the entries of the utx file based on type (see `man getutxent`), no direct parsing of the file using \"vtypes\" is done (too complicated for me to define a structure for parsing), but rather native tools are used for accessing the data.",
+        "link": "/exchange/artifacts/pages/freebsd.sys.utx",
+        "tags": [],
+        "author_link": "https://github.com/Herbert-Karl",
+        "author_avatar": "https://avatars.githubusercontent.com/u/34774005?v=4",
+        "date": "2024-09-08"
+    },
+    {
+        "title": "Server.Hunt.Comparison",
+        "author": "DenKi42",
+        "description": "This artifact is used to compare other artifacts from two different hunts. The basic idea is that a baseline (Hunt 1) is created from selected artifacts before an attack. A second hunt (Hunt 2) can then be carried out after the attack using the same artifacts. Now, using this script, artifacts from both hunts can be compared. This allows legitimate activities to be filtered out and makes it easier to identify malicious activities in Hunt2.",
+        "link": "/exchange/artifacts/pages/server.hunt.comparison",
+        "tags": [],
+        "author_link": "https://github.com/DenKi42",
+        "author_avatar": "https://avatars.githubusercontent.com/u/174724495?v=4",
+        "date": "2024-08-28"
+    },
+    {
+        "title": "Windows.Sysinternals.PSShutdown",
+        "author": "iboje",
+        "description": "PsShutdown is a command-line utility similar to the shutdown utility from the Windows 2000 Resource Kit, but with the ability to do much more. In addition to supporting the same options for shutting down or rebooting the local or a remote computer, PsShutdown can logoff the console user or lock the console (locking requires Windows 2000 or higher). PsShutdown requires no manual installation of client software.\n",
+        "link": "/exchange/artifacts/pages/windows.sysinternals.psshutdown",
+        "tags": [],
+        "author_link": "https://github.com/iboje",
+        "author_avatar": "https://avatars.githubusercontent.com/u/55198930?v=4",
+        "date": "2024-08-28"
+    },
+    {
+        "title": "Linux.ExtractKthread",
+        "author": "andy99998",
+        "description": "This artifact parses `/proc/[0-9]*/status` files and extracts the `ProcessName` and `Kthread` values. Helpful for identifying imposter processes.\n",
+        "link": "/exchange/artifacts/pages/linux.collection.kthread",
+        "tags": [],
+        "author_link": "https://github.com/andy99998",
+        "author_avatar": "https://avatars.githubusercontent.com/u/6075698?v=4",
+        "date": "2024-08-22"
+    },
+    {
+        "title": "Linux.Forensics.EnvironmentVariables",
+        "author": "ibyf0r3ns1cs",
+        "description": "This artifact detects potential persistence mechanisms on Linux systems by analyzing environment variable files and login scripts.  ",
+        "link": "/exchange/artifacts/pages/linux.forensics.environmentvariables",
+        "tags": [],
+        "author_link": "https://github.com/ibyf0r3ns1cs",
+        "author_avatar": "https://avatars.githubusercontent.com/u/50079464?v=4",
+        "date": "2024-08-22"
+    },
+    {
+        "title": "Windows.Veeam.RestorePoints.BackupFiles",
+        "author": "cybiosity-syn",
+        "description": "Parses the metadata found in Veeam full backup files (`.vbk`), Veeam incremental backup files (`.vib`) and Veeam reverse incremental backup files (`.vrb`) to extract relevant fields for each Restore Point.",
+        "link": "/exchange/artifacts/pages/windows.veeam.restorepoints.backupfiles",
+        "tags": [],
+        "author_link": "https://github.com/cybiosity-syn",
+        "author_avatar": "https://avatars.githubusercontent.com/u/158057079?v=4",
+        "date": "2024-08-22"
+    },
+    {
+        "title": "Windows.Utils.DefenderExclusion",
+        "author": "predictiple",
+        "description": "**Adds a Microsoft Defender real-time scanning process exclusion for\nVelociraptor.**",
+        "link": "/exchange/artifacts/pages/defenderexclusion",
+        "tags": [
+            "microsoft"
+        ],
+        "author_link": "https://github.com/predictiple",
+        "author_avatar": "https://avatars.githubusercontent.com/u/9843422?v=4",
+        "date": "2024-08-18"
+    },
+    {
+        "title": "Linux.Event.Network.Nethogs",
+        "author": "misje",
+        "description": "Monitor network use per process using the tool \"nethogs\". This artifact will\nlist all processes that produces (non-local) network traffic on the client.\nThe NetstatEnriched artifact is used to provide detailed information about the\nprocess using netstat and the process tracker, along with the bytes received\nand sent in bytes per second.",
+        "link": "/exchange/artifacts/pages/linux.event.network.nethogs",
+        "tags": [],
+        "author_link": "https://github.com/misje",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4006538?v=4",
+        "date": "2024-07-23"
+    },
+    {
+        "title": "Linux.Network.Nethogs",
+        "author": "misje",
+        "description": "Monitor network use per process using the tool \"nethogs\". This artifact will\nlist all processes that produces (non-local) network traffic on the client.\nThe NetstatEnriched artifact is used to provide detailed information about the\nprocess using netstat and the process tracker, along with the bytes received\nand sent in bytes per second.",
+        "link": "/exchange/artifacts/pages/linux.network.nethogs",
+        "tags": [],
+        "author_link": "https://github.com/misje",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4006538?v=4",
+        "date": "2024-07-23"
+    },
+    {
+        "title": "Linux.Applications.Docker.Ps",
+        "author": "j91321",
+        "description": "Get Docker containers by connecting to the docker.socket. Same as running `docker ps`",
+        "link": "/exchange/artifacts/pages/linux.applications.docker.ps",
+        "tags": [],
+        "author_link": "https://github.com/j91321",
+        "author_avatar": "https://avatars.githubusercontent.com/u/10012872?v=4",
+        "date": "2024-07-15"
+    },
+    {
+        "title": "Notebooks.Admin.Flows",
+        "author": "misje",
+        "description": "This notebooks lists all recent flows/collections across all orgs on the\nplatform. It may be used for auditing or as a means of finding a collection\npreviously scheduled.",
+        "link": "/exchange/artifacts/pages/notebooks.admin.flows",
+        "tags": [],
+        "author_link": "https://github.com/misje",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4006538?v=4",
+        "date": "2024-07-15"
+    },
+    {
+        "title": "Generic.Events.TrackNetworkConnections",
+        "author": "sec-hbaer",
+        "description": "This artifact is meant for monitoring network connections on clients.\nIt periodically queries the existing network connections and emits lines for differences (new connections and missing/removed ones).\nNetwork connections are tracked and compared based on following elements: process id, layer 3 protocol, layer 4 protocol, local address used, local port used, remote address used, remote port used.",
+        "link": "/exchange/artifacts/pages/generic.events.tracknetworkconnections",
+        "tags": [],
+        "author_link": "https://github.com/sec-hbaer",
+        "author_avatar": "https://avatars.githubusercontent.com/u/150132280?v=4",
+        "date": "2024-07-10"
+    },
+    {
+        "title": "Server.Alerts.TrackNetworkConnections",
+        "author": "sec-hbaer",
+        "description": "This artifact alerts on network connections tracked by Velociraptor on clients.\nRequires the client_event artifact 'Generic.Events.TrackNetworkConnections' to be enabled.",
+        "link": "/exchange/artifacts/pages/server.alerts.tracknetworkconnections",
+        "tags": [],
+        "author_link": "https://github.com/sec-hbaer",
+        "author_avatar": "https://avatars.githubusercontent.com/u/150132280?v=4",
+        "date": "2024-07-10"
+    },
+    {
+        "title": "Windows.EventLogs.DeepBlueCLI",
+        "author": "AnthoLaMalice",
+        "description": "DeepBlueCLI - a PowerShell Module for Threat Hunting via Windows Event Logs",
+        "link": "/exchange/artifacts/pages/windows.deepbluecli",
+        "tags": [],
+        "author_link": "https://github.com/AnthoLaMalice",
+        "author_avatar": "https://avatars.githubusercontent.com/u/78861013?v=4",
+        "date": "2024-07-10"
+    },
+    {
+        "title": "Windows.Ssh.AuthorizedKeys",
+        "author": "j91321",
+        "description": "Find and parse ssh authorized keys files on Windows running OpenSSH service.\n",
+        "link": "/exchange/artifacts/pages/windows.ssh.authorizedkeys",
+        "tags": [],
+        "author_link": "https://github.com/j91321",
+        "author_avatar": "https://avatars.githubusercontent.com/u/10012872?v=4",
+        "date": "2024-07-10"
+    },
+    {
+        "title": "Windows.EventLogs.SysmonProcessEnriched.yaml",
+        "author": "zaneGittins",
+        "description": "Collects sysmon process creation events and enriches with authenticode signature, tlsh hash, and call chain. Requires Sysmon and the process tracker.\n",
+        "link": "/exchange/artifacts/pages/windows.eventlogs.sysmonprocessenriched",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
+        "date": "2024-06-28"
+    },
+    {
+        "title": "Linux.Detection.BruteForce",
+        "author": "RCarras",
+        "description": "\nLinux detection brute force module.\nThis code is based on https://github.com/RCarras/linforce/blob/main/linforce.sh\n   \nThis module uses btmp/wtmp files to search for possible brute force attacks comparing:",
+        "link": "/exchange/artifacts/pages/linux.detection.bruteforce",
+        "tags": [],
+        "author_link": "https://github.com/RCarras",
+        "author_avatar": "https://avatars.githubusercontent.com/u/26235739?v=4",
+        "date": "2024-06-25"
+    },
+    {
+        "title": "Windows.System.Recall.AllWindowEvents",
+        "author": "zachstanford-cybercx",
+        "description": "This artefact will read and correlate several tables to do with Microsoft Recall.",
+        "link": "/exchange/artifacts/pages/windows.system.recall.allwindowevents",
+        "tags": [],
+        "author_link": "https://github.com/zachstanford-cybercx",
+        "author_avatar": "https://avatars.githubusercontent.com/u/163638082?v=4",
+        "date": "2024-06-03"
+    },
+    {
+        "title": "Windows.System.Recall.WindowCaptureEvent",
+        "author": "zachstanford-cybercx",
+        "description": "This artefact will read and correlate several tables to do with Microsoft Recall.",
+        "link": "/exchange/artifacts/pages/windows.system.recall.windowcaptureevent",
+        "tags": [],
+        "author_link": "https://github.com/zachstanford-cybercx",
+        "author_avatar": "https://avatars.githubusercontent.com/u/163638082?v=4",
+        "date": "2024-06-03"
+    },
+    {
+        "title": "Exchange.Windows.EventLogs.Hayabusa.Takajo",
+        "author": "x0rPE",
+        "description": "[Takajo] (https://github.com/Yamato-Security/takajo) is a fast forensics analyzer\nfor Hayabusa results written in Nim. Takaj\u014d means \"Falconer\" in Japanese\nand was chosen as it analyzes Hayabusa's \"catches\" (results).",
+        "link": "/exchange/artifacts/pages/exchange.windows.eventlogs.hayabusa.takajo",
+        "tags": [],
+        "author_link": "https://github.com/x0rPE",
+        "author_avatar": "https://avatars.githubusercontent.com/u/45003021?v=4",
+        "date": "2024-04-08"
+    },
+    {
+        "title": "Exchange.Windows.System.PowerShell.DetectResponder",
+        "author": "Jbhoohe",
+        "description": "This artifact allows to detect responder in the environment\nhttps://tcm-sec.com/llmnr-poisoning-and-how-to-prevent-it/\n",
+        "link": "/exchange/artifacts/pages/exchange.windows.system.powershell.detectresponder",
+        "tags": [],
+        "author_link": "https://github.com/Jbhoohe",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3902514?v=4",
+        "date": "2024-04-05"
+    },
+    {
+        "title": "Windows.Forensics.Trawler",
+        "author": "joeavanzato",
+        "description": "Trawler [https://github.com/joeavanzato/Trawler] is a PowerShell script designed to help Incident\nResponders rapidly identify potential adversary persistence mechanisms on Windows.  It is similar\nin nature to PersistenceSniper with additional targeted checks as well as the capability to operate\nagainst a 'dead box' (mounted drive). The output is simplified compared to PersistenceSniper, providing\nthe user with the details needed to kick off an investigation into any identified mechanisms.\nThink of these tools as autoruns on steroids.",
+        "link": "/exchange/artifacts/pages/trawler",
+        "tags": [],
+        "author_link": "https://github.com/joeavanzato",
+        "author_avatar": "https://avatars.githubusercontent.com/u/23218352?v=4",
+        "date": "2024-04-04"
+    },
+    {
+        "title": "Windows.Scanner.Yara.Parsed",
+        "author": "mgreen27",
+        "description": "Instructions: Upload a yara signature file (signature file must be named yara.yas) and yara64.exe in a single zip file called yara.zip.\nThis artifact is an alternative way to scan processes, or recursively scan the C:\\ with a yara file containing multiple yara rules, utilizing the official yara tool. ",
+        "link": "/exchange/artifacts/pages/windows.detection.yara.yara64",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2024-03-24"
+    },
+    {
+        "title": "Windows.Forensics.AdvancedPortScanner",
+        "author": "y0sh1mitsu",
+        "description": "This Velociraptor artifact is tailored for forensics analysis of Angry IP Scanner usage on Windows platforms. This facilitates the identification of how Angry IP Scanner was configured and used, aiding in DFIR investigations. It examines registry keys HKEY_USERS\\\\*\\\\SOFTWARE\\\\Famatech\\\\advanced_port_scanner and HKEY_USERS\\\\*\\\\SOFTWARE\\\\Famatech\\\\advanced_port_scanner\\\\State for retrieve some informations about:\n   \n- run: Displays the version of Advanced Port Scanner\n- locale_timestamp: Indicates the time in EPOCH (UTC +0) at which the application was first launched\n- locale: Displays the language chosen for the graphical interface, may prove useful to have an idea of the native language of a threat actor (it is necessary to correlate with a modus operandi in order not to fall into the trap of a false flag)\n- LastPortsUsed: Displays the last ports used in the last scan\n- LastRangeUsed: Displays the last IP range used in the last scan\n- IpRangesMruList: Displays all the IP ranges scanned by the tool, the first digit of each prefix in this list indicates the frequency of scans for each range\n- PortsMruList: Displays all the ports that have been scanned by the tool, the first digit of each prefix in this list indicates the frequency of scans for each port\n- SearchMruList: Displays all the IP addresses or hostnames that have been searched using the GUI's \"search\" feature\n",
+        "link": "/exchange/artifacts/pages/windows.forensics.advancedportscanner",
+        "tags": [],
+        "author_link": "https://github.com/y0sh1mitsu",
+        "author_avatar": "https://avatars.githubusercontent.com/u/62485373?v=4",
+        "date": "2024-03-24"
+    },
+    {
+        "title": "Windows.Forensics.AngryIPScanner",
+        "author": "y0sh1mitsu",
+        "description": "This Velociraptor artifact is tailored for forensic analysis of Angry IP Scanner usage on Windows platforms. This facilitates the identification of how Angry IP Scanner was configured and used, aiding in DFIR investigations. It examines HKEY_USERS\\\\*\\\\SOFTWARE\\\\JavaSoft\\\\Prefs\\\\ipscan from the registry for retrieve some informations about:\n  \n  - language: Displays the language used in the GUI, may prove useful to have an idea of the language used by a threat actor (it is necessary to correlate with a modus operandi in order not to fall into the trap of a false flag)\n  - Version: Displays the version of Angry IP Scanner\n  - LastVersionCheck: Captures the last time (EPOCH format in UTC +0) when the application checked for an update\n  - PortScanConfiguration: Displays the selected ports for scanning\n",
+        "link": "/exchange/artifacts/pages/windows.forensics.angryipscanner",
+        "tags": [],
+        "author_link": "https://github.com/y0sh1mitsu",
+        "author_avatar": "https://avatars.githubusercontent.com/u/62485373?v=4",
+        "date": "2024-03-24"
+    },
+    {
+        "title": "Windows.Forensics.SoftPerfectNetworkScanner",
+        "author": "y0sh1mitsu",
+        "description": "This Velociraptor artifact is tailored for forensic analysis of SoftPerfect Network Scanner (NetScan) usage on Windows platforms. This facilitates the identification of how SoftPerfect Network Scanner was configured and used, aiding in DFIR investigations. It parse the MFT to search and retrieve the content of two files:",
+        "link": "/exchange/artifacts/pages/windows.forensics.softperfectnetworkscanner",
+        "tags": [],
+        "author_link": "https://github.com/y0sh1mitsu",
+        "author_avatar": "https://avatars.githubusercontent.com/u/62485373?v=4",
+        "date": "2024-03-24"
+    },
+    {
+        "title": "Windows.Forensics.ThumbCache",
+        "author": "mgreen27",
+        "description": "ThumbCache_xx.db parser. ",
+        "link": "/exchange/artifacts/pages/thumbcache",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2024-03-16"
+    },
+    {
+        "title": "Windows.Forensics.TabState",
+        "author": "mgreen27",
+        "description": "This artifact parses notepad TabState files in available in Windows 11.",
+        "link": "/exchange/artifacts/pages/tabstate",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2024-03-03"
+    },
+    {
+        "title": "Windows.Triage.ScreenConnect",
+        "author": "mgreen27",
+        "description": "This artifact extracts useful data for triage of ConnectWise ScreenConnect\nCVE-2024-1709 and CVE-2024-1708 impacting versions 23.9.7 and prior.",
+        "link": "/exchange/artifacts/pages/screenconnect",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2024-02-23"
+    },
+    {
+        "title": "Windows.Audit.CISCat_Lite",
+        "author": "ablescia",
+        "description": "This artifact runs the CISCat-Lite tool on the target machine and\nuploads the html output on the velociraptor server.",
+        "link": "/exchange/artifacts/pages/windows.audit.ciscat_lite",
+        "tags": [],
+        "author_link": "https://github.com/ablescia",
+        "author_avatar": "https://avatars.githubusercontent.com/u/90195154?v=4",
+        "date": "2024-02-18"
+    },
+    {
+        "title": "Generic.Detection.WebShells",
+        "author": "sec-hbaer",
+        "description": "This artifact looks for evidence of a web shell being present on the system. It targets Windows and Linux hosts.\nThe artifact should be run on web servers, be it dedicated web servers or systems with integrated web servers. \nFor such machines, find the root directory of the web server and change the artifact parameters as needed.",
+        "link": "/exchange/artifacts/pages/generic.detection.webshells",
+        "tags": [],
+        "author_link": "https://github.com/sec-hbaer",
+        "author_avatar": "https://avatars.githubusercontent.com/u/150132280?v=4",
+        "date": "2024-02-14"
+    },
+    {
+        "title": "Windows.Forensics.Jumplists_JLECmd",
+        "author": "orhan-emre",
+        "description": "* Execute Eric Zimmerman's JLECmd to parse AUTOMATICDESTINATIONS-MS and CUSTOMDESTINATIONS-MS files in C:\\ drive recursively and return output for analysis. (jlecmd.exe -d C:/ --csvf -csv tmpdir results.csv).\n* JLECmd.zip is downloaded from the URL to 'C:\\Program Files\\Velociraptor\\Tools' folder.\n* JLECmd.zip can be uploaded to Velociraptor Server in order to copy it to the clients in case there is no internet connection.\n* Created using @carlos_cajigas LECmd VQL as a quide.\n* JLECmd is a CLI tool for analyzing Custom Destinations jump list data. Learn more - https://github.com/EricZimmerman/JLECmd\n",
+        "link": "/exchange/artifacts/pages/windows.forensics.jumplists_jlecmd",
+        "tags": [],
+        "author_link": "https://github.com/orhan-emre",
+        "author_avatar": "https://avatars.githubusercontent.com/u/64384804?v=4",
+        "date": "2024-02-14"
+    },
+    {
+        "title": "Windows.Mounted.Mass.Storage",
+        "author": "hasamba",
+        "description": "Find drives/usb mass storage that were mounted\n",
+        "link": "/exchange/artifacts/pages/windows.mounted.mass.storage",
+        "tags": [],
+        "author_link": "https://github.com/hasamba",
+        "author_avatar": "https://avatars.githubusercontent.com/u/7392290?v=4",
+        "date": "2024-02-13"
+    },
+    {
+        "title": "Windows.Registry.ScheduledTasks",
+        "author": "mgreen27",
+        "description": "This artefact will collect Scheduled task information from the registry without \nrelying on the existance of an XML file in C:\\\\Windows\\\\System32\\\\Tasks.",
+        "link": "/exchange/artifacts/pages/scheduledtasks",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2024-02-12"
+    },
+    {
+        "title": "Generic.Detection.Yara.SSH",
+        "author": "mgreen27",
+        "description": "This is a server artifact that enables running Generic.Detection.Yara.Glob \nover ssh.",
+        "link": "/exchange/artifacts/pages/sshyara",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2024-02-06"
+    },
+    {
+        "title": "Windows.Veeam.RestorePoints.MetadataFiles",
+        "author": "cybiosity-syn",
+        "description": "Parses the metadata found in Veeam backup chain metadata files (`.vbm`) to extract relevant fields for each Restore Point.",
+        "link": "/exchange/artifacts/pages/windows.veeam.restorepoints.metadatafiles",
+        "tags": [],
+        "author_link": "https://github.com/cybiosity-syn",
+        "author_avatar": "https://avatars.githubusercontent.com/u/158057079?v=4",
+        "date": "2024-01-29"
+    },
+    {
+        "title": "Generic.Detection.Confluence_CVE_2023_22527",
+        "author": "mgreen27",
+        "description": "This artifact detects evidence of exploitation of Confluence RCE CVE-2023-22527.",
+        "link": "/exchange/artifacts/pages/confluence_cve_2023_22527",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2024-01-26"
+    },
+    {
+        "title": "Windows.Forensics.PersistenceSniper",
+        "author": "ablescia",
+        "description": "PersistenceSniper is a Powershell module that can be used by Blue Teams, Incident\nResponders and System Administrators to hunt persistences implanted in Windows machines.\nIt is also available on Powershell Gallery and it is digitally signed with a valid code\nsigning certificate. The tool is under active development with new releases coming out\nregularly, so make sure to use the up-to-date version.\nhttps://github.com/last-byte/PersistenceSniper",
+        "link": "/exchange/artifacts/pages/windows.forensics.persistencesniper",
+        "tags": [],
+        "author_link": "https://github.com/ablescia",
+        "author_avatar": "https://avatars.githubusercontent.com/u/90195154?v=4",
+        "date": "2024-01-21"
+    },
+    {
+        "title": "Generic.Detection.EffluenceWebshell",
+        "author": "mgreen27",
+        "description": "This artifact detects Effluence Webshell observed deployed during exploitation \nof Atlassian Confluence CVE-2023-22515.\n",
+        "link": "/exchange/artifacts/pages/effluencewebshell",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-11-12"
+    },
+    {
+        "title": "Server.Import.WatchLocalDirectory",
+        "author": "bmcder02",
+        "description": "This is an artifact that will monitor a local path for collections, \nwhich it will then ingest. \n",
+        "link": "/exchange/artifacts/pages/server.import.watchlocaldirectory",
+        "tags": [],
+        "author_link": "https://github.com/bmcder02",
+        "author_avatar": "https://avatars.githubusercontent.com/u/90826967?v=4",
+        "date": "2023-11-09"
+    },
+    {
+        "title": "Server.Import.WatchS3Directory",
+        "author": "bmcder02",
+        "description": "This is an artifact that will monitor an S3 path for collections, \nwhich it will then ingest. \n",
+        "link": "/exchange/artifacts/pages/server.import.watchs3directory",
+        "tags": [],
+        "author_link": "https://github.com/bmcder02",
+        "author_avatar": "https://avatars.githubusercontent.com/u/90826967?v=4",
+        "date": "2023-11-09"
+    },
+    {
+        "title": "Windows.Detection.SysAid",
+        "author": "mgreen27",
+        "description": "Detects artifacts associated with post exploitation activity of \nLaceTempest related to the SysAid 0day.",
+        "link": "/exchange/artifacts/pages/sysaid",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-11-09"
+    },
+    {
+        "title": "Windows.Sys.BitLocker",
+        "author": "zaneGittins",
+        "description": "This artifact gets all Bitlocker volumes using PowerShell, including the recovery password.\n",
+        "link": "/exchange/artifacts/pages/windows.sys.bitlocker",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
+        "date": "2023-11-09"
+    },
+    {
+        "title": "Windows.Applications.FreeFileSync",
+        "author": "freeze-syn",
+        "description": "This artefact can be used to retrieve and parse some FreeFileSync file in order to:\n- Identify the latest account used to transfer data and the remote ip adresse destination in the case of SFTP protocol with the qeury GlobalInfo\n- Identify the latest transfered files with Latest Data Transfer\n- Identify the presence of others interesting logs about previous or attempt of files transfer",
+        "link": "/exchange/artifacts/pages/windows.applications.freefilesync",
+        "tags": [],
+        "author_link": "https://github.com/freeze-syn",
+        "author_avatar": "https://avatars.githubusercontent.com/u/144700084?v=4",
+        "date": "2023-11-07"
+    },
+    {
+        "title": "Windows.Applications.GoodSync",
+        "author": "freeze-syn",
+        "description": "This artefact can be used to retrieve and parse some GoodSync file in order to\n- identify configured Good Sync account;\n- identify data and time of transfered files.",
+        "link": "/exchange/artifacts/pages/windows.applications.goodsync",
+        "tags": [],
+        "author_link": "https://github.com/freeze-syn",
+        "author_avatar": "https://avatars.githubusercontent.com/u/144700084?v=4",
+        "date": "2023-11-07"
+    },
+    {
+        "title": "Windows.Sys.LoggedInUsers",
+        "author": "zaneGittins",
+        "description": "Get all currently logged in users via wmi.\n",
+        "link": "/exchange/artifacts/pages/windows.sys.loggedinusers",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
+        "date": "2023-11-05"
+    },
+    {
+        "title": "Server.Utils.ScheduledDeletion",
+        "author": "zaneGittins",
+        "description": "Schedules Server.Utils.DeleteMonitoringData to cleanup server monitoring data.\n",
+        "link": "/exchange/artifacts/pages/server.utils.scheduleddeletion",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
+        "date": "2023-11-03"
+    },
+    {
+        "title": "Windows.Detection.Network.Changed",
+        "author": "zaneGittins",
+        "description": "Detects when a new network is added or removed from the system via the NetworkList registry keys.\n",
+        "link": "/exchange/artifacts/pages/windows.detection.network.changed",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
+        "date": "2023-11-03"
+    },
+    {
+        "title": "Linux.Memory.AVML",
+        "author": "Zawadidone",
+        "description": "Acquires a full memory image in LiME output format. We download\navml and use it to acquire a full memory image.\nNOTE: This artifact usually transfers a lot of data. You should\nincrease the default timeout to allow it to complete.\n",
+        "link": "/exchange/artifacts/pages/linux.memory.avml",
+        "tags": [],
+        "author_link": "https://github.com/Zawadidone",
+        "author_avatar": "https://avatars.githubusercontent.com/u/21525407?v=4",
+        "date": "2023-10-31"
+    },
+    {
+        "title": "Windows.Services.Hijacking",
+        "author": "Sam0rai",
+        "description": "Service Executable Hijacking is a misconfiguration flaw, where a service runs an executable which has \noverly permissive permissions on it (for example: \"Full Control\" permissions to \"Authenticated Users\").\nIf a service runs under the security context of a user with high permissions (such as: NT Authority\\SYSTEM), \nand an attacker with low privileges is able to modify the executable that service is running (such as \nreplacing it with their own) - the service could run that executable with high privileges.",
+        "link": "/exchange/artifacts/pages/windows.services.hijacking",
+        "tags": [
+            "services",
+            "hijacking"
+        ],
+        "author_link": "https://github.com/Sam0rai",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4671530?v=4",
+        "date": "2023-10-31"
+    },
+    {
+        "title": "Windows.Forensics.UEFI.BootApplication",
+        "author": "mgreen27",
+        "description": "This artifact parses Windows MeasuredBoot TCGLogs to extract PathName of \nEV_EFI_Boot_Services_Application events, which can assist detection of \npotential ESP based persistance.  ",
+        "link": "/exchange/artifacts/pages/bootapplication",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-10-29"
+    },
+    {
+        "title": "Linux.Detection.IncorrectPermissions",
+        "author": "misje",
+        "description": "NOTE: Requires velociraptor 0.7.1 or higher. \u2013 Alternatively, import the\nartifact dependency Linux.Sys.Groups manually into your installation.",
+        "link": "/exchange/artifacts/pages/linux.detection.incorrectpermissions",
+        "tags": [],
+        "author_link": "https://github.com/misje",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4006538?v=4",
+        "date": "2023-10-29"
+    },
+    {
+        "title": "Windows.Registry.HVCI",
+        "author": "mgreen27",
+        "description": "This artifact will return the Enabled KeyValue in the Hypervisor-protected Code \nIntegrity (HVCI) registry path. An adversary may set the Enabled key to 0 \nif they intend to manipulate UEFI boot process.",
+        "link": "/exchange/artifacts/pages/hvci",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-10-27"
+    },
+    {
+        "title": "MacOS.Forensics.KnockKnock",
+        "author": "mgreen27",
+        "description": "This artifact will run Knocknock to collect autorun output.\n",
+        "link": "/exchange/artifacts/pages/knockknock",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-10-20"
+    },
+    {
+        "title": "IPCheck.Virustotal",
+        "author": "AdrianX21",
+        "description": "Submit a IP to Virustotal. Default Public API restriction is 4 requests/min (Inspired on Virustotal file Check created by Wes Lambert -- @therealwlambert).",
+        "link": "/exchange/artifacts/pages/ipcheck.virustotal",
+        "tags": [],
+        "author_link": "https://github.com/AdrianX21",
+        "author_avatar": "https://avatars.githubusercontent.com/u/147482138?v=4",
+        "date": "2023-10-19"
+    },
+    {
+        "title": "Linux.Network.NM.Connections",
+        "author": "misje",
+        "description": "NetworkManager is a popular high-level interface for configuring\nnetworks in Linux systems, in particular Ubuntu and other Debian-based\nflavours. This artifact lists the NetworkManager state, all configured\nconnections and their settings, as well as when the connections were\nlast activated. A list of BSSIDs per connection is also retrieved.",
+        "link": "/exchange/artifacts/pages/linux.network.nm.connections",
+        "tags": [],
+        "author_link": "https://github.com/misje",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4006538?v=4",
+        "date": "2023-10-12"
+    },
+    {
+        "title": "Windows.Timeline.Prefetch.Improved",
+        "author": "scudette",
+        "description": "NOTE: This is a fixed version of Windows.Timeline.Prefetch which is\navailable in the release binary after 0.7.0-3.",
+        "link": "/exchange/artifacts/pages/windows.timeline.prefetch.improved",
+        "tags": [],
+        "author_link": "https://github.com/scudette",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3856546?v=4",
+        "date": "2023-10-02"
+    },
+    {
+        "title": "Windows.Detection.WS_FTP",
+        "author": "mgreen27",
+        "description": "This is an artifact to detect exploitation of a Progress Software's WS_FTP \ncritical vulnerability observed in the wild.",
+        "link": "/exchange/artifacts/pages/ws_ftp",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-10-01"
+    },
+    {
+        "title": "Windows.Detection.IdatLoader",
+        "author": "mgreen27",
+        "description": "This artifact enables running Yara over processes in memory.\nTargeting detection of IDAT Loader and final payloads \nobserved in field.  ",
+        "link": "/exchange/artifacts/pages/idatloader",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-09-01"
+    },
+    {
+        "title": "Server.Utils.BackupAzure",
+        "author": "zaneGittins",
+        "description": "This server monitoring artifact will automatically zip and backup\nany collected artifacts to Azure blob storage.",
+        "link": "/exchange/artifacts/pages/server.utils.backupazure",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
+        "date": "2023-08-29"
+    },
+    {
+        "title": "Windows.EventLogs.RemoteAccessVPN",
+        "author": "ekt0-syn",
+        "description": "This Artifact enables scoping EventLogs from Microsoft VPN, served by\nRemote Access Service server role.\nIt is designed to assist in identifying VPN connections on organizations that\nare using Microsoft VPN service. It targets both server and client side logs.",
+        "link": "/exchange/artifacts/pages/windows.eventlogs.remoteaccessvpn",
+        "tags": [],
+        "author_link": "https://github.com/ekt0-syn",
+        "author_avatar": "https://avatars.githubusercontent.com/u/118297035?v=4",
+        "date": "2023-08-29"
+    },
+    {
+        "title": "Linux.Debian.GPGKeys",
+        "author": "misje",
+        "description": "Extract keys, fingerprints and identities from GPG keys.",
+        "link": "/exchange/artifacts/pages/linux.debian.gpgkeys",
+        "tags": [],
+        "author_link": "https://github.com/misje",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4006538?v=4",
+        "date": "2023-08-18"
+    },
+    {
+        "title": "Windows.Events.TrackProcesses.UseExistingSysmonOnly",
+        "author": "SBattaglia-R7",
+        "description": "**This is a modified version of Windows.Events.TrackProcesses for servers\nthat do not use the Inventory service.  It assumes that Sysmon\nis already installed and running. The option to forward updates to the server\nis also removed.**",
+        "link": "/exchange/artifacts/pages/windows.events.trackprocesses.useexistingsysmononly",
+        "tags": [],
+        "author_link": "https://github.com/SBattaglia-R7",
+        "author_avatar": "https://avatars.githubusercontent.com/u/40576678?v=4",
+        "date": "2023-08-14"
+    },
+    {
+        "title": "Generic.Forensics.CyLR",
+        "author": "tsauter",
+        "description": "Uses CyLR tool to do live forensic on the host.",
+        "link": "/exchange/artifacts/pages/generic.forensics.cylr",
+        "tags": [],
+        "author_link": "https://github.com/tsauter",
+        "author_avatar": "https://avatars.githubusercontent.com/u/9928251?v=4",
+        "date": "2023-07-29"
+    },
+    {
+        "title": "Windows.Registry.DefenderConfig",
+        "author": "mgreen27",
+        "description": "Thit artifact enables extracting Windows Defender configuration from \nSOFTWARE registry hive.",
+        "link": "/exchange/artifacts/pages/defenderconfig",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-07-25"
+    },
+    {
+        "title": "Server.Alerts.Mattermost",
+        "author": "misje",
+        "description": "Create a Slack/Mattermost notification when a client Flow (with artifacts of interest) has finished. Cancelled collections and collections with artifacts that don't satisfy preconditions do not create notifications when they are stopped.\n",
+        "link": "/exchange/artifacts/pages/server.alerts.mattermost",
+        "tags": [],
+        "author_link": "https://github.com/misje",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4006538?v=4",
+        "date": "2023-07-16"
+    },
+    {
+        "title": "Windows.Nirsoft.LastActivityView",
+        "author": "hasamba",
+        "description": "LastActivityView is a tool for Windows operating system that\ncollects information from various sources on a running system, and\ndisplays a log of actions made by the user and events occurred on\nthis computer. The activity displayed by LastActivityView includes:\nRunning .exe file, Opening open/save dialog-box, Opening file/folder\nfrom Explorer or other software, software installation, system\nshutdown/start, application or system crash, network\nconnection/disconnection and more...\n",
+        "link": "/exchange/artifacts/pages/windows.nirsoft.lastactivityview",
+        "tags": [],
+        "author_link": "https://github.com/hasamba",
+        "author_avatar": "https://avatars.githubusercontent.com/u/7392290?v=4",
+        "date": "2023-07-16"
+    },
+    {
+        "title": "Windows.Registry.PrintNightmare",
+        "author": "DakshGajjar",
+        "description": "CVE-2021-34527 or Windows Print Spooler Remote Code Execution Vulnerability",
+        "link": "/exchange/artifacts/pages/windows.registry.printnightmare",
+        "tags": [],
+        "author_link": "https://github.com/DakshGajjar",
+        "author_avatar": "https://avatars.githubusercontent.com/u/91525283?v=4",
+        "date": "2023-07-03"
+    },
+    {
+        "title": "Exchange.Linux.Kunai",
+        "author": "weslambert",
+        "description": "Kunai is a Linux-based security monitoring and threat hunting tool written in Rust.  This artifact parses the Kunai log file. \n",
+        "link": "/exchange/artifacts/pages/linux.kunai",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2023-06-30"
+    },
+    {
+        "title": "Linux.Detection.SSHKeyFileCmd",
+        "author": "4ltern4te",
+        "description": "This artifact will parse ~/.ssh/authorized_keys and ~/.ssh/id_*.pub looking for the command option\nto detect potential persistence\n",
+        "link": "/exchange/artifacts/pages/linux.detection.sshkeyfilecmd",
+        "tags": [],
+        "author_link": "https://github.com/4ltern4te",
+        "author_avatar": "https://avatars.githubusercontent.com/u/5027220?v=4",
+        "date": "2023-06-19"
+    },
+    {
+        "title": "Linux.Detection.MemFD",
+        "author": "4ltern4te",
+        "description": "This artifact will parse /proc/*/exe files and look for processes \n that have been executed from memory via memfd_create()\n",
+        "link": "/exchange/artifacts/pages/linux.detection.memfd",
+        "tags": [],
+        "author_link": "https://github.com/4ltern4te",
+        "author_avatar": "https://avatars.githubusercontent.com/u/5027220?v=4",
+        "date": "2023-06-12"
+    },
+    {
+        "title": "IRIS.Timeline.Add",
+        "author": "BadBloopZ",
+        "description": "Adds Velociraptor rows as timeline entries to [DFIR-IRIS](https://dfir-iris.org/).",
+        "link": "/exchange/artifacts/pages/iris.timeline.add",
+        "tags": [],
+        "author_link": "https://github.com/BadBloopZ",
+        "author_avatar": "https://avatars.githubusercontent.com/u/29574367?v=4",
+        "date": "2023-06-09"
+    },
+    {
+        "title": "Windows.EventLogs.MoveIt",
+        "author": "mgreen27",
+        "description": "This Artifact enables scoping EventLogs from Progress Software's MoveIT File\nTransfer. It is designed to assist in identifying exfiltration resulting from\nthe exploitation of CVE-2023-34362",
+        "link": "/exchange/artifacts/pages/moveitevtx",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-06-05"
+    },
+    {
+        "title": "Windows.Detection.MoveIt",
+        "author": "mgreen27",
+        "description": "This is an artifact to detect exploitation of a MoveIt critical vulnerability \nobserved in the wild. CVE-2023-34362",
+        "link": "/exchange/artifacts/pages/moveit",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-06-02"
+    },
+    {
+        "title": "Server.Enrichment.Strelka.FileScan",
+        "author": "weslambert",
+        "description": "Submit a file to Strelka for analysis using `strelka-oneshot`.",
+        "link": "/exchange/artifacts/pages/server.enrichment.strelka.filescan",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2023-05-23"
+    },
+    {
+        "title": "Windows.Forensics.RecentFileCache",
+        "author": "BadBloopZ",
+        "description": "Parses the RecentFileCache as evidence of execution artifact existing on older Windows systems (<= Win 7).",
+        "link": "/exchange/artifacts/pages/windows.forensics.recentfilecache",
+        "tags": [],
+        "author_link": "https://github.com/BadBloopZ",
+        "author_avatar": "https://avatars.githubusercontent.com/u/29574367?v=4",
+        "date": "2023-05-23"
+    },
+    {
+        "title": "Windows.Applications.LECmd",
+        "author": "CarlosCajigas",
+        "description": "Execute Eric Zimmerman's LECmd and return output for analysis.\nCreated using @eduardfir SBECmd VQL as a quide.  \nLECmd is a CLI tool for analyzing lnk data. Learn more - https://github.com/EricZimmerman/LECmd\n",
+        "link": "/exchange/artifacts/pages/windows.applications.lecmd",
+        "tags": [],
+        "author_link": "https://github.com/CarlosCajigas",
+        "author_avatar": "https://avatars.githubusercontent.com/u/9010359?v=4",
+        "date": "2023-05-20"
+    },
+    {
+        "title": "PSList.VTLookup",
+        "author": "Shad0wCell",
+        "description": "Combination of PSList with Virus Total reputation lookup using the Virus Total Server Enrichment Artifact by Wes Lambert.\n",
+        "link": "/exchange/artifacts/pages/pslist.vtlookup",
+        "tags": [],
+        "author_link": "https://github.com/Shad0wCell",
+        "author_avatar": "https://avatars.githubusercontent.com/u/80175648?v=4",
+        "date": "2023-05-18"
+    },
+    {
+        "title": "Server.Alerts.Monitor.IRIS",
+        "author": "weslambert",
+        "description": "Create an IRIS alert when monitored artifacts complete with results. Alerts are available starting in version 2.1.0 of IRIS.\nhttps://github.com/dfir-iris/iris-web/releases/tag/v2.1.0",
+        "link": "/exchange/artifacts/pages/server.alerts.monitor.iris",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2023-05-18"
+    },
+    {
+        "title": "Server.Notification.Mattermost",
+        "author": "hillu",
+        "description": "Send notification via Mattermost webhook as described in <https://developers.mattermost.com/integrate/webhooks/incoming/>\n",
+        "link": "/exchange/artifacts/pages/server.notification.mattermost",
+        "tags": [],
+        "author_link": "https://github.com/hillu",
+        "author_avatar": "https://avatars.githubusercontent.com/u/173211?v=4",
+        "date": "2023-05-18"
+    },
+    {
+        "title": "MacOS.System.Man",
+        "author": "weslambert",
+        "description": "`man` is typically used to provide information about how to use various commands. It's configuration file is located at `/private/etc/man.conf` on most macOS systems.",
+        "link": "/exchange/artifacts/pages/macos.system.man",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2023-05-16"
+    },
+    {
+        "title": "Windows.Generic.Internet.BlockAccess",
+        "author": "tuedenn",
+        "description": "Simply adds a new inbound or outbound firewall rule that filters traffic by allowing or blocking network packets that match the specified criteria via `netsh advfirewall add rule` command. Applicable in case of blocking Internet access.",
+        "link": "/exchange/artifacts/pages/windows.generic.internet.blockaccess",
+        "tags": [],
+        "author_link": "https://github.com/tuedenn",
+        "author_avatar": "https://avatars.githubusercontent.com/u/25119013?v=4",
+        "date": "2023-05-05"
+    },
+    {
+        "title": "Windows.Forensics.Clipboard",
+        "author": "h-adwan",
+        "description": "This artifact will show the Clipboard activity.",
+        "link": "/exchange/artifacts/pages/windows.forensics.clipboard",
+        "tags": [],
+        "author_link": "https://github.com/h-adwan",
+        "author_avatar": "https://avatars.githubusercontent.com/u/131330834?v=4",
+        "date": "2023-04-28"
+    },
+    {
+        "title": "MacOS.Logs.MacMonitor",
+        "author": "weslambert",
+        "description": "This artifact parses JSONL-formatted logs generated by MacMonitor.\n",
+        "link": "/exchange/artifacts/pages/macos.logs.macmonitor",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2023-04-20"
+    },
+    {
+        "title": "Alert.Windows.EVTX.PowerPickHostVersion",
+        "author": "SBattaglia-R7",
+        "description": "\nThis artifact by itself only indicates that the PowerPick tool may have\nbeen invoked on the client. To capture additional context, ensure that\nPowershell script block and module logging are enabled on the clients and\ndeploy the Windows.ETW.Powershell artifact from the Exchange.",
+        "link": "/exchange/artifacts/pages/powerpickhostversion",
+        "tags": [],
+        "author_link": "https://github.com/SBattaglia-R7",
+        "author_avatar": "https://avatars.githubusercontent.com/u/40576678?v=4",
+        "date": "2023-04-20"
+    },
+    {
+        "title": "Windows.Carving.BumbleBee",
+        "author": "angelovioletti",
+        "description": "This artficat will detect running BumbleBee processes and subsequently extract the command and control servers with the destination port 443.\n",
+        "link": "/exchange/artifacts/pages/bumblebee",
+        "tags": [],
+        "author_link": "https://github.com/angelovioletti",
+        "author_avatar": "https://avatars.githubusercontent.com/u/99129049?v=4",
+        "date": "2023-04-12"
+    },
+    {
+        "title": "Server.Telegram.Clients.Enrolled",
+        "author": "tuedenn",
+        "description": "Send a message to telegram when clients become enrolled.",
+        "link": "/exchange/artifacts/pages/server.telegram.clients.enrolled",
+        "tags": [],
+        "author_link": "https://github.com/tuedenn",
+        "author_avatar": "https://avatars.githubusercontent.com/u/25119013?v=4",
+        "date": "2023-04-11"
+    },
+    {
+        "title": "Windows.Registry.Domain",
+        "author": "angry-bender",
+        "description": "Checks the configured domain name on each endpoint",
+        "link": "/exchange/artifacts/pages/windows.registry.domainname",
+        "tags": [],
+        "author_link": "https://github.com/angry-bender",
+        "author_avatar": "https://avatars.githubusercontent.com/u/18164137?v=4",
+        "date": "2023-04-05"
+    },
+    {
+        "title": "Windows.Carving.Qakbot",
+        "author": "mgreen27",
+        "description": "This artifact enables Qakbot payload detection and configuration extraction\nfrom a byte stream, process or file on disk. The artifact runs a yara scan\nas a detection step, then attempts to process the payload to extract\nconfiguration.",
+        "link": "/exchange/artifacts/pages/qakbot",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-04-03"
+    },
+    {
+        "title": "MacOS.Applications.Firefox.History",
+        "author": "x64-julian",
+        "description": "Read all Users Firefox history.\n",
+        "link": "/exchange/artifacts/pages/macos.applications.firefox.history",
+        "tags": [],
+        "author_link": "https://github.com/x64-julian",
+        "author_avatar": "https://avatars.githubusercontent.com/u/7996874?v=4",
+        "date": "2023-03-31"
+    },
+    {
+        "title": "Windows.Detection.SmoothOperator",
+        "author": "mgreen27",
+        "description": "This artifact searches for evidence of trojanised 3CXDesktopApp.",
+        "link": "/exchange/artifacts/pages/smoothoperator",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-03-30"
+    },
+    {
+        "title": "Detection.Application.CursedChrome",
+        "author": "mattdri-ir",
+        "description": "Detects the [Cursed Chrome](https://github.com/mandatoryprogrammer/CursedChrome) extension. Starts by searching for permissive extensions configured within `Secure Preferences`. Locates the path of the extensions and scans using Yara.\n",
+        "link": "/exchange/artifacts/pages/detection.application.cursedchrome",
+        "tags": [],
+        "author_link": "https://github.com/mattdri-ir",
+        "author_avatar": "https://avatars.githubusercontent.com/u/5395743?v=4",
+        "date": "2023-03-22"
+    },
+    {
+        "title": "Windows.Detection.RemoteIconForcedAuth",
+        "author": "acedef",
+        "description": "Attackers plant SCF, URL, and LNK files with malicious icon file paths\non file shares to escalate privileges or maintain persistence. This attack\nonly requires the user to browse to the location of the malicious file.\nThis artifact enumerates file shares and returns an event for each file with a\nremote icon. It can also scan a target root directory since attackers commonly\nuse other locations like desktops.\n",
+        "link": "/exchange/artifacts/pages/remoteiconforcedauth",
+        "tags": [],
+        "author_link": "https://github.com/acedef",
+        "author_avatar": "https://avatars.githubusercontent.com/u/109249453?v=4",
+        "date": "2023-03-17"
+    },
+    {
+        "title": "Windows.Registry.Bulk.ComputerName",
+        "author": "angry-bender",
+        "description": "This looks through registry on all disks to determine the hostname for cases where multiple disks are mounted\n",
+        "link": "/exchange/artifacts/pages/windows.registry.bulk.computername",
+        "tags": [],
+        "author_link": "https://github.com/angry-bender",
+        "author_avatar": "https://avatars.githubusercontent.com/u/18164137?v=4",
+        "date": "2023-03-14"
+    },
+    {
+        "title": "Linux.LogAnalysis.ChopChopGo",
+        "author": "weslambert",
+        "description": "\nThis artifact leverages ChopChopGo to enable usage of Sigma rules to faciliate detection within Linux logs.",
+        "link": "/exchange/artifacts/pages/linux.loganalysis.chopchopgo",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2023-03-08"
+    },
+    {
+        "title": "Windows.Detection.ScmanagerBackdoor",
+        "author": "acedef",
+        "description": "Checks for overly permissive DACLs on scmanager. Low priv Users with\nKA - SDDL_KEY_ALL could launch SYSTEM services. \n",
+        "link": "/exchange/artifacts/pages/windows.detection.scmanagerbackdoor",
+        "tags": [],
+        "author_link": "https://github.com/acedef",
+        "author_avatar": "https://avatars.githubusercontent.com/u/109249453?v=4",
+        "date": "2023-02-25"
+    },
+    {
+        "title": "Server.Enrichment.Sublime.EmailAnalysis",
+        "author": "weslambert",
+        "description": "Submit an email to Sublime for analysis.",
+        "link": "/exchange/artifacts/pages/server.enrichment.sublime.emailanalysis",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2023-02-22"
+    },
+    {
+        "title": "Windows.Memory.InjectedThreadEx",
+        "author": "mgreen27",
+        "description": "This artifact runs Get-InjetedThreadEx to detect process injection and hooking.",
+        "link": "/exchange/artifacts/pages/injectedthreadex",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-02-21"
+    },
+    {
+        "title": "Generic.Collection.UAC",
+        "author": "tclahr",
+        "description": "This artifact leverages UAC (Unix-like Artifacts Collector) to collect artifacts\nfrom Unix-like systems, and then upload the output to the Velociraptor server.\n",
+        "link": "/exchange/artifacts/pages/generic.collection.uac",
+        "tags": [],
+        "author_link": "https://github.com/tclahr",
+        "author_avatar": "https://avatars.githubusercontent.com/u/20645243?v=4",
+        "date": "2023-02-19"
+    },
+    {
+        "title": "Windows.Detection.PipeHunter",
+        "author": "acedef",
+        "description": "Takes a pipe name and returns the owning process and access rights. The primary\nmotivation for this artifact is a vulnerability in RemCom. RemCom is most \nnotably used by impacket psexec.py. It creates a null DACL for its \ncommunication pipe. This means a low privileged user\ncould use a stale pipe to get remote execution as SYSTEM. If you uncover any\nnamed pipes with the name RemCom_communication, investigate the owning proc\nand remove it from the system.\n#impacket\n",
+        "link": "/exchange/artifacts/pages/windows.detection.pipehunter",
+        "tags": [
+            "impacket"
+        ],
+        "author_link": "https://github.com/acedef",
+        "author_avatar": "https://avatars.githubusercontent.com/u/109249453?v=4",
+        "date": "2023-02-19"
+    },
+    {
+        "title": "Linux.Detection.vRealizeLogInsightExploitation",
+        "author": "acedef",
+        "description": "Checks for exploitation of vRealize Log Insight VMSA-2023-0001 exploitation \nartifacts. The presence of a path traversal in the FileName field\nis evidence of compromise. There is still a path to exploitation without\nleveraging the path traversal vuln. Any attempt to run\nREMOTE_PAK_DOWNLOAD_COMMAND from a non-vRealize server is malicious.\n#VMWare #vRealize #exploit\n",
+        "link": "/exchange/artifacts/pages/linux.detection.vrealizeloginsightexploitation",
+        "tags": [
+            "VMWare",
+            "vRealize",
+            "exploit"
+        ],
+        "author_link": "https://github.com/acedef",
+        "author_avatar": "https://avatars.githubusercontent.com/u/109249453?v=4",
+        "date": "2023-02-09"
+    },
+    {
+        "title": "Windows.Detection.Onenote",
+        "author": "mgreen27",
+        "description": "This artifact enables detection of malicious .one files and can also be used \nas an embedded file and metadata parser.",
+        "link": "/exchange/artifacts/pages/onenote",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-01-30"
+    },
+    {
+        "title": "Windows.Persistence.VscodeTasks",
+        "author": "mgreen27",
+        "description": "This artifact parses VSCode configuration files to find potenital \npersistence.",
+        "link": "/exchange/artifacts/pages/vscodetasks",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-01-25"
+    },
+    {
+        "title": "Windows.MobaXterm.Passwords",
+        "author": "Sam0rai",
+        "description": "Extract MobaXterm encrypted saved Master Passwords, Passwords and Credentials from registry.\nFurther information regarding decryption can be found here: https://www.xmcyber.com/blog/extracting-encrypted-credentials-from-common-tools-2/\n",
+        "link": "/exchange/artifacts/pages/custom.windows.mobaxterm.passwords",
+        "tags": [],
+        "author_link": "https://github.com/Sam0rai",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4671530?v=4",
+        "date": "2023-01-24"
+    },
+    {
+        "title": "Server.Utils.DeleteClientLabel",
+        "author": "mgreen27",
+        "description": "This artifact completely removes a client from the data store if a configured\nlabel is set.",
+        "link": "/exchange/artifacts/pages/deleteclientlabel",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-01-24"
+    },
+    {
+        "title": "Windows.Detection.PublicIP",
+        "author": "mgreen27",
+        "description": "This artifact queries for RDP and Authentication events with a Public IP\nsource. The artifact uses Windows.EventLogs.RDPAuth and has several built in\nnotebooks for analysis.\n",
+        "link": "/exchange/artifacts/pages/publicip",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-01-23"
+    },
+    {
+        "title": "Windows.WinSCP.Passwords",
+        "author": "Sam0rai",
+        "description": "Extract WinSCP obfuscated saved passwords from registry.\nFurther information regarding deobfuscation can be found here: https://www.xmcyber.com/blog/extracting-encrypted-credentials-from-common-tools-2/\n",
+        "link": "/exchange/artifacts/pages/custom.windows.winscp.passwords",
+        "tags": [],
+        "author_link": "https://github.com/Sam0rai",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4671530?v=4",
+        "date": "2023-01-20"
+    },
+    {
+        "title": "Generic.Detection.ManageEngineLog",
+        "author": "mgreen27",
+        "description": "This artifact will enable discovery of logs associated with observed exploitation \nof critical ManageEngine vulnerability: CVE-2022-47966.",
+        "link": "/exchange/artifacts/pages/manageenginelog",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-01-20"
+    },
+    {
+        "title": "Windows.Detection.ProxyHunter",
+        "author": "mgreen27",
+        "description": "This artifact detects evidence of several common proxy tools.",
+        "link": "/exchange/artifacts/pages/proxyhunter",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-01-20"
+    },
+    {
+        "title": "Windows.Applications.KACE_SW_Process",
+        "author": "mgreen27",
+        "description": "This artifact parses the KACE software monitoring sqlite database - ksw_process.db\nwhich provides excellent third party evidence of execution that may \nbe useful during investigation or detection work.  ",
+        "link": "/exchange/artifacts/pages/kace_sw_process",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-01-18"
+    },
+    {
+        "title": "Linux.Collection.Autoruns",
+        "author": "4ltern4te",
+        "description": "This artifact collects various autorun files for upload.\nBased on TriagePersistence from forensicartifacts.com\n",
+        "link": "/exchange/artifacts/pages/linux.collection.autoruns",
+        "tags": [],
+        "author_link": "https://github.com/4ltern4te",
+        "author_avatar": "https://avatars.githubusercontent.com/u/5027220?v=4",
+        "date": "2023-01-11"
+    },
+    {
+        "title": "Linux.Collection.BrowserExtensions",
+        "author": "4ltern4te",
+        "description": "Collect Browser Extensions and upload them.\nBased on TriageWebBrowserExtensions from forensicartifacts.com\n",
+        "link": "/exchange/artifacts/pages/linux.collection.browserextensions",
+        "tags": [],
+        "author_link": "https://github.com/4ltern4te",
+        "author_avatar": "https://avatars.githubusercontent.com/u/5027220?v=4",
+        "date": "2023-01-11"
+    },
+    {
+        "title": "Linux.Collection.BrowserHistory",
+        "author": "4ltern4te",
+        "description": "Collect Browser History and upload them.\nBased on TriageWebBrowserHistory from forensicartifacts.com\n",
+        "link": "/exchange/artifacts/pages/linux.collection.browserhistory",
+        "tags": [],
+        "author_link": "https://github.com/4ltern4te",
+        "author_avatar": "https://avatars.githubusercontent.com/u/5027220?v=4",
+        "date": "2023-01-11"
+    },
+    {
+        "title": "Linux.Collection.DBConfig",
+        "author": "4ltern4te",
+        "description": "Collect database configurations and upload them.\nBased on TriageDatabaseConfigsAndLogs from forensicartifacts.com\n",
+        "link": "/exchange/artifacts/pages/linux.collection.dbconfig",
+        "tags": [],
+        "author_link": "https://github.com/4ltern4te",
+        "author_avatar": "https://avatars.githubusercontent.com/u/5027220?v=4",
+        "date": "2023-01-11"
+    },
+    {
+        "title": "Linux.Collection.History",
+        "author": "4ltern4te",
+        "description": "Collect history files from unix/linux utilities and upload them.\nBased on TriageHistory from forensicartifacts.com\n",
+        "link": "/exchange/artifacts/pages/linux.collection.historyfiles",
+        "tags": [],
+        "author_link": "https://github.com/4ltern4te",
+        "author_avatar": "https://avatars.githubusercontent.com/u/5027220?v=4",
+        "date": "2023-01-11"
+    },
+    {
+        "title": "Linux.Collection.NetworkConfig",
+        "author": "4ltern4te",
+        "description": "Collect network config files and upload them.\nBased on TriageNetwork from forensicartifacts.com\n",
+        "link": "/exchange/artifacts/pages/linux.collection.networkconfig",
+        "tags": [],
+        "author_link": "https://github.com/4ltern4te",
+        "author_avatar": "https://avatars.githubusercontent.com/u/5027220?v=4",
+        "date": "2023-01-11"
+    },
+    {
+        "title": "Linux.Collection.SysConfig",
+        "author": "4ltern4te",
+        "description": "Collect system configurations and upload them.\nBased on TriageSystemConfiguration from forensicartifacts.com\n",
+        "link": "/exchange/artifacts/pages/linux.collection.sysconfig",
+        "tags": [],
+        "author_link": "https://github.com/4ltern4te",
+        "author_avatar": "https://avatars.githubusercontent.com/u/5027220?v=4",
+        "date": "2023-01-11"
+    },
+    {
+        "title": "Linux.Collection.SysLogs",
+        "author": "4ltern4te",
+        "description": "Collect system logs and upload them.\nBased on TriageSystemLogs from forensicartifacts.com\n",
+        "link": "/exchange/artifacts/pages/linux.collection.syslogs",
+        "tags": [],
+        "author_link": "https://github.com/4ltern4te",
+        "author_avatar": "https://avatars.githubusercontent.com/u/5027220?v=4",
+        "date": "2023-01-11"
+    },
+    {
+        "title": "Linux.Collection.UserConfig",
+        "author": "4ltern4te",
+        "description": "Collect user configurations and upload them.\nBased on TriageUserConfiguration from forensicartifacts.com\n",
+        "link": "/exchange/artifacts/pages/linux.collection.userconfig",
+        "tags": [],
+        "author_link": "https://github.com/4ltern4te",
+        "author_avatar": "https://avatars.githubusercontent.com/u/5027220?v=4",
+        "date": "2023-01-11"
+    },
+    {
+        "title": "Windows.System.AppCompatPCA",
+        "author": "ecapuano",
+        "description": "Parse the Program Compatibility Assistant launch dictionary for executable launch times.\n",
+        "link": "/exchange/artifacts/pages/windows.system.appcompatpca",
+        "tags": [],
+        "author_link": "https://github.com/ecapuano",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4219694?v=4",
+        "date": "2023-01-04"
+    },
+    {
+        "title": "Windows.Detection.WonkaVision",
+        "author": "weslambert",
+        "description": "\nThis artifact analyzes Kerberos tickets and attempts to determine if they are forged, using WonkaVision by @4ndr3w6s and @exploitph.",
+        "link": "/exchange/artifacts/pages/windows.detection.wonkavision",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-12-22"
+    },
+    {
+        "title": "Windows.EventLogs.WonkaVision",
+        "author": "weslambert",
+        "description": "Collect WonkaVision logs from Windows hosts.",
+        "link": "/exchange/artifacts/pages/windows.eventlogs.wonkavision",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-12-22"
+    },
+    {
+        "title": "MacOS.UnifiedLogHunter",
+        "author": "weslambert",
+        "description": "This artifact allows for live hunting through Apple's Unified Logs using the native `log` command.",
+        "link": "/exchange/artifacts/pages/macos.unifiedloghunter",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-12-21"
+    },
+    {
+        "title": "Linux.System.BashLogout",
+        "author": "weslambert",
+        "description": "Capture Bash logout files for examination of abnormal activity. ",
+        "link": "/exchange/artifacts/pages/linux.system.bashlogout",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-12-17"
+    },
+    {
+        "title": "MacOS.Applications.Notes",
+        "author": "weslambert",
+        "description": "This artifact provides details about notes taken using the default Notes application on macOS.  These notes can be useful during an investigation, especially if tied to interesting files.  ",
+        "link": "/exchange/artifacts/pages/macos.applications.notes",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-12-16"
+    },
+    {
+        "title": "Windows.Detection.TeamViewerLanguage",
+        "author": "mgreen27",
+        "description": "This artifact enables collection of TeamViewer log entries for keyboard layout \nchanges.  ",
+        "link": "/exchange/artifacts/pages/teamviewerlanguage",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-12-12"
+    },
+    {
+        "title": "MacOS.Network.DHCP",
+        "author": "weslambert",
+        "description": "It can be useful to view DHCP lease information on an endpoint.  If the  `LeaseLength`, `RouterIPAddress`, `SSID`, or other values are not as expected,  it could potentially indicate a rogue DHCP server on the network, or just misconfiguration.",
+        "link": "/exchange/artifacts/pages/macos.network.dhcp",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-12-10"
+    },
+    {
+        "title": "IRIS.Sync.Asset",
+        "author": "BadBloopZ",
+        "description": "Synchronizes client information from Velociraptor to [DFIR-IRIS](https://dfir-iris.org/).",
+        "link": "/exchange/artifacts/pages/iris.sync.asset",
+        "tags": [],
+        "author_link": "https://github.com/BadBloopZ",
+        "author_avatar": "https://avatars.githubusercontent.com/u/29574367?v=4",
+        "date": "2022-12-08"
+    },
+    {
+        "title": "Linux.Forensics.RecentlyUsed",
+        "author": "Seeps",
+        "description": "Parses the 'recently-used.xbel' XML file for all standard Linux users.",
+        "link": "/exchange/artifacts/pages/linux.forensics.recentlyused",
+        "tags": [],
+        "author_link": "https://github.com/Seeps",
+        "author_avatar": "https://avatars.githubusercontent.com/u/10315852?v=4",
+        "date": "2022-12-08"
+    },
+    {
+        "title": "Linux.System.PAM",
+        "author": "weslambert",
+        "description": "This artifact enumerates applicable lines from the files that reside in `/etc/PAM.d/`. This information can be useful for auditing and compliance purposes, or to identify suspicious activity on Linux systems.",
+        "link": "/exchange/artifacts/pages/linux.system.pam",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-12-08"
+    },
+    {
+        "title": "MacOS.Applications.SavedState",
+        "author": "weslambert",
+        "description": "On macOS, certain application state is saved in `/Users/*/Library/Saved Application State/`. ",
+        "link": "/exchange/artifacts/pages/macos.applications.savedstate",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-12-06"
+    },
+    {
+        "title": "Server.Enrichment.AI.OpenAI",
+        "author": "weslambert",
+        "description": "Query OpenAI for analysis of data.",
+        "link": "/exchange/artifacts/pages/server.enrichment.openai",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-12-06"
+    },
+    {
+        "title": "Server.Alerts.GenericMonitor",
+        "author": "mgreen27",
+        "description": "This is a template artifact to allow alerting on a monitoring artifact.",
+        "link": "/exchange/artifacts/pages/genericmonitor",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-12-03"
+    },
+    {
+        "title": "Linux.Sys.APTHistory",
+        "author": "weslambert",
+        "description": "APT (Advanced Package Tool) maintains a log of software installation/removal/upgrades, as well as associated command-line invocations.",
+        "link": "/exchange/artifacts/pages/linux.sys.apthistory",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-12-03"
+    },
+    {
+        "title": "MacOS.System.MountedDiskImages",
+        "author": "weslambert",
+        "description": "This artifact checks for mounted disk images using the `hdiutil` command.\n",
+        "link": "/exchange/artifacts/pages/macos.system.mounteddiskimages",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-12-03"
+    },
+    {
+        "title": "Windows.Remediation.Glob",
+        "author": "mgreen27",
+        "description": "This artifact uses glob to remove a file or folder.  \nTo recursively target a folder: ```C:\\folder\\path{,\\**}```  \nTo target multiple folders: ```C:\\{folder2\\path2{,\\**},folder\\path{,\\**}}``` \nhowever advised to just run 2 collections...   \n  \n WARNING: There has been a bug in older versions of Velociraptor that ```\\**```\n glob path will select all files. PLEASE SCOPE FIRST and use appropriate targeting.\n \n",
+        "link": "/exchange/artifacts/pages/globremediation",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-11-28"
+    },
+    {
+        "title": "Linux.Sys.JournalCtl",
+        "author": "weslambert",
+        "description": "Parse the output of the journalctl command. Journalctl is an interface to the systemd journal, which records information about system events.\n",
+        "link": "/exchange/artifacts/pages/linux.sys.journalctl",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-11-28"
+    },
+    {
+        "title": "MacOS.Applications.NetworkUsage",
+        "author": "weslambert",
+        "description": "On macOS, the NetUsage DB can provide various details around application network utilization. With this artifact, we can get an idea of what applications are utilizing the network for communications and to what degree. We can also identify if usage has occurred through a WIFI network or a wired network.",
+        "link": "/exchange/artifacts/pages/macos.applications.networkusage",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-11-28"
+    },
+    {
+        "title": "Windows.Remediation.Process",
+        "author": "mgreen27",
+        "description": "This artifact enables killing a process by Name, Path or PID.",
+        "link": "/exchange/artifacts/pages/processremediation",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-11-28"
+    },
+    {
+        "title": "Windows.Remediation.Registry",
+        "author": "mgreen27",
+        "description": "This artifact uses glob to remove a registry key.",
+        "link": "/exchange/artifacts/pages/registryremediation",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-11-28"
+    },
+    {
+        "title": "MacOS.Applications.KnowledgeC",
+        "author": "weslambert",
+        "description": "On macOS, the KnowledgeC DB can provide various details around application activities and usage, as well as device power status.",
+        "link": "/exchange/artifacts/pages/macos.applications.knowledgec",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-11-25"
+    },
+    {
+        "title": "Windows.EventLogs.EvtxHussar",
+        "author": "yarox24",
+        "description": "Grab important events from Windows logs (.evtx) using [EvtxHussar](https://github.com/yarox24/EvtxHussar).\nAlso upload PowerShell ScriptBlocks (reconstructed as files).",
+        "link": "/exchange/artifacts/pages/windows.eventlogs.evtxhussar",
+        "tags": [],
+        "author_link": "https://github.com/yarox24",
+        "author_avatar": "https://avatars.githubusercontent.com/u/18016218?v=4",
+        "date": "2022-11-25"
+    },
+    {
+        "title": "Server.Notification.Mastodon",
+        "author": "weslambert",
+        "description": "Create a post on a Mastodon server. This could be used for automated alerting purposes, sharing IOCs, etc.",
+        "link": "/exchange/artifacts/pages/server.notification.mastodon",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-11-24"
+    },
+    {
+        "title": "MacOS.Applications.Cache",
+        "author": "weslambert",
+        "description": "Applications can use the NSURL cache to store specific data that is useful to the operation of the application in a `Cache.db` file on disk. The data contained within this file could potentially be useful to investigators or incident responders, such as URLs that were accessed, as well as data requested or returned.\n",
+        "link": "/exchange/artifacts/pages/macos.applications.cache",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-11-21"
+    },
+    {
+        "title": "Windows.Triage.Sysmon",
+        "author": "mgreen27",
+        "description": "This artifact allows collecting Sysmon Events for Triage around a timestamp.",
+        "link": "/exchange/artifacts/pages/sysmontriage",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-11-21"
+    },
+    {
+        "title": "Server.Import.DetectRaptor",
+        "author": "mgreen27",
+        "description": "DetectRaptor is a collection of publicly availible Velociraptor detection content. \nMost content is managed by a series of csv files and artifacts are automatically updated.",
+        "link": "/exchange/artifacts/pages/detectraptor",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-11-17"
+    },
+    {
+        "title": "MacOS.Sys.BashHistory",
+        "author": "weslambert",
+        "description": "This artifact is a modified version of the Linux.Sys.BashHistory artifact that enables grep of Bash and alternate shell history and *session* files.",
+        "link": "/exchange/artifacts/pages/macos.sys.bashhistory",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-11-16"
+    },
+    {
+        "title": "Windows.Detection.Termsrv",
+        "author": "mgreen27",
+        "description": "This artifact detects patched TerminalService / Remote Desktop (RDP) dynamic link library or ServiceDll - \ntermsrv.dll.",
+        "link": "/exchange/artifacts/pages/termsrv",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-11-15"
+    },
+    {
+        "title": "MacOS.Sys.Automator",
+        "author": "weslambert",
+        "description": "This artifact collects information about Automator actions and workflows. ",
+        "link": "/exchange/artifacts/pages/macos.sys.automator",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-11-11"
+    },
+    {
+        "title": "Linux.Sys.SystemdTimer",
+        "author": "weslambert",
+        "description": "List and parse content of Systemd timers.",
+        "link": "/exchange/artifacts/pages/linux.sys.systemdtimer",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-11-07"
+    },
+    {
+        "title": "Windows.EventLogs.RPCFirewall",
+        "author": "weslambert",
+        "description": "Collect RPC Firewall logs from Windows hosts\n",
+        "link": "/exchange/artifacts/pages/windows.eventlogs.rpcfirewall",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-11-05"
+    },
+    {
+        "title": "MacOS.Network.ApplicationLayerFirewall",
+        "author": "weslambert",
+        "description": "This artifact provides information around the configuration of the application firewall for a macOS host. ",
+        "link": "/exchange/artifacts/pages/macos.network.applicationlayerfirewall",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-11-03"
+    },
+    {
+        "title": "Server.Utils.QuerySummary",
+        "author": "clayscode",
+        "description": "Takes a query and outputs number of unique items per column, as well as the top 10 most frequently occuring items",
+        "link": "/exchange/artifacts/pages/server.utils.querysummary",
+        "tags": [],
+        "author_link": "https://github.com/clayscode",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16871737?v=4",
+        "date": "2022-11-02"
+    },
+    {
+        "title": "Windows.EventLogs.Aurora",
+        "author": "weslambert",
+        "description": "This artifact is a wrapper around the Windows.EventLogs.EvtxHunter artifact. It searches the Windows Application event log for logs being written by Nextron System's Aurora/Aurora Lite ('AuroraAgent' provider).\n",
+        "link": "/exchange/artifacts/pages/windows.eventlogs.aurora",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-11-01"
+    },
+    {
+        "title": "MacOS.Network.Bluetooth",
+        "author": "weslambert",
+        "description": "Collect information about connected or paired Bluetooth-enabled devices.\n",
+        "link": "/exchange/artifacts/pages/macos.network.bluetooth",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-10-31"
+    },
+    {
+        "title": "Windows.Carving.SystemBC",
+        "author": "mgreen27",
+        "description": "This artifact extracts SystemBC RAT configuration from a byte stream, \nprocess or file on disk.",
+        "link": "/exchange/artifacts/pages/systembc",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-10-28"
+    },
+    {
+        "title": "MacOS.Network.RecentWifiNetworks",
+        "author": "weslambert",
+        "description": "This artifact looks for recent Wifi networks to which a host has joined. This can be useful in determining where a machine has been, or if a user has joined an illegitimate or unauthorized wireless network.\n*Tested on macOS Monterey",
+        "link": "/exchange/artifacts/pages/macos.network.recentwifinetworks",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-10-24"
+    },
+    {
+        "title": "Server.Monitor.Autolabeling.Clients",
+        "author": "BadBloopZ",
+        "description": "This server side event monitoring artifact watches for new client enrollments and automatically labels them according to their domain roles.",
+        "link": "/exchange/artifacts/pages/server.monitor.autolabeling.clients",
+        "tags": [],
+        "author_link": "https://github.com/BadBloopZ",
+        "author_avatar": "https://avatars.githubusercontent.com/u/29574367?v=4",
+        "date": "2022-10-23"
+    },
+    {
+        "title": "Windows.Applications.AnyDesk",
+        "author": "DfirJos",
+        "description": "This parses AnyDesk logs to retrieve information about AnyDesk usage. It includes source IP addresses, AnyDesk ID's, and filetransfers.",
+        "link": "/exchange/artifacts/pages/windows.applications.anydesk",
+        "tags": [],
+        "author_link": "https://github.com/DfirJos",
+        "author_avatar": "https://avatars.githubusercontent.com/u/11965973?v=4",
+        "date": "2022-10-23"
+    },
+    {
+        "title": "Windows.Carving.BRc4",
+        "author": "mgreen27",
+        "description": "This artifact extracts Brute Ratel C4 (BRc4) configuration from a byte stream, \nprocess or file on disk. BRc4 is an emerging red-teaming and adversarial \nattack simulation tool.",
+        "link": "/exchange/artifacts/pages/brc4",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-10-13"
+    },
+    {
+        "title": "MacOS.Collection.Aftermath",
+        "author": "weslambert",
+        "description": "This is a simple artifact that leverages Afermath to collect many different forensic artifacts from a macOS host, then uploads the results to the Velociraptor server.",
+        "link": "/exchange/artifacts/pages/macos.collection.aftermath",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-10-07"
+    },
+    {
+        "title": "Windows.Triage.HighValueMemory",
+        "author": "weslambert",
+        "description": "Dump process memory and upload to the server",
+        "link": "/exchange/artifacts/pages/windows.triage.highvaluememory",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-10-07"
+    },
+    {
+        "title": "Windows.Detection.ISOMount",
+        "author": "cquinn-r7",
+        "description": "Following Microsoft's decision to block macros by default on MS\nOffice applications, threat actors are increasingly using container\nfiles such as ISO files to distribute malware.  This artifact will\nextract evidence of container files being mounted that may be\nmalicious from the Microsoft-Windows-VHDMP-Operational EventLog.\nThe artifact targets the string \".(iso|vhd|vhdx|img)$\" in event\nIDs: 1 (mount), 2 (unmount) and 12 (type, path, handle).\n",
+        "link": "/exchange/artifacts/pages/windows.detection.isomount",
+        "tags": [],
+        "author_link": "https://github.com/cquinn-r7",
+        "author_avatar": "https://avatars.githubusercontent.com/u/107484627?v=4",
+        "date": "2022-10-04"
+    },
+    {
+        "title": "MacOS.ParallelsVM.SuspendedMemory",
+        "author": "DoppioRistretto",
+        "description": "Looks for suspended Parallels VM owned by any user on a MacOS system. Can automatically upload the virtual memory files if found.",
+        "link": "/exchange/artifacts/pages/macos.parallelsvm.suspendedmemory",
+        "tags": [],
+        "author_link": "https://github.com/DoppioRistretto",
+        "author_avatar": "https://avatars.githubusercontent.com/u/28914750?v=4",
+        "date": "2022-10-01"
+    },
+    {
+        "title": "Windows.Detection.Malfind",
+        "author": "mgreen27",
+        "description": "This artifact checks the VAD for executable sections that are not maped to disk \nand has suspicious content which may indicate process injection.",
+        "link": "/exchange/artifacts/pages/malfind",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-09-30"
+    },
+    {
+        "title": "Windows.ETW.Powershell",
+        "author": "mgreen27",
+        "description": "This artifact enables Powershell scriptblock and commandlet load monitoring.  \nIt uses the ETW provider: Microsoft-Windows-PowerShell  ",
+        "link": "/exchange/artifacts/pages/powershellmonitoring",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-09-15"
+    },
+    {
+        "title": "MacOS.UnifiedLogParser",
+        "author": "weslambert",
+        "description": "\nThis is a simple, un-optimized artifact that leverages Mandiant's `macos-unifiedlogs`/`unifiedlog_parser` to obtain parsed log information from macOS's Unified Log.",
+        "link": "/exchange/artifacts/pages/macos.unifiedlogparser",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-09-07"
+    },
+    {
+        "title": "Windows.ETW.DNSOfflineCollector",
+        "author": "DfirJos",
+        "description": "This artifact collects DNS queries for a specified duration. It can be used \nwith an Offline Collector (which is not the case with Windows.ETW.DNS).\nIt uses the artifact (Windows.ETW.DNS) that was built by Matt Green - @mgreen27\n",
+        "link": "/exchange/artifacts/pages/windows.etw.dnsofflinecollector",
+        "tags": [],
+        "author_link": "https://github.com/DfirJos",
+        "author_avatar": "https://avatars.githubusercontent.com/u/11965973?v=4",
+        "date": "2022-08-29"
+    },
+    {
+        "title": "Server.Alerts.IRIS.Case.Create",
+        "author": "weslambert",
+        "description": "Create an IRIS case when monitored artifacts complete with results.  Adds the ClientId, FlowId as tags to the case.  Adds the FQDN as an asset.",
+        "link": "/exchange/artifacts/pages/server.alerts.iris.case.create",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-08-27"
+    },
+    {
+        "title": "Server.Enrichment.IRIS.IOCLookup",
+        "author": "weslambert",
+        "description": "Query an IRIS instance for an indicator.",
+        "link": "/exchange/artifacts/pages/server.enrichment.iris.ioclookup",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-08-27"
+    },
+    {
+        "title": "Windows.Registry.COMAutoApprovalList",
+        "author": "weslambert",
+        "description": "This artifact will return COM objects that auto-elevate and bypass UAC (these could potentially be used by adversaries/malware to elevate privileges), and cross-reference the class ID with a name where able.\n",
+        "link": "/exchange/artifacts/pages/windows.registry.comautoapprovallist",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-08-26"
+    },
+    {
+        "title": "Windows.Detection.MagicWeb",
+        "author": "mgreen27",
+        "description": "This artifact will find evidence of NOBELIUM\u2019s MagicWeb.",
+        "link": "/exchange/artifacts/pages/magicweb",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-08-25"
+    },
+    {
+        "title": "Windows.System.Services.SliverPsexec",
+        "author": "svch0stz",
+        "description": "This pack detects various artefacts left behind by default configurations of the C2 framework Sliver PsExec module",
+        "link": "/exchange/artifacts/pages/windows.system.services.sliverpsexec",
+        "tags": [],
+        "author_link": "https://github.com/svch0stz",
+        "author_avatar": "https://avatars.githubusercontent.com/u/8684257?v=4",
+        "date": "2022-08-25"
+    },
+    {
+        "title": "Windows.Detection.UnattendXML",
+        "author": "mgreen27",
+        "description": "This artifact will find unscrubbed passwords in unattend.xml answer files. This \nfile is used for non interactive Windows installation.\n",
+        "link": "/exchange/artifacts/pages/unattendxml",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-08-22"
+    },
+    {
+        "title": "Linux.Remediation.Quarantine.IPTables",
+        "author": "weslambert",
+        "description": "Quarantine a Linux host using iptables rules.",
+        "link": "/exchange/artifacts/pages/linux.remediation.quarantine",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-08-18"
+    },
+    {
+        "title": "MacOS.Files.FileMonitor",
+        "author": "weslambert",
+        "description": "This artifact parses Objective-See's FileMonitor log.",
+        "link": "/exchange/artifacts/pages/macos.files.filemonitor",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-08-12"
+    },
+    {
+        "title": "MacOS.Network.LittleSnitch",
+        "author": "weslambert",
+        "description": "This is artifact parses Little Snitch's network traffic log.",
+        "link": "/exchange/artifacts/pages/macos.network.littlesnitch",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-08-12"
+    },
+    {
+        "title": "Windows.Detection.Ntdsutil",
+        "author": "mgreen27",
+        "description": "This artifact will extract evidence of Ntdsutil abuse from the application\neventlog. The artifact targets the string \"ntds.dit\" in event IDs: 216, 325,\n326 and 327.\n",
+        "link": "/exchange/artifacts/pages/ntdsutil",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-08-12"
+    },
+    {
+        "title": "Server.Enrichment.MalwareBazaar",
+        "author": "weslambert",
+        "description": "Query MalwareBazaar for a hash.",
+        "link": "/exchange/artifacts/pages/server.enrichment.malwarebazaar",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-07-29"
+    },
+    {
+        "title": "Server.Enrichment.ThreatFox",
+        "author": "weslambert",
+        "description": "Query ThreatFox for an indicator.",
+        "link": "/exchange/artifacts/pages/server.enrichment.threatfox",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-07-29"
+    },
+    {
+        "title": "Windows.Sysinternals.SysmonArchive",
+        "author": "mgreen27",
+        "description": "If configured, Sysmon EID 23: FileDelete enables archiving file deletes on \ndisk. The challenges of this configuration is management of the archive \nfolder which can grow to be significant size and use up disk space.  ",
+        "link": "/exchange/artifacts/pages/sysmonarchive",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-07-29"
+    },
+    {
+        "title": "Windows.Events.SysmonArchiveMonitor",
+        "author": "mgreen27",
+        "description": "This artifact enables automatic management of the Sysmon archive folder.",
+        "link": "/exchange/artifacts/pages/sysmonarchivemonitor",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-07-29"
+    },
+    {
+        "title": "Server.Utils.OrphanedFlows",
+        "author": "scudette",
+        "description": "Sometimes flows are deleted but there is still outstanding data for\nthem in flight. The server will continue to save this data after the\nflow is deleted.",
+        "link": "/exchange/artifacts/pages/server.utils.orphanedflows",
+        "tags": [],
+        "author_link": "https://github.com/scudette",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3856546?v=4",
+        "date": "2022-07-26"
+    },
+    {
+        "title": "Windows.System.WindowsErrorReporting",
+        "author": "svch0stz",
+        "description": "Parses several Windows Error Reporting (WER) files that contain information about crashed programs. ",
+        "link": "/exchange/artifacts/pages/windows.system.windowserrorreporting",
+        "tags": [],
+        "author_link": "https://github.com/svch0stz",
+        "author_avatar": "https://avatars.githubusercontent.com/u/8684257?v=4",
+        "date": "2022-07-23"
+    },
+    {
+        "title": "Windows.Analysis.SuspiciousWMIConsumers",
+        "author": "AmgdGocha",
+        "description": "This artifact reports suspicious WMI Event Consumers and their associated Filters\nthat may indicate a malicious abuse for persistence.",
+        "link": "/exchange/artifacts/pages/suspiciouswmiconsumers",
+        "tags": [],
+        "author_link": "https://github.com/AmgdGocha",
+        "author_avatar": "https://avatars.githubusercontent.com/u/17185638?v=4",
+        "date": "2022-07-18"
+    },
+    {
+        "title": "Windows.Detection.BruteRatel",
+        "author": "flukes86",
+        "description": "This hunt runts the Immersive Labs yara rule (https://github.com/Immersive-Labs-Sec/BruteRatel-DetectionTools/blob/main/BruteRatel.yar) across select files to identify the known Brute Ratel config strings.\n",
+        "link": "/exchange/artifacts/pages/windows.detection.bruteratel",
+        "tags": [],
+        "author_link": "https://github.com/flukes86",
+        "author_avatar": "https://avatars.githubusercontent.com/u/60819470?v=4",
+        "date": "2022-07-12"
+    },
+    {
+        "title": "Windows.Remediation.KillProcess",
+        "author": "mgreen27",
+        "description": "Quick and dirty monitoring artifact to kill a process by Image Name.\nWe monitor the Microsoft-Windows-Kernel-Process ETW provider and leverage \ntaskkill to kill the process.",
+        "link": "/exchange/artifacts/pages/killprocess",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-07-11"
+    },
+    {
+        "title": "Windows.Events.SysmonRegistry",
+        "author": "mgreen27",
+        "description": "This artifact enables monitoring for registry events of interest via the Sysmon \nETW proiver.",
+        "link": "/exchange/artifacts/pages/sysmonregistry",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-07-07"
+    },
+    {
+        "title": "Exchange.Server.Enrichment.Gimphash",
+        "author": "weslambert",
+        "description": "Calculate the Gimphash for a Golang binary.",
+        "link": "/exchange/artifacts/pages/exchange.server.enrichment.gimphash",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-07-06"
+    },
+    {
+        "title": "Windows.Forensics.FileZilla",
+        "author": "dkelly-r7",
+        "description": "This artifact enumerate's all user directories on a system and will\nparse three files within a users AppData\\Roaming\\FileZilla\ndirectory: filezilla.xml, recentservers.xml, and queue.sqlite3",
+        "link": "/exchange/artifacts/pages/filezilla",
+        "tags": [],
+        "author_link": "https://github.com/dkelly-r7",
+        "author_avatar": "https://avatars.githubusercontent.com/u/49883598?v=4",
+        "date": "2022-07-06"
+    },
+    {
+        "title": "Server.Enrichment.EchoTrail",
+        "author": "ecapuano",
+        "description": "\nThis is a process execution enrichment artifact that can be called from within another artifact (such as one looking at running processes) to enrich the \ndata made available by that artifact. We are calling the EchoTrail v2 API which is still in beta. ",
+        "link": "/exchange/artifacts/pages/server.enrichment.echotrail",
+        "tags": [],
+        "author_link": "https://github.com/ecapuano",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4219694?v=4",
+        "date": "2022-06-24"
+    },
+    {
+        "title": "Label.DomainController",
+        "author": "scudette",
+        "description": "This artifact watches for completion of the `watchArtifact`\nand assigns the given `setLabel` if the `WHERE` condition is matched.",
+        "link": "/exchange/artifacts/pages/label.domaincontroller",
+        "tags": [],
+        "author_link": "https://github.com/scudette",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3856546?v=4",
+        "date": "2022-06-19"
+    },
+    {
+        "title": "Windows.EventLogs.Hayabusa",
+        "author": "ecapuano",
+        "description": "[Hayabusa](https://github.com/Yamato-Security/hayabusa) is a\nWindows event log fast forensics timeline generator and threat\nhunting tool.",
+        "link": "/exchange/artifacts/pages/windows.eventlogs.hayabusa",
+        "tags": [],
+        "author_link": "https://github.com/ecapuano",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4219694?v=4",
+        "date": "2022-06-19"
+    },
+    {
+        "title": "Windows.EventLogs.Bitsadmin",
+        "author": "mgreen27",
+        "description": "This content will extract BITS Transfer events and enable filtering by URL \nand TLD.\n",
+        "link": "/exchange/artifacts/pages/bitsadmin",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-06-10"
+    },
+    {
+        "title": "Linux.Detection.ConfluenceLogs",
+        "author": "mgreen27",
+        "description": "This artifact enables grep of Linux logs and targets strings observed in \nexploitation of CVE-2022-26134.",
+        "link": "/exchange/artifacts/pages/confluencelogs",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-06-07"
+    },
+    {
+        "title": "Windows.Detection.MsdtFollina",
+        "author": "mgreen27",
+        "description": "This artifact will search Microsoft Support Diagnostic Tool logs for evidence \nof ms-msdt Follina exploitation (CVE-2022-30190).",
+        "link": "/exchange/artifacts/pages/msdtfollina",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-06-02"
+    },
+    {
+        "title": "Windows.Registry.NetshHelperDLLs",
+        "author": "ecapuano",
+        "description": "# Enumerate all NetSh Helper DLLs",
+        "link": "/exchange/artifacts/pages/windows.registry.netshhelperdlls",
+        "tags": [],
+        "author_link": "https://github.com/ecapuano",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4219694?v=4",
+        "date": "2022-06-01"
+    },
+    {
+        "title": "Windows.EventLogs.LogonSessions",
+        "author": "NorthwaveCERT",
+        "description": "This artifact searches for logon and logoff events within Security event logs identified\nby Event ID 4624 and 4634. These logon/logoff events are grouped by \"TargetLogonId\" field\ninto \"logon sessions\". For each of these logon sessions, start, end and duration\nare derived\n",
+        "link": "/exchange/artifacts/pages/windows.eventlogs.logonsessions",
+        "tags": [],
+        "author_link": "https://github.com/NorthwaveCERT",
+        "author_avatar": "https://avatars.githubusercontent.com/u/96190431?v=4",
+        "date": "2022-05-31"
+    },
+    {
+        "title": "Windows.System.Powershell.ISEAutoSave",
+        "author": "mgreen27",
+        "description": "This artifact hunts for Powershell ISE autosave files and extracts ISE user \nconfig.",
+        "link": "/exchange/artifacts/pages/iseautosave",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-05-26"
+    },
+    {
+        "title": "Server.Enrichment.Virustotal.FileScan",
+        "author": "weslambert",
+        "description": "Submit a file to Virustotal for analysis.  ",
+        "link": "/exchange/artifacts/pages/server.enrichment.virustotal.filescan",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-05-24"
+    },
+    {
+        "title": "Windows.Detection.PrefetchHunter",
+        "author": "mgreen27",
+        "description": "This artifact enables hunting prefetch entries for accessed files of interest. ",
+        "link": "/exchange/artifacts/pages/prefetchhunter",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-04-27"
+    },
+    {
+        "title": "Windows.Registry.TaskCache.HiddenTasks",
+        "author": "svch0stz",
+        "description": "This artefact will highlight any scheduled tasks missing the Security Descriptor (SD) value in the task cache. Without this value, the task is hidden from common query methods. ",
+        "link": "/exchange/artifacts/pages/windows.registry.taskcache.hiddentasks",
+        "tags": [],
+        "author_link": "https://github.com/svch0stz",
+        "author_avatar": "https://avatars.githubusercontent.com/u/8684257?v=4",
+        "date": "2022-04-21"
+    },
+    {
+        "title": "Windows.NTFS.Timestomp",
+        "author": "mgreen27",
+        "description": "This artifact enables triage to detect potential time stomped files.",
+        "link": "/exchange/artifacts/pages/timestomp",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-04-15"
+    },
+    {
+        "title": "Windows.Applications.DefenderQuarantineExtract",
+        "author": "eduardomcm",
+        "description": "Extracts Quarantine Files from Windows Defender.",
+        "link": "/exchange/artifacts/pages/defenderquarantineextract",
+        "tags": [],
+        "author_link": "https://github.com/eduardomcm",
+        "author_avatar": "https://avatars.githubusercontent.com/u/49650494?v=4",
+        "date": "2022-04-14"
+    },
+    {
+        "title": "Windows.Registry.CortexEDRDisabled",
+        "author": "Rhysistance",
+        "description": "This artifact will attempt to identify Cortex EDR that has been disabled via regkey\n",
+        "link": "/exchange/artifacts/pages/windows.registry.disabledcortexxdr",
+        "tags": [],
+        "author_link": "https://github.com/Rhysistance",
+        "author_avatar": "https://avatars.githubusercontent.com/u/93743676?v=4",
+        "date": "2022-04-14"
+    },
+    {
+        "title": "Windows.Applications.DefenderHistory",
+        "author": "rmakuch",
+        "description": "This artifact parses the Windows Defender files generated on threat detection and returns\nthe contained parameters created by Windows Defender about the detected threat. ",
+        "link": "/exchange/artifacts/pages/windows.applications.defenderhistory",
+        "tags": [],
+        "author_link": "https://github.com/rmakuch",
+        "author_avatar": "https://avatars.githubusercontent.com/u/33912291?v=4",
+        "date": "2022-04-12"
+    },
+    {
+        "title": "MacOS.Applications.Safari.Downloads",
+        "author": "Seeps",
+        "description": "Parses Safari downloads for all standard macOS users",
+        "link": "/exchange/artifacts/pages/macos.applications.safari.downloads",
+        "tags": [],
+        "author_link": "https://github.com/Seeps",
+        "author_avatar": "https://avatars.githubusercontent.com/u/10315852?v=4",
+        "date": "2022-03-29"
+    },
+    {
+        "title": "Windows.EventLogs.RDPClientActivity",
+        "author": "NorthwaveCERT",
+        "description": "This artifact retrieves outgoing RDP session activity from the\nMicrosoft-Windows-TerminalServices-RDPClient event logs. It aggregates\nsessions based on ActivityID and outputs hostname, timeframe and disconnect reasons.\nThe latter is filled using a dict that was taken from MS Docs (see references)\n",
+        "link": "/exchange/artifacts/pages/windows.eventlogs.rdpclientactivity",
+        "tags": [],
+        "author_link": "https://github.com/NorthwaveCERT",
+        "author_avatar": "https://avatars.githubusercontent.com/u/96190431?v=4",
+        "date": "2022-03-24"
+    },
+    {
+        "title": "Windows.Office.MRU",
+        "author": "Sam0rai",
+        "description": "This artifact enables hunting for recently used Office Documents.",
+        "link": "/exchange/artifacts/pages/windows.office.mru",
+        "tags": [],
+        "author_link": "https://github.com/Sam0rai",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4671530?v=4",
+        "date": "2022-03-24"
+    },
+    {
+        "title": "MacOS.Applications.Safari.History",
+        "author": "Seeps",
+        "description": "Parses Safari history database\n",
+        "link": "/exchange/artifacts/pages/macos.applications.safari.history",
+        "tags": [],
+        "author_link": "https://github.com/Seeps",
+        "author_avatar": "https://avatars.githubusercontent.com/u/10315852?v=4",
+        "date": "2022-03-21"
+    },
+    {
+        "title": "Windows.System.PowerEfficiencyDiagnostics",
+        "author": "eduardomcm",
+        "description": "This artifact parses the XML Energy Reports from the Power Efficiency \nDiagnostics feature of Windows, returning the processes which had high \nCPU usage, including which ",
+        "link": "/exchange/artifacts/pages/powerefficiencydiagnostics",
+        "tags": [],
+        "author_link": "https://github.com/eduardomcm",
+        "author_avatar": "https://avatars.githubusercontent.com/u/49650494?v=4",
+        "date": "2022-03-13"
+    },
+    {
+        "title": "Windows.Registry.HiddenUsers",
+        "author": "eduardomcm",
+        "description": "Find hidden user accounts through registry values on the filesystem.",
+        "link": "/exchange/artifacts/pages/hiddenusers",
+        "tags": [],
+        "author_link": "https://github.com/eduardomcm",
+        "author_avatar": "https://avatars.githubusercontent.com/u/49650494?v=4",
+        "date": "2022-03-07"
+    },
+    {
+        "title": "Windows.Applications.AnyDesk.LogParser",
+        "author": "RHinDFIR",
+        "description": "Parses the AnyDesk ad.trace log file.",
+        "link": "/exchange/artifacts/pages/windows.applications.anydesk.logparser",
+        "tags": [],
+        "author_link": "https://github.com/RHinDFIR",
+        "author_avatar": "https://avatars.githubusercontent.com/u/95378541?v=4",
+        "date": "2022-02-16"
+    },
+    {
+        "title": "Windows.EventLogs.CondensedAccountUsage",
+        "author": "Qazeer",
+        "description": "This artifact will extract condensed information on logon / logoff events.",
+        "link": "/exchange/artifacts/pages/condensedaccountusage",
+        "tags": [],
+        "author_link": "https://github.com/Qazeer",
+        "author_avatar": "https://avatars.githubusercontent.com/u/5614972?v=4",
+        "date": "2022-02-09"
+    },
+    {
+        "title": "MacOS.System.LocationServices",
+        "author": "weslambert",
+        "description": "This artifact looks for applications that are registered and allowed for use of location services by checking the plist file in `/var/db/locationd/clients.plist`.  \nThis can be useful to help determine if these settings have been modified by an attacker to perform location tracking.",
+        "link": "/exchange/artifacts/pages/macos.system.locationservices",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2022-02-01"
+    },
+    {
+        "title": "Linux.Detection.CVE20214034",
+        "author": "scudette",
+        "description": "This artifact lists processes running as root that were spawns by processes that are not\nrunning as root. This kind of behavior is normal for things like sudo or su but for other\nprocesses (especially /bin/bash) it could represent a process launched via CVE-2021-4034.",
+        "link": "/exchange/artifacts/pages/linux.detection.cve20214034",
+        "tags": [],
+        "author_link": "https://github.com/scudette",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3856546?v=4",
+        "date": "2022-01-26"
+    },
+    {
+        "title": "Windows.Applications.DefenderDHParser",
+        "author": "eduardomcm",
+        "description": "This artifact leverages Windows Defender DetectionHistory tool to parse and return\nthe parameters of Windows Defender detections contained in Detection History files.\n",
+        "link": "/exchange/artifacts/pages/defenderdhparser",
+        "tags": [],
+        "author_link": "https://github.com/eduardomcm",
+        "author_avatar": "https://avatars.githubusercontent.com/u/49650494?v=4",
+        "date": "2022-01-24"
+    },
+    {
+        "title": "Windows.System.WMIProviders",
+        "author": "scudette",
+        "description": "List the WMI providers in the system.",
+        "link": "/exchange/artifacts/pages/windows.system.wmiproviders",
+        "tags": [],
+        "author_link": "https://github.com/scudette",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3856546?v=4",
+        "date": "2022-01-24"
+    },
+    {
+        "title": "Windows.ETW.WMIEventing",
+        "author": "mgreen27",
+        "description": "This artifact collects events associated with creation and deletion of WMI \nEvent Consumers. All Event Consumers created under any namespace will \ngenerate events which are filtered on event consumer classes.  ",
+        "link": "/exchange/artifacts/pages/wmieventing",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-01-15"
+    },
+    {
+        "title": "Linux.Carving.SSHLogs",
+        "author": "scudette",
+        "description": "Linux systems typically store audit events in syslog. In particular successful \nssh logins are especially important for some investigations.",
+        "link": "/exchange/artifacts/pages/linux.carving.sshlogs",
+        "tags": [],
+        "author_link": "https://github.com/scudette",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3856546?v=4",
+        "date": "2022-01-14"
+    },
+    {
+        "title": "Linux.Sysinternals.SysmonEvent",
+        "author": "scudette",
+        "description": "Parses syslog for Sysmon events on Linux using a unix domain socket.",
+        "link": "/exchange/artifacts/pages/linux.sysinternals.sysmonevent",
+        "tags": [],
+        "author_link": "https://github.com/scudette",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3856546?v=4",
+        "date": "2022-01-14"
+    },
+    {
+        "title": "Windows.Registry.AteraNetworks",
+        "author": "mgreen27",
+        "description": "Find AteraNetworks configuration details in the registry.\nThis artifact is best combined with Windows.Forensics.FilenameSearch \nsearching for the string \"atera\".\n",
+        "link": "/exchange/artifacts/pages/ateranetworks",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2022-01-12"
+    },
+    {
+        "title": "Exchange.Label.User",
+        "author": "scudette",
+        "description": "This artifact watches for new client enrollments and automatically\nlabel the client with the required label if the user exists.",
+        "link": "/exchange/artifacts/pages/exchange.label.user",
+        "tags": [
+            "server",
+            "event",
+            "labels"
+        ],
+        "author_link": "https://github.com/scudette",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3856546?v=4",
+        "date": "2022-01-12"
+    },
+    {
+        "title": "Generic.Detection.LunasecLog4shell",
+        "author": "scudette",
+        "description": "Uses the Log4Shell scanner of Lunasec to scan the file systems of\nall drives of the host for any sign of vulnerabilities related to\nLog4shell\n",
+        "link": "/exchange/artifacts/pages/generic.detection.lunaseclog4shell",
+        "tags": [],
+        "author_link": "https://github.com/scudette",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3856546?v=4",
+        "date": "2022-01-12"
+    },
+    {
+        "title": "Server.Slack.Clients.Enrolled",
+        "author": "scudette",
+        "description": "Send a message to slack when clients become enrolled.",
+        "link": "/exchange/artifacts/pages/server.slack.clients.enrolled",
+        "tags": [],
+        "author_link": "https://github.com/scudette",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3856546?v=4",
+        "date": "2022-01-12"
+    },
+    {
+        "title": "Windows.System.AccessControlList",
+        "author": "scudette",
+        "description": "This artifact displays the access control lists of files.",
+        "link": "/exchange/artifacts/pages/windows.system.accesscontrollist",
+        "tags": [],
+        "author_link": "https://github.com/scudette",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3856546?v=4",
+        "date": "2022-01-12"
+    },
+    {
+        "title": "Windows.Detection.ProxyLogon.ProxyShell",
+        "author": "Seeps",
+        "description": "This artifact hunts for CVE-2021-27065 (Microsoft Exchange ProxyLogon RCE)\nand CVE-2021-31207 (Microsoft Exchange ProxyShell RCE) exploitation by parsing \nentries in the 'MSExchange Management.evtx' log.",
+        "link": "/exchange/artifacts/pages/windows.detection.proxylogon.proxyshell",
+        "tags": [],
+        "author_link": "https://github.com/Seeps",
+        "author_avatar": "https://avatars.githubusercontent.com/u/10315852?v=4",
+        "date": "2022-01-11"
+    },
+    {
+        "title": "Windows.Registry.CapabilityAccessManager",
+        "author": "scudette",
+        "description": "The ConsentStore in CapabilityAccessManager can provide insight to\nwhat resources binaries have had access to, such as the microphone\nand webcam. This artefact returns non-Microsoft executables (ie:\nentries listed in the `NonPackaged` path).",
+        "link": "/exchange/artifacts/pages/windows.registry.capabilityaccessmanager",
+        "tags": [
+            "windows",
+            "registry"
+        ],
+        "author_link": "https://github.com/scudette",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3856546?v=4",
+        "date": "2022-01-08"
+    },
+    {
+        "title": "Generic.Detection.log4jRCE",
+        "author": "mgreen27",
+        "description": "Detection for exploitation attempts against log4j RCE\nvulnerability CVE-2021-44228.",
+        "link": "/exchange/artifacts/pages/log4jrce",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-12-10"
+    },
+    {
+        "title": "Splunk.Events.Clients",
+        "author": "jurelou",
+        "description": "This server monitoring artifact will watch a selection of client\nmonitoring artifacts for new events and push those to a splunk\nindex.",
+        "link": "/exchange/artifacts/pages/splunk.events.clients",
+        "tags": [],
+        "author_link": "https://github.com/jurelou",
+        "author_avatar": "https://avatars.githubusercontent.com/u/30180021?v=4",
+        "date": "2021-12-08"
+    },
+    {
+        "title": "Windows.Monitor.USBPlugIn",
+        "author": "mgreen27",
+        "description": "Monitor for plug in of USB volume.  Output drive letter for\nadditional enrichment artifacts\n",
+        "link": "/exchange/artifacts/pages/usbplugin",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-11-29"
+    },
+    {
+        "title": "Windows.Detection.USBYara",
+        "author": "mgreen27",
+        "description": "Run yara over usb when USB is plugged into machine.  Return context\nand hit details.",
+        "link": "/exchange/artifacts/pages/usbyara",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-11-29"
+    },
+    {
+        "title": "Windows.EventLogs.Zircolite",
+        "author": "weslambert",
+        "description": "Zircolite is a standalone tool that can be used to apply Sigma rules to EVTX files on endpoints in an effort to quickly parse large datasets and surface detections.\n            \nYou can read more about Zircolite below:\n    \nhttps://github.com/wagga40/Zircolite\n    \nNOTE: This artifact may take several minutes to run, depending on the size of EVTX files being analyzed.\n",
+        "link": "/exchange/artifacts/pages/windows.eventlogs.zircolite",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2021-11-24"
+    },
+    {
+        "title": "Server.Findflows",
+        "author": "mgreen27",
+        "description": "This artifact enables searching over client flow results with regex\nand returns a link to the Flow for followup.\n",
+        "link": "/exchange/artifacts/pages/findflows",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-11-23"
+    },
+    {
+        "title": "Linux.Collection.CatScale",
+        "author": "weslambert",
+        "description": "This is a simple artifact that leverages Cat-Scale to collect many\ndifferent artifacts from a Linux host, then uploads the results to\nthe Velociraptor server.",
+        "link": "/exchange/artifacts/pages/linux.collection.catscale",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2021-11-11"
+    },
+    {
+        "title": "Windows.Applications.DIEC",
+        "author": "eduardomcm",
+        "description": "Execute DetectItEasy (console version) on specified paths and\nreturn rows of results to hunt/filter on binaries based types of\nfiles (E.g.: Packed binaries and its packers)\n",
+        "link": "/exchange/artifacts/pages/diec",
+        "tags": [],
+        "author_link": "https://github.com/eduardomcm",
+        "author_avatar": "https://avatars.githubusercontent.com/u/49650494?v=4",
+        "date": "2021-11-09"
+    },
+    {
+        "title": "Windows.AttackSimulation.AtomicRedTeam",
+        "author": "weslambert",
+        "description": "This artifact allows you to run Atomic Red Team tests on Windows\nendpoints using Invoke-AtomicRedTeam. Linux and MacOS endpoints\nwill soon be supported.",
+        "link": "/exchange/artifacts/pages/windows.attacksimulation.atomicredteam",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2021-11-06"
+    },
+    {
+        "title": "Linux.Sysinternals.Sysmon",
+        "author": "weslambert",
+        "description": "Parses syslog for Sysmon events on Linux",
+        "link": "/exchange/artifacts/pages/linux.sysinternals.sysmon",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2021-10-23"
+    },
+    {
+        "title": "Server.Analysis.CyberChefServer",
+        "author": "weslambert",
+        "description": "Analyze/transform data with CyberChef-server.",
+        "link": "/exchange/artifacts/pages/cyberchefserver",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2021-10-20"
+    },
+    {
+        "title": "Windows.Carving.SquirrelWaffle",
+        "author": "eduardomcm",
+        "description": "This artifact yara-scans memory or process dumps for unpacked\nSquirrelWaffle Dlls, decodes the configuration and returns the C2s\nand the payload.",
+        "link": "/exchange/artifacts/pages/squirrelwaffle",
+        "tags": [],
+        "author_link": "https://github.com/eduardomcm",
+        "author_avatar": "https://avatars.githubusercontent.com/u/49650494?v=4",
+        "date": "2021-10-02"
+    },
+    {
+        "title": "Windows.Binary.Exports",
+        "author": "mgreen27",
+        "description": "This artifact can be used to extract all binary exports to research\npotential lolbins.  Selecting the AllBinaryInfo tickbox will return\ncomplete Binary information.\n",
+        "link": "/exchange/artifacts/pages/exports",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-09-24"
+    },
+    {
+        "title": "Windows.Applications.Cylance",
+        "author": "mgreen27",
+        "description": "Parse Cylance logs.\n",
+        "link": "/exchange/artifacts/pages/cylance",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-09-21"
+    },
+    {
+        "title": "Windows.Applications.OfficeMacros.MacroRaptor",
+        "author": "mgreen27",
+        "description": "This artifact implements OleTools MacroRaptor capability in VQL.",
+        "link": "/exchange/artifacts/pages/macroraptor",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-09-21"
+    },
+    {
+        "title": "Windows.Bulk.File",
+        "author": "mgreen27",
+        "description": "Search for some simple bulk File IOCs and upload if desired.\nTypical upload workflow may be to firstly search, then if returned\nrows match expectations rerun query with upload tickbox selected.",
+        "link": "/exchange/artifacts/pages/bulkfile",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-09-21"
+    },
+    {
+        "title": "Windows.System.BinaryVersion",
+        "author": "mgreen27",
+        "description": "This artifact will search the MFT for any matching filenames and return\nbinary details. This artifact can be used to find all instances of a \nbinary on disk so its great for scoping both legititimate and illegitimate \nfiles.\n",
+        "link": "/exchange/artifacts/pages/binaryversion",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-09-16"
+    },
+    {
+        "title": "Windows.Analysis.Capa",
+        "author": "weslambert",
+        "description": "Analyze PE, ELF, or shellcode files with capa.",
+        "link": "/exchange/artifacts/pages/windows.analysis.capa",
+        "tags": [],
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2021-09-15"
+    },
+    {
+        "title": "Windows.Applications.OfficeServerCache",
+        "author": "eduardomcm",
+        "description": "Return Office Internet Server Cache Registry keys and values in\norder to identify possible C2 URLs from malicious opened Office\ndocuments.",
+        "link": "/exchange/artifacts/pages/officeservercache",
+        "tags": [],
+        "author_link": "https://github.com/eduardomcm",
+        "author_avatar": "https://avatars.githubusercontent.com/u/49650494?v=4",
+        "date": "2021-09-10"
+    },
+    {
+        "title": "Linux.Applications.WgetHSTS",
+        "author": "scudette",
+        "description": "Wget creates a HSTS log file in a user's home directory.  This can\ncontain forensically relevant information.\n",
+        "link": "/exchange/artifacts/pages/linux.applications.wgethsts",
+        "tags": [],
+        "author_link": "https://github.com/scudette",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3856546?v=4",
+        "date": "2021-09-09"
+    },
+    {
+        "title": "Windows.EventLogs.RecordIDCheck",
+        "author": "mgreen27",
+        "description": "This artifact will compare EventLog records and report on\nabnormalities in RecordID sequence and optional time gap. The\nartifact can be used for both hunting, remote or local analysis.",
+        "link": "/exchange/artifacts/pages/recordidcheck",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-09-09"
+    },
+    {
+        "title": "Windows.Registry.CVE_2021_40444",
+        "author": "mgreen27",
+        "description": "This artifact will enable both application and removal of the\nreccomended mitigation for CVE-2021-40444.",
+        "link": "/exchange/artifacts/pages/cve_2021_40444",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-09-08"
+    },
+    {
+        "title": "Windows.ETW.DetectProcessSpoofing",
+        "description": "Detects Process parent spoofing such as SelectMyParent.exe or\nCobalt Strike select PPID.",
+        "link": "/exchange/artifacts/pages/windows.etw.detectprocessspoofing",
+        "tags": [],
+        "author": "scudette",
+        "author_link": "https://github.com/scudette",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3856546?v=4",
+        "date": "2021-09-03"
+    },
+    {
+        "title": "Windows.EventLogs.Chainsaw",
+        "description": "\nThis artifact leverages Chainsaw to enable usage of Sigma rules\n(in addition to built-in rules) to faciliate detection within\nWindows Event Logs.",
+        "link": "/exchange/artifacts/pages/windows.eventlogs.chainsaw",
+        "tags": [],
+        "author": "Wes Lambert - @therealwlambert",
+        "author_link": "https://github.com/weslambert",
+        "author_avatar": "https://avatars.githubusercontent.com/u/16829864?v=4",
+        "date": "2021-09-03"
+    },
+    {
+        "title": "Windows.ActiveDirectory.PrivilegedUsers",
+        "description": "If on a Domain Controller (ProductType = 2), recursively enumerate\nmembership of privileged groups, then for each user, collect\ndetails relevant to an investigation: Create Date, Last Logon,\nGroup Membership, SID",
+        "link": "/exchange/artifacts/pages/activedirectoryprivilegedusers",
+        "tags": [],
+        "author": "liteman",
+        "author_link": "https://github.com/liteman",
+        "author_avatar": "https://avatars.githubusercontent.com/u/6087529?v=4",
+        "date": "2021-08-28"
+    },
+    {
+        "title": "Windows.NTFS.MFT.HiveNightmare",
+        "description": "This artifact uses Windows.NTFS.MFT (By Matt Green - @mgreen27) to\nfind several files created as part of the POC tooling for\nHiveNightmare (CVE-2021-36934):",
+        "link": "/exchange/artifacts/pages/windows.ntfs.mft.hivenightmare",
+        "tags": [],
+        "author": "svch0stz",
+        "author_link": "https://github.com/svch0stz",
+        "author_avatar": "https://avatars.githubusercontent.com/u/8684257?v=4",
+        "date": "2021-07-25"
+    },
+    {
+        "title": "Windows.Memory.HollowsHunter",
+        "author": "mgreen27",
+        "description": "Use hollows_hunter to detect suspicious process injections.",
+        "link": "/exchange/artifacts/pages/hollowshunter",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-07-14"
+    },
+    {
+        "title": "Windows.Monitoring.PrintNightmare",
+        "description": "This artifact returns ETW PrintService events for potential\nPrintNightmare activity.  CVE-2021-1675 and CVE-2021-34527",
+        "link": "/exchange/artifacts/pages/printnightmaremonitor",
+        "tags": [],
+        "author": "mgreen27",
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-07-08"
+    },
+    {
+        "title": "Windows.System.PrinterDriver",
+        "description": "This artifact will enumerate installed PrintDrivers using the\nWin32_PrinterDriver wmi class and parse each DriverPath, ConfigFile\nand DataFile.",
+        "link": "/exchange/artifacts/pages/printerdriver",
+        "tags": [],
+        "author": "mgreen27",
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-07-07"
+    },
+    {
+        "title": "Windows.Remediation.PrintSpooler",
+        "description": "This artifact will enable mitigation of PrintSpooler exploitation\nused by PrintNightmare - CVE-2021-34527 and CVE-2021-1675.",
+        "link": "/exchange/artifacts/pages/printspoolerremediation",
+        "tags": [],
+        "author": "mgreen27",
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-07-06"
+    },
+    {
+        "title": "Linux.Volatility.Create.Profile",
+        "description": "This artifact is used to create the profile to the environnements Debian / Ubuntu.\n",
+        "link": "/exchange/artifacts/pages/volatility_profile",
+        "tags": [],
+        "author": "makhno4n6",
+        "author_link": "https://github.com/makhno4n6",
+        "author_avatar": "https://avatars.githubusercontent.com/u/86801976?v=4",
+        "date": "2021-07-02"
+    },
+    {
+        "title": "Windows.Detection.PrintNightmare",
+        "description": "This artifact returns any binaries in the Windows/spool/drivers/**\nfolders with an untrusted Authenticode entry.",
+        "link": "/exchange/artifacts/pages/printnightmare",
+        "tags": [],
+        "author": "mgreen27",
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-07-01"
+    },
+    {
+        "title": "Windows.Applications.FTKImager",
+        "description": "Create an E01 Image of the C drive using FTK Imager (Command Line\nVersion)",
+        "link": "/exchange/artifacts/pages/ftkimager",
+        "tags": [],
+        "author": "eduardomcm",
+        "author_link": "https://github.com/eduardomcm",
+        "author_avatar": "https://avatars.githubusercontent.com/u/49650494?v=4",
+        "date": "2021-06-25"
+    },
+    {
+        "title": "Windows.ETW.AMSI",
+        "description": "This artifact uses the ETW provider:\n    (Microsoft-Antimalware-Scan-Interface - {2A576B87-09A7-520E-C21A-4942F0271D67}\n",
+        "link": "/exchange/artifacts/pages/amsi",
+        "tags": [],
+        "author": "mgreen27",
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2021-06-25"
+    },
+    {
+        "title": "HashRunKeys",
+        "description": "Iterate over all the run keys and locate their binary then hash it.",
+        "link": "/exchange/artifacts/pages/hash_run_keys",
+        "tags": [
+            "windows",
+            "registry",
+            "detection"
+        ],
+        "author": "ffh571",
+        "author_link": "https://github.com/ffh571",
+        "author_avatar": "https://avatars.githubusercontent.com/u/48983874?v=4",
+        "date": "2021-06-23"
+    }
+]
